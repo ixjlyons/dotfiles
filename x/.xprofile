@@ -1,0 +1,9 @@
+#!/bin/sh
+
+xsetroot -cursor_name left_ptr &
+xrdb ~/.Xresources &
+xset r rate 250 25 &
+setxkbmap -layout us,de -variant ,qwerty -option grp:sclk_toggle &
+
+synclient VertEdgeScroll=1 TapButton=1 &
+sh ~/.fehbg &

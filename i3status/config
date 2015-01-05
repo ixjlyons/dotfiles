@@ -1,0 +1,68 @@
+general {
+        colors = true
+        interval = 1
+
+        color_good     = "#2b4e64" # green
+        color_degraded = "#efef60" # yellow
+        color_bad      = "#962521" # red
+        
+        output_format = i3bar
+}
+
+#order += "ipv6"
+order += "disk /"
+#order += "run_watch DHCP"
+#order += "run_watch VPN"
+#order += "wireless wlan0"
+#order += "ethernet eth0"
+order += "battery 0"
+#order += "cpu_usage"
+#order += "load"
+#order += "volume master"
+order += "tztime local"
+
+volume master {
+    format = "vol: %volume"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = "0"
+}
+
+wireless wlan0 {
+    format_up = "wlan: (%quality at %essid) %ip"
+    format_down = "wlan: down"
+}
+
+ethernet eth0 {
+    format_up = "eth: %ip"
+    format_down = "eth: down"
+}
+
+battery 0 {
+    format = "batt: %percentage %remaining"
+    path = "/sys/class/power_supply/C23A/uevent"
+}
+
+run_watch DHCP {
+    pidfile = "/var/run/dhclient*.pid"
+}
+
+run_watch VPN {
+    pidfile = "/var/run/vpnc/pid"
+}
+
+tztime local {
+    format = "%Y-%m-%d %H:%M"
+}
+
+cpu_usage {
+    format = "cpu: %usage"
+}
+
+load {
+    format = "cpu: %1min"
+}
+
+disk "/" {
+    format = "disk: %avail"
+}

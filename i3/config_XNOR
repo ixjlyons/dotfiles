@@ -1,0 +1,174 @@
+set $mod Mod1
+
+
+#font pango: DejaVu Sans Mono 8
+font pango: Armata 8
+
+floating_modifier $mod
+
+bindsym $mod+Return exec urxvt -cd "`xcwd`"
+
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym Mod4+space exec dmenu_run -b
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in vertical orientation
+bindsym $mod+v split v
+# split in horizontal orientation
+bindsym $mod+Shift+v split h
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# switch to workspace
+bindsym $mod+1 exec /home/kenny/bin/wsutil focus 1
+bindsym $mod+2 exec /home/kenny/bin/wsutil focus 2
+bindsym $mod+3 exec /home/kenny/bin/wsutil focus 3
+bindsym $mod+4 exec /home/kenny/bin/wsutil focus 4
+bindsym $mod+5 exec /home/kenny/bin/wsutil focus 5
+bindsym $mod+6 exec /home/kenny/bin/wsutil focus 6
+bindsym $mod+7 exec /home/kenny/bin/wsutil focus 7
+bindsym $mod+8 exec /home/kenny/bin/wsutil focus 8
+bindsym $mod+9 exec /home/kenny/bin/wsutil focus 9
+bindsym $mod+0 exec /home/kenny/bin/wsutil focus 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 exec /home/kenny/bin/wsutil move 1
+bindsym $mod+Shift+2 exec /home/kenny/bin/wsutil move 2
+bindsym $mod+Shift+3 exec /home/kenny/bin/wsutil move 3
+bindsym $mod+Shift+4 exec /home/kenny/bin/wsutil move 4
+bindsym $mod+Shift+5 exec /home/kenny/bin/wsutil move 5
+bindsym $mod+Shift+6 exec /home/kenny/bin/wsutil move 6
+bindsym $mod+Shift+7 exec /home/kenny/bin/wsutil move 7
+bindsym $mod+Shift+8 exec /home/kenny/bin/wsutil move 8
+bindsym $mod+Shift+9 exec /home/kenny/bin/wsutil move 9
+bindsym $mod+Shift+0 exec /home/kenny/bin/wsutil move 10
+
+# enable back and forth switching between workspaces
+bindsym $mod+Tab workspace back_and_forth
+#workspace_auto_back_and_forth yes
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+    
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+    
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+#####################
+# color definitions #
+#####################
+set $black  #101010
+set $grey   #505050
+set $purple #4e3d41
+set $red    #962521
+set $blue   #2b4e64
+set $white  #aaaaaa
+
+bar {
+    position top
+    #status_command i3status
+    status_command ~/.config/i3pystatus/config.py
+    workspace_buttons yes
+
+    colors {
+        background $black
+        statusline $grey
+        separator  $purple
+
+        # class            border  backgr. text
+        focused_workspace  $blue   $black  $white
+        inactive_workspace $black  $black  $grey
+        urgent_workspace   #2f343a #900000 #ffffff
+    }
+}
+
+#
+# colors
+#
+# class                 border  backgr. text    indicator
+client.focused          #021a2d #021a2d #aaaaaa #2f4d70
+client.focused_inactive #18191b #18191b #888888 #444444
+client.unfocused        #0a0a0a #0a0a0a #666666 #444444
+client.urgent           #2f343a #900000 #ffffff #900000
+
+
+#
+# custom keybindings
+#
+bindsym Ctrl+Shift+x exec cmus-remote -u
+bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+
+bindsym XF86AudioLowerVolume exec amixer sset Master 1%-
+bindsym XF86ScreenSaver exec i3lock -c 021a2d
+bindsym XF86Sleep exec i3lock -c 021a2d && sudo pm-suspend
+bindsym Mod4+f exec pcmanfm
+
+# rolling through workspaces
+bindsym $mod+Left exec /home/kenny/bin/wsutil focus left
+bindsym $mod+Right exec /home/kenny/bin/wsutil focus right
+bindsym $mod+Shift+Left exec /home/kenny/bin/wsutil move left
+bindsym $mod+Shift+Right exec /home/kenny/bin/wsutil move right
+
+# tagging
+bindsym $mod+t exec /home/kenny/bin/wsutil tag $(echo | dmenu -b -p "tag:")
+
+# open windows in float mode by default
+for_window [class="Lxappearance"] floating enable
+
+#
+# autostarts
+#
+exec pnmixer &
