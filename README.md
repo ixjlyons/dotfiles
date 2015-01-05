@@ -21,10 +21,10 @@ the file name in this repository.
 | `pcmanfm/pcmanfm.conf` | `~/.config/pcmanfm/default/` |
 | `qtile/config.py`      | `~/.config/qtile/`           |
 | `vim/.vimrc`           | `~`                          |
-| `x/.Xresources`        | `~`                          |
 | `x/.xinitrc`           | `~`                          |
 | `x/.xprofile`          | `~`                          |
+| `x/.Xresources`        | `~`                          |
 | `x/.xserverrc`         | `~`                          |
-| `zsh/.zshrc`           | `~`                          |
 | `zsh/.zlogin`          | `~`                          |
 | `zsh/.zshenv`          | `~`                          |
+| `zsh/.zshrc`           | `~`                          |
