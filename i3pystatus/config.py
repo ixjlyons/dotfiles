@@ -88,5 +88,14 @@ status.register(
         ]
     )
 )
+status.register(
+    "battery",
+    format="batt: {status} {remaining}",
+    battery_ident="C23A",
+    status={'DIS': '↓', 'CHR': '↑', 'FULL': 'full'},
+    full_color=None,
+    charging_color=None,
+    critical_color=red
+)
 
 status.run()
