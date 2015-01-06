@@ -2,7 +2,7 @@
 
 xsetroot -cursor_name left_ptr &
 xrdb ~/.Xresources &
-xset rate 250 25 &
+xset r rate 250 25 &
 xset b off
 setxkbmap -layout us,de -variant ,qwerty -option grp:sclk_toggle &
 
