@@ -1,0 +1,200 @@
+#
+# general settings
+#
+
+set $mod Mod1
+font pango: Armata 8
+focus_follows_mouse no
+floating_modifier $mod
+
+
+#
+# navigation
+#
+
+# move to other containers in the workspace
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# switch to workspace
+bindsym $mod+1 exec /home/kenny/bin/wsutil focus 1
+bindsym $mod+2 exec /home/kenny/bin/wsutil focus 2
+bindsym $mod+3 exec /home/kenny/bin/wsutil focus 3
+bindsym $mod+4 exec /home/kenny/bin/wsutil focus 4
+bindsym $mod+5 exec /home/kenny/bin/wsutil focus 5
+bindsym $mod+6 exec /home/kenny/bin/wsutil focus 6
+bindsym $mod+7 exec /home/kenny/bin/wsutil focus 7
+bindsym $mod+8 exec /home/kenny/bin/wsutil focus 8
+bindsym $mod+9 exec /home/kenny/bin/wsutil focus 9
+bindsym $mod+0 exec /home/kenny/bin/wsutil focus 10
+
+# move to adjacent workspace
+bindsym $mod+Left exec /home/kenny/bin/wsutil focus left
+bindsym $mod+Right exec /home/kenny/bin/wsutil focus right
+
+# other movements
+bindsym $mod+a focus parent
+bindsym $mod+space focus mode_toggle
+bindsym $mod+Tab workspace back_and_forth
+
+
+#
+# moving things around
+#
+
+# move container in workspace
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# move focused container to workspace
+bindsym $mod+Shift+1 exec /home/kenny/bin/wsutil move 1
+bindsym $mod+Shift+2 exec /home/kenny/bin/wsutil move 2
+bindsym $mod+Shift+3 exec /home/kenny/bin/wsutil move 3
+bindsym $mod+Shift+4 exec /home/kenny/bin/wsutil move 4
+bindsym $mod+Shift+5 exec /home/kenny/bin/wsutil move 5
+bindsym $mod+Shift+6 exec /home/kenny/bin/wsutil move 6
+bindsym $mod+Shift+7 exec /home/kenny/bin/wsutil move 7
+bindsym $mod+Shift+8 exec /home/kenny/bin/wsutil move 8
+bindsym $mod+Shift+9 exec /home/kenny/bin/wsutil move 9
+bindsym $mod+Shift+0 exec /home/kenny/bin/wsutil move 10
+
+# move container to adjacent workspace
+bindsym $mod+Shift+Left exec /home/kenny/bin/wsutil move left
+bindsym $mod+Shift+Right exec /home/kenny/bin/wsutil move right
+
+# move workspace to other screen (assuming two monitors)
+bindsym $mod+Shift+m move workspace to output right
+
+
+#
+# container manipulation
+#
+
+# container layout type
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# splitting
+bindsym $mod+Shift+v split h
+bindsym $mod+v split v
+
+# other
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+
+
+#
+# other wm-related keybindings
+#
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -m 'Exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+t exec /home/kenny/bin/wsutil tag $(echo | dmenu -b -p "tag:")
+bindsym $mod+Shift+q kill
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+#
+# per-application window preferences
+#
+
+for_window [title="Figure *"] floating enable
+for_window [title="TeX Text"] floating enable
+for_window [title="OpenGL Viewer"] floating enable
+for_window [title="pygesture*"] floating enable
+for_window [class="Lxappearance"] floating enable
+
+
+#
+# appearance
+#
+
+# color definitions
+set $black    #101010
+set $grey     #505050
+set $purple   #4e3d41
+set $red      #962521
+set $blue     #2b4e64
+set $white    #aaaaaa
+set $darkblue #021a2d
+
+# class                 border    backgr.   text     indicator
+client.focused          $darkblue $darkblue $white   $red
+client.focused_inactive $black    $black    $white   $purple
+client.unfocused        $black    $black    $grey    $purple
+client.urgent           #2f343a   #900000   #ffffff  #900000
+
+bar {
+    output DVI-0
+    tray_output DVI-0
+    position top
+    status_command i3status
+    workspace_buttons yes
+
+    colors {
+        background $black
+        statusline $grey
+        
+        # class            border  backgr. text
+        focused_workspace  $blue   $black  $white
+        active_workspace   $black  $black  $grey
+        inactive_workspace $black  $black  $grey
+        urgent_workspace   #2f343a #900000 #ffffff
+    }
+}
+bar {
+    output DVI-1
+    tray_output none
+    position top
+
+    colors {
+        background $black
+        statusline $grey
+        
+        # class            border  backgr. text
+        focused_workspace  $blue   $black  $white
+        active_workspace   $black  $black  $grey
+        inactive_workspace $black  $black  $grey
+        urgent_workspace   #2f343a #900000 #ffffff
+    }
+}
+
+
+#
+# launchers
+#
+
+bindsym $mod+Return exec urxvt -cd "`xcwd`"
+bindsym Mod4+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$darkblue' -sf '$white'
+bindsym Mod4+f exec pcmanfm
+bindsym Mod4+w exec chromium
+
+
+#
+# other keybindings
+#
+
+bindsym Mod4+s exec i3lock -c 021a2d && sudo pm-suspend
+
+
+#
+# autostarts
+#
+
+exec pnmixer

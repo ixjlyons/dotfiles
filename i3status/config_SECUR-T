@@ -1,0 +1,42 @@
+#
+
+general {
+    colors = true
+    interval = 1
+
+    color_good = "#31a354" # green
+    color_degraded = "#dca060" # yellow
+    color_bad = "#e31a1c"  # red
+
+    output_format = i3bar
+}
+
+order += "disk /"
+order += "ethernet enp0s25"
+order += "cpu_usage"
+order += "volume master"
+order += "tztime local"
+
+volume master {
+    format = "vol: %volume"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = "0"
+}
+
+ethernet enp0s25 {
+    format_up = "eth: %ip"
+    format_down = "eth: down"
+}
+
+tztime local {
+    format = "%Y-%m-%d %H:%M:%S"
+}
+
+cpu_usage {
+    format = "cpu: %usage"
+}
+
+disk "/" {
+    format = "disk: %avail"
+}
