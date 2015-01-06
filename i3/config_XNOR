@@ -32,8 +32,6 @@ bindsym $mod+0 exec /home/kenny/bin/wsutil focus 10
 # move to adjacent workspace
 bindsym $mod+Left exec /home/kenny/bin/wsutil focus left
 bindsym $mod+Right exec /home/kenny/bin/wsutil focus right
-bindsym $mod+Shift+Left exec /home/kenny/bin/wsutil move left
-bindsym $mod+Shift+Right exec /home/kenny/bin/wsutil move right
 
 # other movements
 bindsym $mod+a focus parent
@@ -62,6 +60,10 @@ bindsym $mod+Shift+7 exec /home/kenny/bin/wsutil move 7
 bindsym $mod+Shift+8 exec /home/kenny/bin/wsutil move 8
 bindsym $mod+Shift+9 exec /home/kenny/bin/wsutil move 9
 bindsym $mod+Shift+0 exec /home/kenny/bin/wsutil move 10
+
+# move container to adjacent workspace
+bindsym $mod+Shift+Left exec /home/kenny/bin/wsutil move left
+bindsym $mod+Shift+Right exec /home/kenny/bin/wsutil move right
 
 
 #
@@ -115,6 +117,7 @@ for_window [class="Lxappearance"] floating enable
 # appearance
 #
 
+# color definitions
 set $black    #101010
 set $grey     #505050
 set $purple   #4e3d41
@@ -171,4 +174,5 @@ bindsym XF86Sleep exec i3lock -c 021a2d && sudo pm-suspend
 #
 # autostarts
 #
+
 exec pnmixer &
