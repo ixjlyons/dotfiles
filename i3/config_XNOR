@@ -119,7 +119,7 @@ for_window [class="Lxappearance"] floating enable
 
 # color definitions
 set $black    #101010
-set $grey     #505050
+set $grey     #777777
 set $purple   #4e3d41
 set $red      #962521
 set $blue     #2b4e64
