@@ -97,5 +97,9 @@ status.register(
     charging_color=None,
     critical_color=red
 )
+status.register(
+    "cmus",
+    format="cmus: {artist} {status} {title}",
+    color=None)
 
 status.run()
