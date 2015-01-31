@@ -176,3 +176,4 @@ bindsym XF86Sleep exec i3lock -c 021a2d && sudo pm-suspend
 #
 
 exec pnmixer &
+exec udiskie --tray &
