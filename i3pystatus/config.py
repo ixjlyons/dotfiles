@@ -78,7 +78,13 @@ purple = "#4e3d41"
 status = Status(standalone=True)
 
 status.register("clock", format="%b %d %H:%M", color=blue)
-status.register("disk", path='/', color=red)
+status.register(
+    "disk",
+    format="disk: {avail}/{total}",
+    path='/',
+    critical_limit=10,
+    color=red
+)
 status.register(
     KeyboardLayout(
         layouts = [
