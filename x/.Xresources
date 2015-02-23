@@ -16,7 +16,7 @@ xterm*scrollTtyOutput: false
 
 ! urxvt ----------------------------------------------------------------------
 URxvt*transparent: true
-URxvt*shading: 10
+URxvt*shading: 50 
 URxvt*scrollBar: false
 URxvt.font: xft:DejaVuSansMono:pixelsize=11
 URxvt.boldFont: xft:DejaVuSansMono:pixelsize=11:Bold

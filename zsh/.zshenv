@@ -1,6 +1,8 @@
-export QT_STYLE_OVERRIDE=gtk
+#export QT_STYLE_OVERRIDE=gtk
 export ANDROID_HOME=/home/kenny/usr/android/android-sdk
 export ANDROID_NDK=/home/kenny/usr/android/android-ndk
+
+alias grep='grep --color=auto'
 
 path+=~/bin
 path+=~/.local/bin

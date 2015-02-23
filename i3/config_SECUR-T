@@ -119,6 +119,7 @@ for_window [title="TeX Text"] floating enable
 for_window [title="OpenGL Viewer"] floating enable
 for_window [title="pygesture*"] floating enable
 for_window [class="Lxappearance"] floating enable
+for_window [class="Lastfm-scrobbler"] floating enable
 
 
 #
