@@ -111,6 +111,7 @@ mode "resize" {
 #
 
 for_window [class="Lxappearance"] floating enable
+for_window [title="Figure *"] floating enable
 
 
 #
@@ -154,7 +155,7 @@ bar {
 # launchers
 #
 
-bindsym $mod+Return exec urxvt -cd "`xcwd`"
+bindsym $mod+Return exec urxvt -cd "`xcwd`" -e fish
 bindsym Mod4+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$darkblue' -sf '$white'
 bindsym Mod4+f exec pcmanfm
 bindsym Mod4+w exec chromium
@@ -177,3 +178,4 @@ bindsym XF86Sleep exec i3lock -c 021a2d && sudo pm-suspend
 
 exec pnmixer &
 exec udiskie --tray &
+exec ~/repos/android-udp-python/python/udp-server.py &
