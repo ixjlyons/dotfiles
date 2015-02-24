@@ -145,12 +145,13 @@ bar {
     output DVI-0
     tray_output DVI-0
     position top
-    status_command i3status
+    status_command ~/.config/i3pystatus/config.py
     workspace_buttons yes
 
     colors {
         background $black
         statusline $grey
+        separator  $purple
         
         # class            border  backgr. text
         focused_workspace  $blue   $black  $white

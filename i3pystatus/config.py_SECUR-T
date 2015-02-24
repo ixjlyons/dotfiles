@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+
+from i3pystatus import Status
+
+blue = "#2b4e64"
+red = "#962521"
+purple = "#4e3d41"
+
+status = Status(standalone=True)
+
+status.register(
+    "clock",
+    format="%b %d %H:%M",
+    color=blue
+)
+
+status.register(
+    "network",
+    interface="enp0s25",
+    format_up="net: {interface} [{v4}]",
+    format_down="net: {interface} [down]",
+    color_up=None,
+    color_down=red
+)
+
+status.register(
+    "disk",
+    format="disk: {avail}/{total}",
+    path='/',
+    critical_limit=10,
+    color=None
+)
+
+status.run()
