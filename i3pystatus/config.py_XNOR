@@ -77,7 +77,11 @@ purple = "#4e3d41"
 
 status = Status(standalone=True)
 
-status.register("clock", format="%b %d %H:%M", color=blue)
+status.register(
+    "clock",
+    format="%b %d %H:%M",
+    color=blue
+)
 status.register(
     "disk",
     format="disk: {avail}/{total}",
@@ -102,6 +106,16 @@ status.register(
     full_color=None,
     charging_color=None,
     critical_color=red
+)
+status.register(
+    "network",
+    interval=5,
+    interface="wlan0",
+    format_up="{interface}: [{v4}]",
+    format_down="{interface}: [down]",
+    round_size=2,
+    color_up=None,
+    color_down=red
 )
 status.register(
     "cmus",
