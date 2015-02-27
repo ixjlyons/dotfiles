@@ -20,6 +20,7 @@ the file name in this repository.
 | `i3status/config`      | `~/.config/i3status/`        |
 | `qtile/config.py`      | `~/.config/qtile/`           |
 | `vim/.vimrc`           | `~`                          |
+| `vim/mydarkblue.vim`   | `~/vim/colors/`              |
 | `x/.xinitrc`           | `~`                          |
 | `x/.xprofile`          | `~`                          |
 | `x/.Xresources`        | `~`                          |
