@@ -10,7 +10,7 @@ endif
 let colors_name = "mydarkblue"
 
 hi Normal ctermfg=gray ctermbg=black
-hi ErrorMsg ctermfg=white ctermbg=lightblue
+hi ErrorMsg ctermfg=black ctermbg=lightblue
 hi Visual ctermfg=green ctermbg=black cterm=reverse
 hi VisualNOS ctermfg=green ctermbg=black cterm=reverse,underline
 hi Todo ctermfg=red ctermbg=darkblue
