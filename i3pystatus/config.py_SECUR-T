@@ -2,15 +2,14 @@
 
 from i3pystatus import Status
 
-blue = "#2b4e64"
+blue = "#164970"
 red = "#962521"
-purple = "#4e3d41"
 
 status = Status(standalone=True)
 
 status.register(
     "clock",
-    format="%b %d %H:%M",
+    format="%Y-%m-%d [%H:%M]",
     color=blue
 )
 
