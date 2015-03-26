@@ -2,7 +2,7 @@
 
 from i3pystatus import Status
 
-blue = "#164970"
+blue = "#386b92"
 red = "#962521"
 
 status = Status(standalone=True)

@@ -59,7 +59,7 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 
 " compiler and viewer settings
-let g:Tex_CompileRule_pdf = 'pdflatex --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
+let g:Tex_CompileRule_pdf = 'pdflatex --shell-escape --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf'
 let g:Tex_ViewRule_pdf = 'evince '
