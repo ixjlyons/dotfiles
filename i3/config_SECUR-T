@@ -181,7 +181,7 @@ bar {
 # launchers
 #
 
-bindsym $mod+Return exec urxvt -cd "`xcwd`"
+bindsym $mod+Return exec urxvt -cd "`xcwd`" -e fish
 bindsym Mod4+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$darkblue' -sf '$white'
 bindsym Mod4+f exec pcmanfm
 bindsym Mod4+w exec chromium
