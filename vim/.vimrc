@@ -49,6 +49,8 @@ noremap gk k
 set linebreak
 set nofoldenable
 
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\+$/
 
 """""""""""""""""""
 " vim-latex stuff "

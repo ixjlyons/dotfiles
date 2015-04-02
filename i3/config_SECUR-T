@@ -152,7 +152,7 @@ bar {
         background $black
         statusline $grey
         separator  $purple
-        
+
         # class            border  backgr. text
         focused_workspace  $blue   $black  $white
         active_workspace   $black  $black  $grey
@@ -168,7 +168,7 @@ bar {
     colors {
         background $black
         statusline $grey
-        
+
         # class            border  backgr. text
         focused_workspace  $blue   $black  $white
         active_workspace   $black  $black  $grey
