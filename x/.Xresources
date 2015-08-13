@@ -8,82 +8,57 @@ Xft.dpi: 96
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
-! xterm ----------------------------------------------------------------------
-xterm*faceName: Liberation Sans Mono Book
-xterm*faceSize: 9
-
-xterm*scrollTtyOutput: false
-
 ! urxvt ----------------------------------------------------------------------
 URxvt*transparent: true
-URxvt*shading: 50 
+URxvt*shading: 40
 URxvt*scrollBar: false
 URxvt.font: xft:DejaVuSansMono:pixelsize=11
 URxvt.boldFont: xft:DejaVuSansMono:pixelsize=11:Bold
-!URxvt.font: xft:Droid Sans Mono:pixelsize=11:Regular
-!URxvt.boldFont: xft:Droid Sans Mono:pixelsize=11:Bold
-!URxvt.italicFont: xft:Droid Sans Mono:pixelsize=11:Italic
-!URxvt.boldItalicFont: xft:Droid Sans Mono:pixelsize=11:Bold:Italic
 URxvt.letterSpace: -1
 URxvt.iso14755: false
 URxvt.intensityStyles: false
 
-#define black       #101010
-#define darkgrey    #181818
+#define black      #282828
+#define darkgrey   #323232
 
-#define darkred     #962521
-#define red         #962521
+#define red        #8e514b
+#define altred     #ad6962
 
-#define darkgreen   #5fa033
-#define green       #5fa033
+#define green      #356a52
+#define altgreen   #418365
 
-#define darkyellow  #cc6b1c
-#define yellow      #cc6b1c
+#define yellow     #8b7053
+#define altyellow  #9e805e
 
-#define darkblue    #2b4e64
-#define blue        #2b4e64
+#define blue       #445e7b
+#define altblue    #587a9f
 
-#define darkmagenta #4e3d41
-#define magenta     #4e3d41
+#define magenta    #5b4665
+#define altmagenta #745a81
 
-#define darkcyan    #0f615e
-#define cyan        #ffffff
+#define cyan       #355e61
+#define altcyan    #417377
 
-#define lightgrey   #b7b8b9
-#define white       #aaaaaa
+#define lightgrey  #afafaf
+#define white      #d5d5d5
 
+*.foreground:   white
+*.background:   black
+*.cursorColor:  lightgrey
 
-*.foreground:   lightgrey 
-*.background:   #181c1c
-*.cursorColor:  lightgrey 
-
-URxvt.colorIT: red
-URxvt.colorBD: blue
-URxvt.colorUL: green
-
-! black + darkgrey
 *.color0:       black
-*.color8:       darkgrey 
-! darkred + red
-*.color1:       darkred
-*.color9:       red
-! darkgreen + green
-*.color2:       darkgreen
-*.color10:      green
-! darkyellow + yellow
-*.color3:       darkyellow 
-*.color11:      yellow
-! darkblue + blue
-*.color4:       darkblue 
-*.color12:      blue
-! darkmagenta + magenta
-*.color5:       darkmagenta 
-*.color13:      magenta
-! darkcyan + cyan
-*.color6:       darkcyan 
-*.color14:      cyan
-! lightgrey + white
+*.color8:       darkgrey
+*.color1:       red
+*.color9:       altred
+*.color2:       green
+*.color10:      altgreen
+*.color3:       yellow
+*.color11:      altyellow
+*.color4:       blue
+*.color12:      altblue
+*.color5:       magenta
+*.color13:      altmagenta
+*.color6:       cyan
+*.color14:      altcyan
 *.color7:       lightgrey
-*.color15:      white 
-
-
+*.color15:      white
