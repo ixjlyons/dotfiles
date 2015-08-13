@@ -1,6 +1,12 @@
 #!/bin/sh
 
-[ -f /etc/xprofile ] && source /etc/xprofile
-[ -f ~/.xprofile ] && source ~/.xprofile
+xset r rate 250 25
+xset b off
+xset -dpms
+xset s off
 
-exec i3
+sh ~/.fehbg
+
+export AWT_TOOLKIT=XToolkit
+
+exec startxfce4
