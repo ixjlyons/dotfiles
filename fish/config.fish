@@ -1,9 +1,11 @@
 set ANDROID_HOME /home/kenny/usr/android/android-sdk
 set ANDROID_NDK /home/kenny/usr/android/android-ndk
 
-set PATH $PATH ~/bin ~/.local/bin ~/.cabal/bin $ANDROID_HOME/platform-tools
+set GOPATH /home/kenny/go
 
-set fish_greeting "fish"
+set PATH $PATH ~/bin ~/.local/bin ~/.cabal/bin $ANDROID_HOME/platform-tools $GOPATH/bin
+
+set fish_greeting "Finally, a command line shell for the 90s"
 set fish_color_cwd white
 
 set __fish_git_prompt_showdirtystate 'yes'

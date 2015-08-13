@@ -1,4 +1,14 @@
 set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'vim-latex/vim-latex'
+Plugin 'reedes/vim-pencil'
+Plugin 'bling/vim-airline'
+Plugin 'flazz/vim-colorschemes'
+call vundle#end()
+filetype plugin indent on
 
 set backspace=indent,eol,start
 set nobackup
@@ -19,15 +29,13 @@ endif
 syntax on
 set hlsearch
 
-colorscheme mydarkblue
+colorscheme delek
 hi Normal ctermbg=NONE
-
-filetype plugin indent on
 
 augroup vimrcEx
     au!
     autocmd FileType text setlocal textwidth=78
-    
+
     " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid or when inside an event handler
     " (happens when dropping a file on gvim).
@@ -49,8 +57,11 @@ noremap gk k
 set linebreak
 set nofoldenable
 
+" highlight bad whitespace (you never knew how much was there)
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
+
+:set cursorline
 
 """""""""""""""""""
 " vim-latex stuff "
@@ -64,7 +75,7 @@ let g:tex_flavor = "latex"
 let g:Tex_CompileRule_pdf = 'pdflatex --shell-escape --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf'
-let g:Tex_ViewRule_pdf = 'evince '
+let g:Tex_ViewRule_pdf = 'evince 2> /dev/null'
 
 " turn off folding
 :let Tex_FoldedSections=""
@@ -83,7 +94,7 @@ let g:pencil#mode_indicators = {'hard': '✐h', 'soft': '✎s', 'off': '✎',}
 let g:pencil#autoformat_indicator = {'auto': 'a+', 'noauto': 'a-',}
 
 " enable and disable autoformatting with `\p` (default is off)
-nnoremap <silent> <leader>p :ShiftPencil<cr>
+nnoremap <silent> <leader>p :PFormatToggle<cr>
 
 " function to return a string indicating whether or not autoformat is enabled
 fun! PencilAutoformat()
@@ -101,8 +112,8 @@ endf
 " when to use vim-pencil
 augroup pencil
     autocmd!
-    autocmd FileType tex call pencil#init({'wrap': 'hard', 'autoformat': 0})
-    autocmd FileType rst,markdown call pencil#init({'wrap': 'hard'})
+    autocmd FileType tex,rst,markdown,mkd call
+                \ pencil#init({'wrap': 'hard', 'autoformat': 0})
 augroup END
 
 
@@ -111,12 +122,8 @@ augroup END
 """"""""""""""""""""""
 
 set laststatus=2
-if has('statusline')
-    set statusline=%<%f " file name
-    set statusline+=%= " right justify
-    set statusline+=c%c\ %l/%L\ %P " current line / total lines
-    set statusline+=\ %{PencilMode()}%{PencilAutoformat()}
-endif
+let g:airline_section_x = '%{PencilMode()}%{PencilAutoformat()}'
+let g:airline_theme = 'luna'
 
 
 """""""""""""""""""
