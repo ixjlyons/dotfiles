@@ -2,13 +2,40 @@
 # general settings
 #
 
-set $fontsize 10
+set $font Inconsolata 11
+set $barfont Inconsolata 11
 
 set $mod Mod1
 set $win Mod4
-font pango: Monospace $fontsize
+font pango: $font
 focus_follows_mouse no
 floating_modifier $mod
+
+# i3-gaps
+for_window [class="^.*"] border pixel 3
+gaps inner 8
+gaps outer 5
+#smart_gaps on
+
+set $wsr1 "1"
+set $wsr2 "2"
+set $wsr3 "3"
+set $wsr4 "4"
+set $wsr5 "5"
+set $wsr6 "6"
+set $wsr7 "7"
+set $wsr8 "8"
+set $wsr9 "9"
+
+set $wsl1 "a"
+set $wsl2 "b"
+set $wsl3 "c"
+set $wsl4 "d"
+set $wsl5 "e"
+set $wsl6 "f"
+set $wsl7 "g"
+set $wsl8 "h"
+set $wsl9 "i"
 
 
 #
@@ -22,26 +49,25 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
-bindsym $win+1 workspace "a"
-bindsym $win+2 workspace "b"
-bindsym $win+3 workspace "c"
-bindsym $win+4 workspace "d"
-bindsym $win+5 workspace "e"
-bindsym $win+6 workspace "f"
-bindsym $win+7 workspace "g"
-bindsym $win+8 workspace "h"
-bindsym $win+9 workspace "i"
-bindsym $win+0 workspace "j"
+bindsym $mod+1 workspace $wsr1
+bindsym $mod+2 workspace $wsr2
+bindsym $mod+3 workspace $wsr3
+bindsym $mod+4 workspace $wsr4
+bindsym $mod+5 workspace $wsr5
+bindsym $mod+6 workspace $wsr6
+bindsym $mod+7 workspace $wsr7
+bindsym $mod+8 workspace $wsr8
+bindsym $mod+9 workspace $wsr9
+
+bindsym $win+1 workspace $wsl1
+bindsym $win+2 workspace $wsl2
+bindsym $win+3 workspace $wsl3
+bindsym $win+4 workspace $wsl4
+bindsym $win+5 workspace $wsl5
+bindsym $win+6 workspace $wsl6
+bindsym $win+7 workspace $wsl7
+bindsym $win+8 workspace $wsl8
+bindsym $win+9 workspace $wsl9
 
 # other movements
 bindsym $mod+a focus parent
@@ -60,26 +86,25 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
-bindsym $win+Shift+1 move container to workspace "a"
-bindsym $win+Shift+2 move container to workspace "b"
-bindsym $win+Shift+3 move container to workspace "c"
-bindsym $win+Shift+4 move container to workspace "d"
-bindsym $win+Shift+5 move container to workspace "e"
-bindsym $win+Shift+6 move container to workspace "f"
-bindsym $win+Shift+7 move container to workspace "g"
-bindsym $win+Shift+8 move container to workspace "h"
-bindsym $win+Shift+9 move container to workspace "i"
-bindsym $win+Shift+0 move container to workspace "j"
+bindsym $mod+Shift+1 move container to workspace $wsr1
+bindsym $mod+Shift+2 move container to workspace $wsr2
+bindsym $mod+Shift+3 move container to workspace $wsr3
+bindsym $mod+Shift+4 move container to workspace $wsr4
+bindsym $mod+Shift+5 move container to workspace $wsr5
+bindsym $mod+Shift+6 move container to workspace $wsr6
+bindsym $mod+Shift+7 move container to workspace $wsr7
+bindsym $mod+Shift+8 move container to workspace $wsr8
+bindsym $mod+Shift+9 move container to workspace $wsr9
+
+bindsym $win+Shift+1 move container to workspace $wsl1
+bindsym $win+Shift+2 move container to workspace $wsl2
+bindsym $win+Shift+3 move container to workspace $wsl3
+bindsym $win+Shift+4 move container to workspace $wsl4
+bindsym $win+Shift+5 move container to workspace $wsl5
+bindsym $win+Shift+6 move container to workspace $wsl6
+bindsym $win+Shift+7 move container to workspace $wsl7
+bindsym $win+Shift+8 move container to workspace $wsl8
+bindsym $win+Shift+9 move container to workspace $wsl9
 
 # move workspace to other screen (assuming two monitors)
 bindsym $mod+Shift+m move workspace to output right
@@ -103,26 +128,25 @@ bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
 
 # set numbered workspaces to output 1 and letter workspaces to output 2
-workspace 1 output DVI-0
-workspace 2 output DVI-0
-workspace 3 output DVI-0
-workspace 4 output DVI-0
-workspace 5 output DVI-0
-workspace 6 output DVI-0
-workspace 7 output DVI-0
-workspace 8 output DVI-0
-workspace 9 output DVI-0
-workspace 10 output DVI-0
-workspace "a" output DVI-1
-workspace "b" output DVI-1
-workspace "c" output DVI-1
-workspace "d" output DVI-1
-workspace "e" output DVI-1
-workspace "f" output DVI-1
-workspace "g" output DVI-1
-workspace "h" output DVI-1
-workspace "i" output DVI-1
-workspace "j" output DVI-1
+workspace $wsr1 output DVI-0
+workspace $wsr2 output DVI-0
+workspace $wsr3 output DVI-0
+workspace $wsr4 output DVI-0
+workspace $wsr5 output DVI-0
+workspace $wsr6 output DVI-0
+workspace $wsr7 output DVI-0
+workspace $wsr8 output DVI-0
+workspace $wsr9 output DVI-0
+
+workspace $wsl1 output DVI-1
+workspace $wsl2 output DVI-1
+workspace $wsl3 output DVI-1
+workspace $wsl4 output DVI-1
+workspace $wsl5 output DVI-1
+workspace $wsl6 output DVI-1
+workspace $wsl7 output DVI-1
+workspace $wsl8 output DVI-1
+workspace $wsl9 output DVI-1
 
 
 #
@@ -161,7 +185,6 @@ for_window [class="Textext.py"] floating enable
 for_window [title="PyGesture"] floating enable
 for_window [title="MyoSwim"] floating enable
 for_window [window_role="pop-up"] floating enable
-for_window [class="URxvt"] border 1pixel
 
 
 #
@@ -176,19 +199,20 @@ set $grey     #777777
 set $purple   #4e3d41
 set $red      #962521
 set $blue     #3a4966
-set $white    #aaaaaa
-set $darkblue #021a2d
+#set $white    #aaaaaa
+set $white    #bbbbbb
+set $darkblue #0f1b33
 set $medblue  #122a3d
 set $orange   #d64937
 
 # class                 border    backgr.   text     indicator
 client.focused          $blue     $blue     $white   $red
-client.focused_inactive $black    $black    $grey    $purple
+client.focused_inactive $black    $darkgrey $grey    $purple
 client.unfocused        $black    $black    $white   $purple
 client.urgent           $orange   $black    $white   $purple
 
 bar {
-    font pango: Monospace $fontsize
+    font pango: $barfont
     output DVI-0
     tray_output DVI-0
     position top
@@ -202,14 +226,14 @@ bar {
         separator  $black
 
         # class            border    backgr.   text
-        focused_workspace  $blue     $blue     $black
+        focused_workspace  $blue     $blue     $white
         active_workspace   $blue     $blue     $grey
-        inactive_workspace $blue     $blue     $white
+        inactive_workspace $blue     $blue     $black
         urgent_workspace   $orange   $blue     $white
     }
 }
 bar {
-    font pango: Monospace $fontsize
+    font pango: $barfont
     output DVI-1
     tray_output none
     position top
@@ -218,9 +242,9 @@ bar {
         background $blue
 
         # class            border    backgr.   text
-        focused_workspace  $blue     $blue     $black
+        focused_workspace  $blue     $blue     $white
         active_workspace   $blue     $blue     $grey
-        inactive_workspace $blue     $blue     $white
+        inactive_workspace $blue     $blue     $black
         urgent_workspace   $orange   $blue     $white
     }
 }
@@ -246,6 +270,6 @@ bindsym Ctrl+Shift+x exec cmus-remote -u
 # other keybindings
 #
 
-bindsym $win+s exec i3lock -i ~/images/wallpapers/cubes.png -t && sudo pm-suspend
-bindsym $win+l exec i3lock -i ~/images/wallpapers/cubes.png -t
+bindsym $win+s exec i3lock -i ~/img/wallpapers/cubes.png -t && sudo pm-suspend
+bindsym $win+l exec i3lock -i ~/img/wallpapers/cubes.png -t
 bindsym --release Print exec xfce4-screenshooter
