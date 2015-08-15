@@ -199,7 +199,6 @@ set $grey     #777777
 set $purple   #4e3d41
 set $red      #962521
 set $blue     #3a4966
-#set $white    #aaaaaa
 set $white    #bbbbbb
 set $darkblue #0f1b33
 set $medblue  #122a3d

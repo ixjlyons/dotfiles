@@ -2,10 +2,40 @@
 # general settings
 #
 
+set $font Inconsolata 11
+set $barfont Inconsolata 11
+
 set $mod Mod1
 set $win Mod4
-font pango:monospace 9
+font pango: $font
+focus_follows_mouse no
 floating_modifier $mod
+
+# i3-gaps
+for_window [class="^.*"] border pixel 3
+gaps inner 8
+gaps outer 5
+#smart_gaps on
+
+set $wsr1 "1"
+set $wsr2 "2"
+set $wsr3 "3"
+set $wsr4 "4"
+set $wsr5 "5"
+set $wsr6 "6"
+set $wsr7 "7"
+set $wsr8 "8"
+set $wsr9 "9"
+
+set $wsl1 "a"
+set $wsl2 "b"
+set $wsl3 "c"
+set $wsl4 "d"
+set $wsl5 "e"
+set $wsl6 "f"
+set $wsl7 "g"
+set $wsl8 "h"
+set $wsl9 "i"
 
 
 #
@@ -19,20 +49,25 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # switch to workspace
-bindsym $mod+1 exec /home/kenny/bin/wsutil focus 1
-bindsym $mod+2 exec /home/kenny/bin/wsutil focus 2
-bindsym $mod+3 exec /home/kenny/bin/wsutil focus 3
-bindsym $mod+4 exec /home/kenny/bin/wsutil focus 4
-bindsym $mod+5 exec /home/kenny/bin/wsutil focus 5
-bindsym $mod+6 exec /home/kenny/bin/wsutil focus 6
-bindsym $mod+7 exec /home/kenny/bin/wsutil focus 7
-bindsym $mod+8 exec /home/kenny/bin/wsutil focus 8
-bindsym $mod+9 exec /home/kenny/bin/wsutil focus 9
-bindsym $mod+0 exec /home/kenny/bin/wsutil focus 10
+bindsym $mod+1 workspace $wsr1
+bindsym $mod+2 workspace $wsr2
+bindsym $mod+3 workspace $wsr3
+bindsym $mod+4 workspace $wsr4
+bindsym $mod+5 workspace $wsr5
+bindsym $mod+6 workspace $wsr6
+bindsym $mod+7 workspace $wsr7
+bindsym $mod+8 workspace $wsr8
+bindsym $mod+9 workspace $wsr9
 
-# move to adjacent workspace
-bindsym $mod+Left exec /home/kenny/bin/wsutil focus left
-bindsym $mod+Right exec /home/kenny/bin/wsutil focus right
+bindsym $win+1 workspace $wsl1
+bindsym $win+2 workspace $wsl2
+bindsym $win+3 workspace $wsl3
+bindsym $win+4 workspace $wsl4
+bindsym $win+5 workspace $wsl5
+bindsym $win+6 workspace $wsl6
+bindsym $win+7 workspace $wsl7
+bindsym $win+8 workspace $wsl8
+bindsym $win+9 workspace $wsl9
 
 # other movements
 bindsym $mod+a focus parent
@@ -50,21 +85,29 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# move container to workspace
-bindsym $mod+Shift+1 exec /home/kenny/bin/wsutil move 1
-bindsym $mod+Shift+2 exec /home/kenny/bin/wsutil move 2
-bindsym $mod+Shift+3 exec /home/kenny/bin/wsutil move 3
-bindsym $mod+Shift+4 exec /home/kenny/bin/wsutil move 4
-bindsym $mod+Shift+5 exec /home/kenny/bin/wsutil move 5
-bindsym $mod+Shift+6 exec /home/kenny/bin/wsutil move 6
-bindsym $mod+Shift+7 exec /home/kenny/bin/wsutil move 7
-bindsym $mod+Shift+8 exec /home/kenny/bin/wsutil move 8
-bindsym $mod+Shift+9 exec /home/kenny/bin/wsutil move 9
-bindsym $mod+Shift+0 exec /home/kenny/bin/wsutil move 10
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $wsr1
+bindsym $mod+Shift+2 move container to workspace $wsr2
+bindsym $mod+Shift+3 move container to workspace $wsr3
+bindsym $mod+Shift+4 move container to workspace $wsr4
+bindsym $mod+Shift+5 move container to workspace $wsr5
+bindsym $mod+Shift+6 move container to workspace $wsr6
+bindsym $mod+Shift+7 move container to workspace $wsr7
+bindsym $mod+Shift+8 move container to workspace $wsr8
+bindsym $mod+Shift+9 move container to workspace $wsr9
 
-# move container to adjacent workspace
-bindsym $mod+Shift+Left exec /home/kenny/bin/wsutil move left
-bindsym $mod+Shift+Right exec /home/kenny/bin/wsutil move right
+bindsym $win+Shift+1 move container to workspace $wsl1
+bindsym $win+Shift+2 move container to workspace $wsl2
+bindsym $win+Shift+3 move container to workspace $wsl3
+bindsym $win+Shift+4 move container to workspace $wsl4
+bindsym $win+Shift+5 move container to workspace $wsl5
+bindsym $win+Shift+6 move container to workspace $wsl6
+bindsym $win+Shift+7 move container to workspace $wsl7
+bindsym $win+Shift+8 move container to workspace $wsl8
+bindsym $win+Shift+9 move container to workspace $wsl9
+
+# move workspace to other screen (assuming two monitors)
+bindsym $mod+Shift+m move workspace to output right
 
 
 #
@@ -77,12 +120,33 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # splitting
-bindsym $mod+v split v
 bindsym $mod+Shift+v split h
+bindsym $mod+v split v
 
 # other
 bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
+
+# set numbered workspaces to output 1 and letter workspaces to output 2
+workspace $wsr1 output LVDS1
+workspace $wsr2 output LVDS1
+workspace $wsr3 output LVDS1
+workspace $wsr4 output LVDS1
+workspace $wsr5 output LVDS1
+workspace $wsr6 output LVDS1
+workspace $wsr7 output LVDS1
+workspace $wsr8 output LVDS1
+workspace $wsr9 output LVDS1
+
+workspace $wsl1 output VGA1
+workspace $wsl2 output VGA1
+workspace $wsl3 output VGA1
+workspace $wsl4 output VGA1
+workspace $wsl5 output VGA1
+workspace $wsl6 output VGA1
+workspace $wsl7 output VGA1
+workspace $wsl8 output VGA1
+workspace $wsl9 output VGA1
 
 
 #
@@ -93,10 +157,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -m 'Exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+x exec xfce4-session-logout
-bindsym $mod+t exec /home/kenny/bin/wsutil tag $(echo | dmenu -b -p "tag:")
 bindsym $mod+Shift+q kill
 bindsym $mod+r mode "resize"
-bindsym $mod+Shift+s exec xfce4-settings-manager
 
 mode "resize" {
     bindsym h resize shrink width 1 px or 1 ppt
@@ -113,50 +175,58 @@ mode "resize" {
 # per-application window preferences
 #
 
-for_window [class="Lxappearance"] floating enable
 for_window [title="Figure *"] floating enable
+for_window [title="TeX Text"] floating enable
+for_window [title="OpenGL Viewer"] floating enable
+for_window [title="recordMyDesktop"] floating enable
 for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle
-for_window [title="PlaneGame"] floating enable
+for_window [title="Blender User Preferences"] floating enable
+for_window [class="Textext.py"] floating enable
+for_window [title="PyGesture"] floating enable
+for_window [title="MyoSwim"] floating enable
+for_window [window_role="pop-up"] floating enable
+
 
 #
 # appearance
 #
 
 # color definitions
-set $black    #101010
+set $black    #202020
+set $altblack #404040
+set $darkgrey #444444
 set $grey     #777777
 set $purple   #4e3d41
-set $darkred  #962521
-set $red      #b73939
-set $blue     #2b4e64
-set $white    #aaaaaa
-set $darkblue #021a2d
-#set $darkblue #44577c
+set $red      #962521
+set $blue     #3a4966
+set $white    #bbbbbb
+set $darkblue #0f1b33
 set $medblue  #122a3d
-#set $medblue #6d8cc7
 set $orange   #d64937
 
 # class                 border    backgr.   text     indicator
-client.focused          $blue  $darkblue $white   $red
-client.focused_inactive $black    $black    $white   $purple
-client.unfocused        $black    $black    $grey    $purple
+client.focused          $blue     $blue     $white   $red
+client.focused_inactive $black    $darkgrey $grey    $purple
+client.unfocused        $black    $black    $white   $purple
 client.urgent           $orange   $black    $white   $purple
 
 bar {
+    font pango: $barfont
     position top
     status_command i3status | ~/bin/i3status-pango-filter
     workspace_buttons yes
-    separator_symbol ┃
+    separator_symbol ¦
 
     colors {
-        background $black
-        statusline $grey
-        separator  $red
+        background $blue
+        statusline $white
+        separator  $black
 
-        # class            border   backgr.   text
-        focused_workspace  $blue    $darkblue $white
-        inactive_workspace $medblue $black    $grey
-        urgent_workspace   $orange  $black    $white
+        # class            border    backgr.   text
+        focused_workspace  $blue     $blue     $white
+        active_workspace   $blue     $blue     $grey
+        inactive_workspace $blue     $blue     $black
+        urgent_workspace   $orange   $blue     $white
     }
 }
 
@@ -165,17 +235,16 @@ bar {
 #
 
 bindsym $mod+Return exec urxvt -cd "`xcwd`" -e fish
-#bindsym $mod+Return exec termite -d "`xcwd`" -e fish
-bindsym $win+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$darkblue' -sf '$white'
+bindsym $win+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$blue' -sf '$white'
 bindsym $win+f exec "xdg-open ~"
 bindsym $win+Shift+f exec "xdg-open `xcwd`"
-bindsym Ctrl+Shift+x exec cmus-remote -u
 bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 1%-
 bindsym XF86ScreenSaver exec i3lock -c 021a2d && sudo pm-suspend
 bindsym XF86Sleep exec i3lock -c 021a2d && sudo pm-suspend
 bindsym Print exec xfce4-screenshooter
-
+bindsym $mod+Shift+s exec xfce4-settings-manager
+bindsym Ctrl+Shift+x exec cmus-remote -u
 
 #
 # autostarts

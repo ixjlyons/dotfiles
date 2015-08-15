@@ -15,6 +15,11 @@ order += "volume master"
 order += "tztime date"
 order += "tztime time"
 
+disk "/" {
+    # fa-folder-open
+    format = "<span font_desc='FontAwesome' foreground='#202020'></span> %avail (%percentage_avail)"
+}
+
 volume master {
     # fa-volume up
     format = "<span font_desc='FontAwesome' foreground='#202020'></span> %volume"
@@ -41,7 +46,3 @@ tztime time {
     format ="<span font_desc='FontAwesome' foreground='#202020'></span> %H:%M"
 }
 
-disk "/" {
-    # fa-folder-open
-    format = "<span font_desc='FontAwesome' foreground='#202020'></span> %avail (%percentage_avail)"
-}
