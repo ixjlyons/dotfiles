@@ -35,6 +35,8 @@ hi Folded ctermfg=darkgrey ctermbg=black cterm=bold term=bold
 hi FoldColumn ctermfg=darkgrey ctermbg=black cterm=bold term=bold
 hi LineNr ctermfg=green ctermbg=black
 
+hi CursorLine ctermbg=black
+
 """""""""""""""""
 " diff elements "
 """""""""""""""""

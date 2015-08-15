@@ -19,11 +19,13 @@ class KeyboardLayout(IntervalModule):
 
     settings = (
         ("format", "Format string used for output."),
+        ("format_novar", "Format when no variant is used."),
         ("layouts", "List of (layout, variant) tuples."),
         ("color", "Standard color."),
     )
 
     format = "kbd: {layout} [{variant}]"
+    format_novar = "kbd: {layout}"
     layouts = [("us", ""), ("de", "qwerty")]
     color = "#FFFFFF"
     fdict = {}
@@ -31,10 +33,15 @@ class KeyboardLayout(IntervalModule):
     on_leftclick = "next_layout"
 
     def run(self):
-        self.fdict['layout'] = self.layouts[0][0] 
-        self.fdict['variant'] = self.layouts[0][1]
+        self.fict = dict()
+        self.fdict['layout'] = self.layouts[0][0]
 
-        full_text = self.format.format(**self.fdict)
+        if self.layouts[0][1] != "":
+            self.fdict['variant'] = self.layouts[0][1]
+            full_text = self.format.format(**self.fdict)
+        else:
+            full_text = self.format_novar.format(**self.fdict)
+
         self.output = {
             "full_text": full_text,
             "color": self.color,
@@ -55,10 +62,10 @@ class KeyboardLayout(IntervalModule):
             pass
         except OSError as e:
             # setxkbmap not installed
-            pass 
+            pass
 
     def get_layout(self):
-        xset_output = subprocess.check_call(['xset', '-q'])
+        xset_output = subprocess.check_call(["xset", "-q"])
 
     def next_layout(self):
         self.layouts = self.layouts[1:] + self.layouts[:1]
@@ -71,42 +78,49 @@ My configuration
 
 from i3pystatus import Status
 
-blue = "#2b4e64"
-red = "#962521"
-purple = "#4e3d41"
+blue = "#3f6883"
+red = "#b73939"
+purple = "#8c4a8e"
+orange = "#d64937"
 
 status = Status(standalone=True)
 
 status.register(
     "clock",
-    format="%b %d %H:%M",
-    color=blue
-)
-status.register(
-    "disk",
-    format="disk: {avail}/{total}",
-    path='/',
-    critical_limit=10,
+    format="» %H:%M «",
     color=red
 )
+
+status.register(
+    "clock",
+    format="%Y-%m-%d",
+    color=blue
+)
+
+status.register(
+    "disk",
+    format="disk: {used}/{total}",
+    path='/',
+    critical_limit=10,
+    color=None
+)
+
+status.register(
+    "alsa",
+    format="vol: {volume}",
+    increment=1
+)
+
 status.register(
     KeyboardLayout(
         layouts = [
-            ("us", ""),
+            ("<b>us</b>", ""),
             ("de", "qwerty"),
             ("es", "")
         ]
     )
 )
-status.register(
-    "battery",
-    format="batt: {status} {remaining}",
-    battery_ident="C23A",
-    status={'DIS': '↓', 'CHR': '↑', 'FULL': 'full'},
-    full_color=None,
-    charging_color=None,
-    critical_color=red
-)
+
 status.register(
     "network",
     interval=5,
@@ -117,9 +131,13 @@ status.register(
     color_up=None,
     color_down=red
 )
+
 status.register(
     "cmus",
     format="cmus: {artist} {status} {title}",
-    color=None)
+    color=None
+)
+
+status.register("text", text="hello")
 
 status.run()

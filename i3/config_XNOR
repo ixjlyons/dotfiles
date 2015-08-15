@@ -3,7 +3,8 @@
 #
 
 set $mod Mod1
-font pango: Armata 8
+set $win Mod4
+font pango:monospace 9
 floating_modifier $mod
 
 
@@ -91,16 +92,18 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -m 'Exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+x exec xfce4-session-logout
 bindsym $mod+t exec /home/kenny/bin/wsutil tag $(echo | dmenu -b -p "tag:")
 bindsym $mod+Shift+q kill
 bindsym $mod+r mode "resize"
+bindsym $mod+Shift+s exec xfce4-settings-manager
 
 mode "resize" {
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
-    
+    bindsym h resize shrink width 1 px or 1 ppt
+    bindsym j resize grow height 1 px or 1 ppt
+    bindsym k resize shrink height 1 px or 1 ppt
+    bindsym l resize grow width 1 px or 1 ppt
+
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -112,7 +115,8 @@ mode "resize" {
 
 for_window [class="Lxappearance"] floating enable
 for_window [title="Figure *"] floating enable
-
+for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle
+for_window [title="PlaneGame"] floating enable
 
 #
 # appearance
@@ -122,60 +126,59 @@ for_window [title="Figure *"] floating enable
 set $black    #101010
 set $grey     #777777
 set $purple   #4e3d41
-set $red      #962521
+set $darkred  #962521
+set $red      #b73939
 set $blue     #2b4e64
 set $white    #aaaaaa
 set $darkblue #021a2d
+#set $darkblue #44577c
+set $medblue  #122a3d
+#set $medblue #6d8cc7
+set $orange   #d64937
 
 # class                 border    backgr.   text     indicator
-client.focused          $darkblue $darkblue $white   $red
+client.focused          $blue  $darkblue $white   $red
 client.focused_inactive $black    $black    $white   $purple
 client.unfocused        $black    $black    $grey    $purple
-client.urgent           #2f343a   #900000   #ffffff  #900000
+client.urgent           $orange   $black    $white   $purple
 
 bar {
     position top
-    status_command ~/.config/i3pystatus/config.py
+    status_command i3status | ~/bin/i3status-pango-filter
     workspace_buttons yes
+    separator_symbol ┃
 
     colors {
         background $black
         statusline $grey
-        separator  $purple
+        separator  $red
 
-        # class            border  backgr. text
-        focused_workspace  $blue   $black  $white
-        inactive_workspace $black  $black  $grey
-        urgent_workspace   #2f343a #900000 #ffffff
+        # class            border   backgr.   text
+        focused_workspace  $blue    $darkblue $white
+        inactive_workspace $medblue $black    $grey
+        urgent_workspace   $orange  $black    $white
     }
 }
-
 
 #
 # launchers
 #
 
 bindsym $mod+Return exec urxvt -cd "`xcwd`" -e fish
-bindsym Mod4+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$darkblue' -sf '$white'
-bindsym Mod4+f exec pcmanfm
-bindsym Mod4+w exec chromium
-
-
-#
-# other keybindings
-#
-
+#bindsym $mod+Return exec termite -d "`xcwd`" -e fish
+bindsym $win+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$darkblue' -sf '$white'
+bindsym $win+f exec "xdg-open ~"
+bindsym $win+Shift+f exec "xdg-open `xcwd`"
 bindsym Ctrl+Shift+x exec cmus-remote -u
 bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 1%-
-bindsym XF86ScreenSaver exec i3lock -c 021a2d
+bindsym XF86ScreenSaver exec i3lock -c 021a2d && sudo pm-suspend
 bindsym XF86Sleep exec i3lock -c 021a2d && sudo pm-suspend
+bindsym Print exec xfce4-screenshooter
 
 
 #
 # autostarts
 #
 
-exec pnmixer &
-exec udiskie --tray &
 exec ~/repos/android-udp-python/python/udp-server.py &

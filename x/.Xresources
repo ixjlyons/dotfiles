@@ -1,5 +1,3 @@
-! font settings --------------------------------------------------------------
-
 Xft.autohint: true
 Xft.antialias: true
 Xft.hinting: true
@@ -18,47 +16,47 @@ URxvt.letterSpace: -1
 URxvt.iso14755: false
 URxvt.intensityStyles: false
 
-#define black      #282828
-#define darkgrey   #323232
+#define black       #101010
+#define darkgrey    #181818
 
-#define red        #8e514b
-#define altred     #ad6962
+#define darkred     #962521
+#define red         #b73939
 
-#define green      #356a52
-#define altgreen   #418365
+#define darkgreen   #37933e
+#define green       #5eb664
 
-#define yellow     #8b7053
-#define altyellow  #9e805e
+#define darkyellow  #cc6b1c
+#define yellow      #cd7e3d
 
-#define blue       #445e7b
-#define altblue    #587a9f
+#define darkblue    #2b4e64
+#define blue        #3f6883
 
-#define magenta    #5b4665
-#define altmagenta #745a81
+#define darkmagenta #692d6a
+#define magenta     #8c4a8e
 
-#define cyan       #355e61
-#define altcyan    #417377
+#define darkcyan    #0f615e
+#define cyan        #2e938f
 
 #define lightgrey  #afafaf
 #define white      #d5d5d5
 
-*.foreground:   white
-*.background:   black
-*.cursorColor:  lightgrey
+*.background: #101010
+*.foreground: #aaaaaa
+*.color0:     black
+*.color8:     darkgrey
 
-*.color0:       black
-*.color8:       darkgrey
-*.color1:       red
-*.color9:       altred
-*.color2:       green
-*.color10:      altgreen
-*.color3:       yellow
-*.color11:      altyellow
-*.color4:       blue
-*.color12:      altblue
-*.color5:       magenta
-*.color13:      altmagenta
-*.color6:       cyan
-*.color14:      altcyan
-*.color7:       lightgrey
-*.color15:      white
+*.color1: #752c1f
+*.color9: #b4452f
+*.color2: #867f7a
+*.color10: #b4aba5
+*.color3: #645c56
+*.color11: #b4a79c
+*.color4: #404764
+*.color12: #7480b4
+*.color5: #644a4a
+*.color13: #b48686
+*.color6: #64635f
+*.color14: #b4b2ab
+
+*.color7:     lightgrey
+*.color15:    white 

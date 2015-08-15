@@ -1,70 +1,51 @@
-#
-
 general {
-        colors = true
-        interval = 1
+    colors = true
+    interval = 1
 
-        color_good     = "#2b4e64" # green
-        color_degraded = "#efef60" # yellow
-        color_bad      = "#962521" # red
-        
-        output_format = i3bar
+    color_good     = "#777777"
+    color_degraded = "#2b4e64"
+    color_bad      = "#b73939"
+
+    output_format = i3bar
 }
 
-#order += "ipv6"
 order += "disk /"
-#order += "run_watch DHCP"
-#order += "run_watch VPN"
-#order += "wireless wlan0"
-#order += "ethernet eth0"
+order += "wireless wlan0"
 order += "battery 0"
-#order += "cpu_usage"
-#order += "load"
-#order += "volume master"
+order += "volume master"
 order += "tztime local"
 
+disk "/" {
+    format = "<span size='large' color='#2b4e64'></span> %avail (%percentage_avail)"
+    threshold_type = "percentage_avail"
+    low_threshold = 20
+}
+
+wireless wlan0 {
+    format_up = "<span size='large' color='#2b4e64'></span> %essid (%ip)"
+    format_down = "<span size='large' color='#2b4e64'></span> "
+}
+
+battery 0 {
+    format = "<span size='large' color='#2b4e64'></span>%status %percentage %remaining"
+    path = "/sys/class/power_supply/C23A/uevent"
+    status_bat = ""
+    status_chr = ""
+    status_full = ""
+    threshold_type = "time"
+    low_threshold = 5
+    hide_seconds = true
+    integer_battery_capacity = true
+}
+
 volume master {
-    format = "vol: %volume"
+    format = "<span size='large' color='#2b4e64'></span> %volume"
+    format_muted = "<span size='large' color='#2b4e64'></span> (%volume)"
     device = "default"
     mixer = "Master"
     mixer_idx = "0"
 }
 
-wireless wlan0 {
-    format_up = "wlan: (%quality at %essid) %ip"
-    format_down = "wlan: down"
-}
-
-ethernet eth0 {
-    format_up = "eth: %ip"
-    format_down = "eth: down"
-}
-
-battery 0 {
-    format = "batt: %percentage %remaining"
-    path = "/sys/class/power_supply/C23A/uevent"
-}
-
-run_watch DHCP {
-    pidfile = "/var/run/dhclient*.pid"
-}
-
-run_watch VPN {
-    pidfile = "/var/run/vpnc/pid"
-}
-
 tztime local {
-    format = "%Y-%m-%d %H:%M"
-}
-
-cpu_usage {
-    format = "cpu: %usage"
-}
-
-load {
-    format = "cpu: %1min"
-}
-
-disk "/" {
-    format = "disk: %avail"
+    format = "<span size='large' color='#2b4e64'></span> %Y-%m-%d <span size='large' color='#2b4e64'></span> <span weight='bold'>[%H:%M]</span>"
 }

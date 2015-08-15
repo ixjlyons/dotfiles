@@ -8,6 +8,7 @@ Plugin 'reedes/vim-pencil'
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
 call vundle#end()
+
 filetype plugin indent on
 
 set backspace=indent,eol,start
@@ -21,6 +22,7 @@ set number
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set cursorline
 
 if has('mouse')
   set mouse=a
@@ -75,7 +77,7 @@ let g:tex_flavor = "latex"
 let g:Tex_CompileRule_pdf = 'pdflatex --shell-escape --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf'
-let g:Tex_ViewRule_pdf = 'evince 2> /dev/null'
+let g:Tex_ViewRule_pdf = 'xdg-open 2> /dev/null'
 
 " turn off folding
 :let Tex_FoldedSections=""

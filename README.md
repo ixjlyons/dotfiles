@@ -19,6 +19,7 @@ the file name in this repository.
 | `i3pystatus/config.py` | `~/.config/i3pystatus/`      |
 | `i3status/config`      | `~/.config/i3status/`        |
 | `fish/config.fish`     | `~/.config/fish/`            |
+| `fish/functions/*`     | `~/.config/fish/functions/*` |
 | `qtile/config.py`      | `~/.config/qtile/`           |
 | `vim/.vimrc`           | `~`                          |
 | `vim/mydarkblue.vim`   | `~/vim/colors/`              |
