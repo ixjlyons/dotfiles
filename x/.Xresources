@@ -1,14 +1,14 @@
-Xft.autohint: true
+! font settings
 Xft.antialias: true
 Xft.hinting: true
-Xft.hintstyle: hintslight
+Xft.hintstyle: hintmedium
 Xft.dpi: 96
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
-! urxvt ----------------------------------------------------------------------
+! urxvt
 URxvt*transparent: true
-URxvt*shading: 15
+URxvt*shading: 20
 URxvt*scrollBar: false
 URxvt.font: xft:DejaVuSansMono:pixelsize=11
 URxvt.boldFont: xft:DejaVuSansMono:pixelsize=11:Bold
@@ -16,47 +16,38 @@ URxvt.letterSpace: -1
 URxvt.iso14755: false
 URxvt.intensityStyles: false
 
-#define black       #101010
-#define darkgrey    #181818
-
-#define darkred     #962521
-#define red         #b73939
-
-#define darkgreen   #37933e
-#define green       #5eb664
-
-#define darkyellow  #cc6b1c
-#define yellow      #cd7e3d
-
-#define darkblue    #2b4e64
-#define blue        #3f6883
-
-#define darkmagenta #692d6a
-#define magenta     #8c4a8e
-
-#define darkcyan    #0f615e
-#define cyan        #2e938f
-
-#define lightgrey  #afafaf
+! color definitions
+#define black      #282828
+#define darkgrey   #323232
+#define red        #813722
+#define altred     #ab482d
+#define green      #535935
+#define altgreen   #6a7243
+#define yellow     #9e6c4b
+#define altyellow  #b57c56
+#define blue       #3a4966
+#define altblue    #4c6086
+#define magenta    #896299
+#define altmagenta #9665a0
+#define cyan       #336381
+#define altcyan    #386d8d
+#define lightgrey  #999999
 #define white      #d5d5d5
-
-*.background: #101010
-*.foreground: #aaaaaa
-*.color0:     black
-*.color8:     darkgrey
-
-*.color1: #752c1f
-*.color9: #b4452f
-*.color2: #867f7a
-*.color10: #b4aba5
-*.color3: #645c56
-*.color11: #b4a79c
-*.color4: #404764
-*.color12: #7480b4
-*.color5: #644a4a
-*.color13: #b48686
-*.color6: #64635f
-*.color14: #b4b2ab
-
-*.color7:     lightgrey
-*.color15:    white 
+*.foreground:   white
+*.cursorColor:  blue
+*.color0:       black
+*.color8:       darkgrey
+*.color1:       red
+*.color9:       altred
+*.color2:       green
+*.color10:      altgreen
+*.color3:       yellow
+*.color11:      altyellow
+*.color4:       blue
+*.color12:      altblue
+*.color5:       magenta
+*.color13:      altmagenta
+*.color6:       cyan
+*.color14:      altcyan
+*.color7:       lightgrey
+*.color15:      white

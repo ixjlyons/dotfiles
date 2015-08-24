@@ -17,25 +17,25 @@ gaps inner 8
 gaps outer 5
 #smart_gaps on
 
-set $wsr1 "1"
-set $wsr2 "2"
-set $wsr3 "3"
-set $wsr4 "4"
-set $wsr5 "5"
-set $wsr6 "6"
-set $wsr7 "7"
-set $wsr8 "8"
-set $wsr9 "9"
+set $wsr1 "1:0x01"
+set $wsr2 "2:0x02"
+set $wsr3 "3:0x03"
+set $wsr4 "4:0x04"
+set $wsr5 "5:0x05"
+set $wsr6 "6:0x06"
+set $wsr7 "7:0x07"
+set $wsr8 "8:0x08"
+set $wsr9 "9:0x09"
 
-set $wsl1 "a"
-set $wsl2 "b"
-set $wsl3 "c"
-set $wsl4 "d"
-set $wsl5 "e"
-set $wsl6 "f"
-set $wsl7 "g"
-set $wsl8 "h"
-set $wsl9 "i"
+set $wsl1 "1:0x0a"
+set $wsl2 "2:0x0b"
+set $wsl3 "3:0x0c"
+set $wsl4 "4:0x0d"
+set $wsl5 "5:0x0e"
+set $wsl6 "6:0x0f"
+set $wsl7 "7:0x10"
+set $wsl8 "8:0x11"
+set $wsl9 "9:0x12"
 
 
 #
@@ -202,13 +202,14 @@ set $blue     #3a4966
 set $white    #bbbbbb
 set $darkblue #0f1b33
 set $medblue  #122a3d
-set $orange   #d64937
+set $orange   #c58c36
+set $barbg    #3a4966
 
 # class                 border    backgr.   text     indicator
-client.focused          $blue     $blue     $white   $red
-client.focused_inactive $black    $darkgrey $grey    $purple
-client.unfocused        $black    $black    $white   $purple
-client.urgent           $orange   $black    $white   $purple
+client.focused          $blue     $blue     $white   $orange
+client.focused_inactive $black    $darkgrey $grey    $grey
+client.unfocused        $black    $black    $white   $grey
+client.urgent           $orange   $black    $white   $grey
 
 bar {
     font pango: $barfont
@@ -218,17 +219,19 @@ bar {
     status_command i3status | ~/bin/i3status-pango-injector
     workspace_buttons yes
     separator_symbol ¦
+    strip_workspace_numbers yes
+    height 28
 
     colors {
-        background $blue
+        background $barbg
         statusline $white
         separator  $black
 
         # class            border    backgr.   text
-        focused_workspace  $blue     $blue     $white
-        active_workspace   $blue     $blue     $grey
-        inactive_workspace $blue     $blue     $black
-        urgent_workspace   $orange   $blue     $white
+        focused_workspace  $barbg    $barbg    $white
+        active_workspace   $barbg    $barbg    $grey
+        inactive_workspace $barbg    $barbg    $black
+        urgent_workspace   $orange   $barbg    $white
     }
 }
 bar {
@@ -236,15 +239,16 @@ bar {
     output DVI-1
     tray_output none
     position top
+    strip_workspace_numbers yes
 
     colors {
-        background $blue
+        background $barbg
 
         # class            border    backgr.   text
-        focused_workspace  $blue     $blue     $white
-        active_workspace   $blue     $blue     $grey
-        inactive_workspace $blue     $blue     $black
-        urgent_workspace   $orange   $blue     $white
+        focused_workspace  $barbg    $barbg    $white
+        active_workspace   $barbg    $barbg    $grey
+        inactive_workspace $barbg    $barbg    $black
+        urgent_workspace   $orange   $barbg    $white
     }
 }
 
