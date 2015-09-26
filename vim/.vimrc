@@ -7,6 +7,7 @@ Plugin 'vim-latex/vim-latex'
 Plugin 'reedes/vim-pencil'
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'bronson/vim-trailing-whitespace'
 call vundle#end()
 
 filetype plugin indent on
@@ -58,10 +59,6 @@ noremap gk k
 " wraps lines while keeping words intact
 set linebreak
 set nofoldenable
-
-" highlight bad whitespace (you never knew how much was there)
-:highlight ExtraWhitespace ctermbg=red guibg=red
-:match ExtraWhitespace /\s\+$/
 
 :set cursorline
 
