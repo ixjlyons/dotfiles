@@ -1,0 +1,8 @@
+#!/bin/sh
+
+xrdb ~/.Xresources
+xset r rate 250 25 &
+xset b off &
+setxkbmap -layout us,de -variant ,qwerty -option grp:scklk_toggle &
+export AWT_TOOLKIT=XToolkit
+sh ~/.fehbg &
