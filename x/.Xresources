@@ -16,38 +16,30 @@ URxvt.letterSpace: -1
 URxvt.iso14755: false
 URxvt.intensityStyles: false
 
-! color definitions
-#define black      #282828
-#define darkgrey   #323232
-#define red        #813722
-#define altred     #ab482d
-#define green      #535935
-#define altgreen   #6a7243
-#define yellow     #9e6c4b
-#define altyellow  #b57c56
-#define blue       #3a4966
-#define altblue    #4c6086
-#define magenta    #896299
-#define altmagenta #9665a0
-#define cyan       #336381
-#define altcyan    #386d8d
-#define lightgrey  #999999
-#define white      #d5d5d5
-*.foreground:   white
-*.cursorColor:  blue
-*.color0:       black
-*.color8:       darkgrey
-*.color1:       red
-*.color9:       altred
-*.color2:       green
-*.color10:      altgreen
-*.color3:       yellow
-*.color11:      altyellow
-*.color4:       blue
-*.color12:      altblue
-*.color5:       magenta
-*.color13:      altmagenta
-*.color6:       cyan
-*.color14:      altcyan
-*.color7:       lightgrey
-*.color15:      white
+*.background: #101010
+*.foreground: #bbbbbb
+*.cursorColor: #687496
+! black
+*.color0:  #282828
+*.color8:  #323232
+! red
+*.color1:  #962d2a
+*.color9:  #b43732
+! green
+*.color2:  #92966a
+*.color10: #afb47f
+! yellow
+*.color3:  #966039
+*.color11: #b47344
+! blue
+*.color4:  #687496
+*.color12: #7c8bb4
+! magenta
+*.color5:  #765796
+*.color13: #8e68b4
+! cyan
+*.color6:  #739396
+*.color14: #8ab1b4
+! grey
+*.color7:  #999999
+*.color15: #d5d5d5

@@ -32,7 +32,7 @@ endif
 syntax on
 set hlsearch
 
-colorscheme delek
+colorscheme Tomorrow-Night
 hi Normal ctermbg=NONE
 
 augroup vimrcEx

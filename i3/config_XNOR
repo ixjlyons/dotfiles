@@ -213,7 +213,8 @@ client.urgent           $orange   $black    $white   $purple
 bar {
     font pango: $barfont
     position top
-    status_command i3status | ~/bin/i3status-pango-filter
+    #status_command i3status | ~/bin/i3status-pango-filter
+    status_command ~/usr/i3status/i3status-git/i3status --config ~/.config/i3status/config
     workspace_buttons yes
     separator_symbol ¦
 
@@ -245,6 +246,10 @@ bindsym XF86Sleep exec i3lock -c 021a2d && sudo pm-suspend
 bindsym Print exec xfce4-screenshooter
 bindsym $mod+Shift+s exec xfce4-settings-manager
 bindsym Ctrl+Shift+x exec cmus-remote -u
+bindsym Ctrl+F10 exec setxkbmap -layout us
+bindsym $win+F10 exec setxkbmap -layout de -variant qwerty
+#bindsym ISO_Next_Group exec setxkbmap -layout us
+#bindsym Ctrl+ISO_Next_Group exec setxkbmap -layout de -variant qwerty
 
 #
 # autostarts
