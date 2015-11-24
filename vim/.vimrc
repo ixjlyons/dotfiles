@@ -137,3 +137,5 @@ au BufNewFile,BufRead *.al set filetype=
 au BufNewFile,BufRead *.launch set filetype=xml
 au BufNewFile,BufRead *.ino set filetype=c
 au BufNewFile,BufRead *.pde set filetype=c
+au BufNewFile,BufRead *.urdf set filetype=xml
+au BufNewFile,BufRead *.sdf set filetype=xml

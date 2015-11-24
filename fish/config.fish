@@ -3,7 +3,7 @@ set ANDROID_NDK /home/kenny/usr/android/android-ndk
 
 set GOPATH /home/kenny/go
 
-set PATH $PATH ~/bin ~/.local/bin ~/.cabal/bin $ANDROID_HOME/platform-tools $GOPATH/bin
+set PATH $PATH ~/bin ~/.local/bin ~/.cabal/bin $ANDROID_HOME/platform-tools
 
 set fish_greeting "Finally, a command line shell for the 90s"
 set fish_color_cwd white
@@ -18,4 +18,4 @@ set __fish_git_prompt_char_dirtystate '★'
 set __fish_git_prompt_char_stagedstate '→'
 set __fish_git_prompt_char_stashstate '←'
 
-set -g -x VREP /home/kenny/usr/vrep/vrep-3.2.2/
+set -x VREP /home/kenny/usr/vrep/vrep
