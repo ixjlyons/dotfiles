@@ -128,25 +128,25 @@ bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
 
 # set numbered workspaces to output 1 and letter workspaces to output 2
-workspace $wsr1 output LVDS1
-workspace $wsr2 output LVDS1
-workspace $wsr3 output LVDS1
-workspace $wsr4 output LVDS1
-workspace $wsr5 output LVDS1
-workspace $wsr6 output LVDS1
-workspace $wsr7 output LVDS1
-workspace $wsr8 output LVDS1
-workspace $wsr9 output LVDS1
+workspace $wsr1 output LVDS-0
+workspace $wsr2 output LVDS-0
+workspace $wsr3 output LVDS-0
+workspace $wsr4 output LVDS-0
+workspace $wsr5 output LVDS-0
+workspace $wsr6 output LVDS-0
+workspace $wsr7 output LVDS-0
+workspace $wsr8 output LVDS-0
+workspace $wsr9 output LVDS-0
 
-workspace $wsl1 output VGA1
-workspace $wsl2 output VGA1
-workspace $wsl3 output VGA1
-workspace $wsl4 output VGA1
-workspace $wsl5 output VGA1
-workspace $wsl6 output VGA1
-workspace $wsl7 output VGA1
-workspace $wsl8 output VGA1
-workspace $wsl9 output VGA1
+workspace $wsl1 output VGA-0
+workspace $wsl2 output VGA-0
+workspace $wsl3 output VGA-0
+workspace $wsl4 output VGA-0
+workspace $wsl5 output VGA-0
+workspace $wsl6 output VGA-0
+workspace $wsl7 output VGA-0
+workspace $wsl8 output VGA-0
+workspace $wsl9 output VGA-0
 
 
 #
@@ -156,7 +156,7 @@ workspace $wsl9 output VGA1
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -m 'Exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+x exec xfce4-session-logout
+#bindsym $mod+Shift+x exec xfce4-session-logout
 bindsym $mod+Shift+q kill
 bindsym $mod+r mode "resize"
 
@@ -214,20 +214,21 @@ bar {
     font pango: $barfont
     position top
     #status_command i3status | ~/bin/i3status-pango-filter
-    status_command ~/usr/i3status/i3status-git/i3status --config ~/.config/i3status/config
+    status_command ~/usr/i3status/i3status/i3status --config ~/.config/i3status/config
     workspace_buttons yes
     separator_symbol ¦
 
     colors {
-        background $blue
+        #background $blue
+        background $black
         statusline $white
-        separator  $black
+        separator  $blue
 
         # class            border    backgr.   text
-        focused_workspace  $blue     $blue     $white
-        active_workspace   $blue     $blue     $grey
-        inactive_workspace $blue     $blue     $black
-        urgent_workspace   $orange   $blue     $white
+        focused_workspace  $black    $black    $white
+        active_workspace   $black    $black    $grey
+        inactive_workspace $black    $black    $grey
+        urgent_workspace   $orange   $black    $white
     }
 }
 
@@ -235,24 +236,29 @@ bar {
 # launchers
 #
 
-bindsym $mod+Return exec urxvt -cd "`xcwd`" -e fish
+bindsym $mod+Return exec termite -d "`xcwd`" -e fish
 bindsym $win+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$blue' -sf '$white'
 bindsym $win+f exec "xdg-open ~"
-bindsym $win+Shift+f exec "xdg-open `xcwd`"
 bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 1%-
-bindsym XF86ScreenSaver exec i3lock -c 021a2d && sudo pm-suspend
-bindsym XF86Sleep exec i3lock -c 021a2d && sudo pm-suspend
-bindsym Print exec xfce4-screenshooter
-bindsym $mod+Shift+s exec xfce4-settings-manager
-bindsym Ctrl+Shift+x exec cmus-remote -u
-bindsym Ctrl+F10 exec setxkbmap -layout us
-bindsym $win+F10 exec setxkbmap -layout de -variant qwerty
-#bindsym ISO_Next_Group exec setxkbmap -layout us
-#bindsym Ctrl+ISO_Next_Group exec setxkbmap -layout de -variant qwerty
+bindsym XF86AudioMute exec amixer sset Master toggle
+bindsym XF86ScreenSaver exec i3lock -c 021a2d && systemctl suspend
+#bindsym XF86Sleep exec i3lock -c 021a2d && sudo pm-suspend
+#bindsym Ctrl+Shift+x exec cmus-remote -u
+bindsym XF86MonBrightnessUp exec "light -A 5"
+bindsym XF86MonBrightnessDown exec "light -U 5"
+
+# "pull-up" terminal
+exec --no-startup-id termite --name metask -e fish
+for_window [instance="metask"] floating enable;
+for_window [instance="metask"] move scratchpad; [instance="metask"] scratchpad show; move position 300px 700px; resize set 840 200; move scratchpad
+bindsym $mod+t [instance="metask"] scratchpad show
 
 #
 # autostarts
 #
 
-exec ~/repos/android-udp-python/python/udp-server.py &
+#exec ~/repos/android-udp-python/python/udp-server.py &
+exec dropbox &
+exec twmnd &
+exec udiskie --tray &

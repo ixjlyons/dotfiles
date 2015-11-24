@@ -1,0 +1,66 @@
+[options]
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = Inconsolata 10
+scrollback_lines = 1000
+search_wrap = true
+
+# "system", "on" or "off"
+cursor_blink = system
+
+# "block", "underline" or "ibeam"
+cursor_shape = block
+
+# $BROWSER is used by default
+browser = chromium
+
+# emit escape sequences for other keys modified by Control
+#modify_other_keys = false
+
+[colors]
+#cursor = #dcdccc
+foreground = #dcdccc
+foreground_bold = #ffffff
+background = #181818
+
+# 20% background transparency (requires a compositor)
+#background = rgba(63, 63, 63, 0.8)
+
+# if unset, will reverse foreground and background
+#highlight = #2f2f2f
+
+color0 = #282828
+color1 = #962d2a
+color2 = #92966a
+color3 = #966039
+color4 = #687496
+color5 = #765796
+color6 = #739396
+color8 = #323232
+color7 = #999999
+color9 = #b43732
+color10 = #afb47f
+color11 = #b47344
+color12 = #7c8bb4
+color13 = #8e68b4
+color14 = #8ab1b4
+color15 = #d5d5d5
+
+[hints]
+#font = Monospace 12
+#foreground = #dcdccc
+#background = #3f3f3f
+#active_foreground = #e68080
+#active_background = #3f3f3f
+#padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
+
+# vim: ft=dosini cms=#%s

@@ -5,5 +5,4 @@ xsetroot -cursor_name left_ptr &
 xset r rate 250 25 &
 xset b off &
 setxkbmap -layout us,de -variant ,qwerty -option grp:sclk_toggle &
-synclient VertEdgeScroll=1 &
 sh ~/.fehbg &

@@ -17,3 +17,5 @@ set __fish_git_prompt_color_branch yellow
 set __fish_git_prompt_char_dirtystate '★'
 set __fish_git_prompt_char_stagedstate '→'
 set __fish_git_prompt_char_stashstate '←'
+
+set -g -x VREP /home/kenny/usr/vrep/vrep-3.2.2/

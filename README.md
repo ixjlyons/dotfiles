@@ -21,6 +21,7 @@ the file name in this repository.
 | `fish/config.fish`     | `~/.config/fish/`            |
 | `fish/functions/*`     | `~/.config/fish/functions/*` |
 | `qtile/config.py`      | `~/.config/qtile/`           |
+| `termite/config`       | `~/.config/termite/`         |
 | `vim/.vimrc`           | `~`                          |
 | `vim/mydarkblue.vim`   | `~/vim/colors/`              |
 | `x/.xinitrc`           | `~`                          |

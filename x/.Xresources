@@ -8,13 +8,13 @@ Xft.lcdfilter: lcddefault
 
 ! urxvt
 URxvt*transparent: true
-URxvt*shading: 20
+URxvt*shading: 10
 URxvt*scrollBar: false
 URxvt.font: xft:DejaVuSansMono:pixelsize=11
 URxvt.boldFont: xft:DejaVuSansMono:pixelsize=11:Bold
 URxvt.letterSpace: -1
 URxvt.iso14755: false
-URxvt.intensityStyles: false
+URxvt.intensityStyles: true
 
 *.background: #101010
 *.foreground: #bbbbbb

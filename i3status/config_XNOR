@@ -3,8 +3,8 @@ general {
     interval = 1
 
     color_good = "#bbbbbb"
-    color_degraded = "#bbbbbb"
-    color_bad = "#bbbbbb"
+    color_degraded = "#d64937"
+    color_bad = "#962521"
 
     output_format = i3bar
 
@@ -12,7 +12,7 @@ general {
 }
 
 order += "disk /"
-order += "wireless wlan0"
+order += "wireless wlp3s0"
 order += "battery 0"
 order += "volume master"
 order += "tztime date"
@@ -20,40 +20,40 @@ order += "tztime time"
 
 disk "/" {
     # fa-folder-open
-    format = "<span foreground='#202020'></span> %avail (%percentage_avail)"
+    format = "<span foreground='#777777'></span> %avail (%percentage_avail)"
     threshold_type = "percentage_avail"
     low_threshold = 20
 }
 
-wireless wlan0 {
-    format_up = "<span color='#202020'></span> %essid (%ip)"
-    format_down = "<span color='#202020'></span> (---.--.---)"
+wireless wlp3s0 {
+    format_up = "<span color='#777777'></span> %essid (%ip)"
+    format_down = "<span color='#777777'></span> (---.--.---)"
 }
 
 battery 0 {
-    format = "<span color='#202020'></span>%status %percentage %remaining"
-    path = "/sys/class/power_supply/C23A/uevent"
+    format = "<span color='#777777'></span>%status %percentage %remaining"
+    path = "/sys/class/power_supply/BAT0/uevent"
     status_bat = ""
     status_chr = ""
     status_full = ""
     threshold_type = "time"
-    low_threshold = 5
+    low_threshold = 30
     hide_seconds = true
     integer_battery_capacity = true
 }
 
 volume master {
-    format = "<span color='#202020'></span> %volume"
-    format_muted = "<span color='#202020'></span> (%volume)"
+    format = "<span color='#777777'></span> %volume"
+    format_muted = "<span color='#777777'></span> (%volume)"
     device = "default"
     mixer = "Master"
     mixer_idx = "0"
 }
 
 tztime date {
-    format = "<span foreground='#202020'></span> %Y-%m-%d"
+    format = "<span foreground='#777777'></span> %Y-%m-%d"
 }
 
 tztime time {
-    format ="<span foreground='#202020'></span> %H:%M"
+    format ="<span foreground='#777777'></span> %H:%M"
 }
