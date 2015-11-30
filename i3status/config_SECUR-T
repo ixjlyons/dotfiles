@@ -7,6 +7,8 @@ general {
     color_bad = "#e31a1c"
 
     output_format = i3bar
+
+    markup = "pango"
 }
 
 order += "disk /"
@@ -39,10 +41,12 @@ ethernet enp0s25 {
 
 tztime date {
     # fa-calendar-o   fa-clock-o
-    format = "<span font_desc='FontAwesome' foreground='#202020'></span> %Y-%m-%d"
+    format = "<span font_desc='FontAwesome' foreground='#202020'></span> %time"
+    format_time = "%Y-%m-%d"
 }
 
 tztime time {
-    format ="<span font_desc='FontAwesome' foreground='#202020'></span> %H:%M"
+    format ="<span font_desc='FontAwesome' foreground='#202020'></span> %time"
+    format_time = "%H:%M"
 }
 

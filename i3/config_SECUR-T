@@ -12,9 +12,9 @@ focus_follows_mouse no
 floating_modifier $mod
 
 # i3-gaps
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 gaps inner 8
-gaps outer 5
+gaps outer 4
 #smart_gaps on
 
 set $wsr1 "1:0x01"
@@ -216,7 +216,7 @@ bar {
     output DVI-0
     tray_output DVI-0
     position top
-    status_command i3status | ~/bin/i3status-pango-injector
+    status_command ~/usr/i3status/i3status-git/i3status --config ~/.config/i3status/config
     workspace_buttons yes
     separator_symbol ¦
     strip_workspace_numbers yes
@@ -257,7 +257,7 @@ bar {
 # launchers
 #
 
-bindsym $mod+Return exec urxvt -cd "`xcwd`" -e fish
+bindsym $mod+Return exec termite -d "`xcwd`" -e fish
 bindsym $win+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$blue' -sf '$white'
 bindsym $win+f exec "xdg-open ~"
 bindsym $win+Shift+f exec "xdg-open `xcwd`"
