@@ -12,10 +12,9 @@ focus_follows_mouse no
 floating_modifier $mod
 
 # i3-gaps
-for_window [class="^.*"] border pixel 3
-gaps inner 8
-gaps outer 5
-#smart_gaps on
+for_window [class="^.*"] border pixel 2
+gaps inner 6
+gaps outer 3
 
 set $wsr1 "1"
 set $wsr2 "2"
@@ -198,7 +197,7 @@ set $darkgrey #444444
 set $grey     #777777
 set $purple   #4e3d41
 set $red      #962521
-set $blue     #3a4966
+set $blue     #4170a6
 set $white    #bbbbbb
 set $darkblue #0f1b33
 set $medblue  #122a3d
@@ -213,7 +212,6 @@ client.urgent           $orange   $black    $white   $purple
 bar {
     font pango: $barfont
     position top
-    #status_command i3status | ~/bin/i3status-pango-filter
     status_command ~/usr/i3status/i3status/i3status --config ~/.config/i3status/config
     workspace_buttons yes
     separator_symbol ¦
@@ -243,8 +241,6 @@ bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 1%-
 bindsym XF86AudioMute exec amixer sset Master toggle
 bindsym XF86ScreenSaver exec i3lock -c 021a2d && systemctl suspend
-#bindsym XF86Sleep exec i3lock -c 021a2d && sudo pm-suspend
-#bindsym Ctrl+Shift+x exec cmus-remote -u
 bindsym XF86MonBrightnessUp exec "light -A 5"
 bindsym XF86MonBrightnessDown exec "light -U 5"
 
@@ -258,7 +254,6 @@ bindsym $mod+t [instance="metask"] scratchpad show
 # autostarts
 #
 
-#exec ~/repos/android-udp-python/python/udp-server.py &
 exec dropbox &
 exec twmnd &
 exec udiskie --tray &

@@ -51,9 +51,11 @@ volume master {
 }
 
 tztime date {
-    format = "<span foreground='#777777'></span> %Y-%m-%d"
+    format_time = "%Y-%m-%d"
+    format = "<span foreground='#777777'></span> %time"
 }
 
 tztime time {
-    format ="<span foreground='#777777'></span> %H:%M"
+    format_time = "%H:%M"
+    format ="<span foreground='#777777'></span> %time"
 }

@@ -1,7 +1,7 @@
 set ANDROID_HOME /home/kenny/usr/android/android-sdk
 set ANDROID_NDK /home/kenny/usr/android/android-ndk
 
-set GOPATH /home/kenny/go
+set -x GOPATH /home/kenny/go
 
 set PATH $PATH ~/bin ~/.local/bin ~/.cabal/bin $ANDROID_HOME/platform-tools
 

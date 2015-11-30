@@ -8,6 +8,7 @@ Plugin 'reedes/vim-pencil'
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'wting/rust.vim'
 call vundle#end()
 
 filetype plugin indent on
