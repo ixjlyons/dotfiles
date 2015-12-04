@@ -216,7 +216,7 @@ bar {
     output DVI-0
     tray_output DVI-0
     position top
-    status_command ~/usr/i3status/i3status-git/i3status --config ~/.config/i3status/config
+    status_command ~/usr/i3status/i3status/i3status --config ~/.config/i3status/config
     workspace_buttons yes
     separator_symbol ¦
     strip_workspace_numbers yes
@@ -276,3 +276,5 @@ bindsym Ctrl+Shift+x exec cmus-remote -u
 bindsym $win+s exec i3lock -i ~/img/wallpapers/cubes.png -t && sudo pm-suspend
 bindsym $win+l exec i3lock -i ~/img/wallpapers/cubes.png -t
 bindsym --release Print exec xfce4-screenshooter
+
+exec --no-startup-id twmnd &
