@@ -2,8 +2,8 @@
 # general settings
 #
 
-set $font Inconsolata 11
-set $barfont Inconsolata 11
+set $font Liberation Mono 10
+set $barfont Liberation Mono 10
 
 set $mod Mod1
 set $win Mod4
@@ -212,9 +212,9 @@ client.urgent           $orange   $black    $white   $purple
 bar {
     font pango: $barfont
     position top
-    status_command ~/usr/i3status/i3status/i3status --config ~/.config/i3status/config
+    status_command i3status
     workspace_buttons yes
-    separator_symbol ¦
+    separator_symbol 
 
     colors {
         #background $blue
@@ -243,6 +243,7 @@ bindsym XF86AudioMute exec amixer sset Master toggle
 bindsym XF86ScreenSaver exec i3lock -c 021a2d && systemctl suspend
 bindsym XF86MonBrightnessUp exec "light -A 5"
 bindsym XF86MonBrightnessDown exec "light -U 5"
+bindsym Print exec "maim ~/img/screenshot.png"
 
 # "pull-up" terminal
 exec --no-startup-id termite --name metask -e fish
