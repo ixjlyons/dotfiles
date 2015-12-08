@@ -127,25 +127,25 @@ bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
 
 # set numbered workspaces to output 1 and letter workspaces to output 2
-workspace $wsr1 output LVDS-0
-workspace $wsr2 output LVDS-0
-workspace $wsr3 output LVDS-0
-workspace $wsr4 output LVDS-0
-workspace $wsr5 output LVDS-0
-workspace $wsr6 output LVDS-0
-workspace $wsr7 output LVDS-0
-workspace $wsr8 output LVDS-0
-workspace $wsr9 output LVDS-0
+workspace $wsr1 output LVDS-1
+workspace $wsr2 output LVDS-1
+workspace $wsr3 output LVDS-1
+workspace $wsr4 output LVDS-1
+workspace $wsr5 output LVDS-1
+workspace $wsr6 output LVDS-1
+workspace $wsr7 output LVDS-1
+workspace $wsr8 output LVDS-1
+workspace $wsr9 output LVDS-1
 
-workspace $wsl1 output VGA-0
-workspace $wsl2 output VGA-0
-workspace $wsl3 output VGA-0
-workspace $wsl4 output VGA-0
-workspace $wsl5 output VGA-0
-workspace $wsl6 output VGA-0
-workspace $wsl7 output VGA-0
-workspace $wsl8 output VGA-0
-workspace $wsl9 output VGA-0
+workspace $wsl1 output VGA-1
+workspace $wsl2 output VGA-1
+workspace $wsl3 output VGA-1
+workspace $wsl4 output VGA-1
+workspace $wsl5 output VGA-1
+workspace $wsl6 output VGA-1
+workspace $wsl7 output VGA-1
+workspace $wsl8 output VGA-1
+workspace $wsl9 output VGA-1
 
 
 #
@@ -214,18 +214,17 @@ bar {
     position top
     status_command i3status
     workspace_buttons yes
-    separator_symbol 
+    separator_symbol ▪
     strip_workspace_numbers yes
 
     colors {
-        #background $blue
         background $black
         statusline $white
         separator  $blue
 
         # class            border    backgr.   text
         focused_workspace  $darkgrey $darkgrey $white
-        active_workspace   $black    $black    $grey
+        active_workspace   $black    $black    $white
         inactive_workspace $black    $black    $grey
         urgent_workspace   $orange   $black    $white
     }
