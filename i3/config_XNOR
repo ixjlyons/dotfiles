@@ -16,25 +16,25 @@ for_window [class="^.*"] border pixel 2
 gaps inner 6
 gaps outer 3
 
-set $wsr1 "1"
-set $wsr2 "2"
-set $wsr3 "3"
-set $wsr4 "4"
-set $wsr5 "5"
-set $wsr6 "6"
-set $wsr7 "7"
-set $wsr8 "8"
-set $wsr9 "9"
+set $wsr1 "1:0x01"
+set $wsr2 "2:0x02"
+set $wsr3 "3:0x03"
+set $wsr4 "4:0x04"
+set $wsr5 "5:0x05"
+set $wsr6 "6:0x06"
+set $wsr7 "7:0x07"
+set $wsr8 "8:0x08"
+set $wsr9 "9:0x09"
 
-set $wsl1 "a"
-set $wsl2 "b"
-set $wsl3 "c"
-set $wsl4 "d"
-set $wsl5 "e"
-set $wsl6 "f"
-set $wsl7 "g"
-set $wsl8 "h"
-set $wsl9 "i"
+set $wsl1 "1:0x0a"
+set $wsl2 "2:0x0b"
+set $wsl3 "3:0x0c"
+set $wsl4 "4:0x0d"
+set $wsl5 "5:0x0e"
+set $wsl6 "6:0x0f"
+set $wsl7 "7:0x10"
+set $wsl8 "8:0x11"
+set $wsl9 "9:0x12"
 
 
 #
@@ -215,6 +215,7 @@ bar {
     status_command i3status
     workspace_buttons yes
     separator_symbol 
+    strip_workspace_numbers yes
 
     colors {
         #background $blue
@@ -223,7 +224,7 @@ bar {
         separator  $blue
 
         # class            border    backgr.   text
-        focused_workspace  $black    $black    $white
+        focused_workspace  $darkgrey $darkgrey $white
         active_workspace   $black    $black    $grey
         inactive_workspace $black    $black    $grey
         urgent_workspace   $orange   $black    $white
@@ -235,7 +236,7 @@ bar {
 #
 
 bindsym $mod+Return exec termite -d "`xcwd`" -e fish
-bindsym $win+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$blue' -sf '$white'
+bindsym $win+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$darkgrey' -sf '$white'
 bindsym $win+f exec "xdg-open ~"
 bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 1%-

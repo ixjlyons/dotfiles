@@ -27,7 +27,7 @@ browser = chromium
 #cursor = #dcdccc
 foreground = #dcdccc
 foreground_bold = #ffffff
-background = #202020
+background = #101010
 
 # 20% background transparency (requires a compositor)
 #background = rgba(63, 63, 63, 0.8)
