@@ -19,14 +19,14 @@ order += "tztime time"
 
 disk "/" {
     # fa-folder-open
-    format = "<span font_desc='FontAwesome' foreground='#202020'></span> %avail (%percentage_avail)"
+    format = "<span font_desc='FontAwesome' foreground='#4a5976'></span> %avail (%percentage_avail)"
 }
 
 volume master {
     # fa-volume up
-    format = "<span font_desc='FontAwesome' foreground='#202020'></span> %volume"
+    format = "<span font_desc='FontAwesome' foreground='#4a5976'></span> %volume"
     # fa-volume-off
-    format_muted = "<span font_desc='FontAwesome' foreground='#202020'></span> %volume"
+    format_muted = "<span font_desc='FontAwesome' foreground='#4a5976'></span> %volume"
     device = "default"
     mixer = "Master"
     mixer_idx = "0"
@@ -34,19 +34,19 @@ volume master {
 
 ethernet enp0s25 {
     # fa-signal   fa-arrow-up
-    format_up = "<span font_desc='FontAwesome' foreground='#202020'></span> %ip"
+    format_up = "<span font_desc='FontAwesome' foreground='#4a5976'></span> %ip"
     # fa-signal   fa-arrow-down
     format_down = "<span font_desc='FontAwesome' foreground='#2b5e64'></span> (---.---.-.---)"
 }
 
 tztime date {
     # fa-calendar-o   fa-clock-o
-    format = "<span font_desc='FontAwesome' foreground='#202020'></span> %time"
+    format = "<span font_desc='FontAwesome' foreground='#4a5976'></span> %time"
     format_time = "%Y-%m-%d"
 }
 
 tztime time {
-    format ="<span font_desc='FontAwesome' foreground='#202020'></span> %time"
+    format ="<span font_desc='FontAwesome' foreground='#4a5976'></span> %time"
     format_time = "%H:%M"
 }
 
