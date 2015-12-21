@@ -2,8 +2,8 @@
 # general settings
 #
 
-set $font Inconsolata 11
-set $barfont Inconsolata 11
+set $font Liberation Mono 10
+set $barfont Liberation Mono 10
 
 set $mod Mod1
 set $win Mod4
@@ -218,20 +218,19 @@ bar {
     position top
     status_command ~/usr/i3status/i3status/i3status --config ~/.config/i3status/config
     workspace_buttons yes
-    separator_symbol ¦
+    separator_symbol ▪
     strip_workspace_numbers yes
-    height 28
 
     colors {
-        background $barbg
+        background $black
         statusline $white
-        separator  $black
+        separator  $darkgrey
 
         # class            border    backgr.   text
-        focused_workspace  $barbg    $barbg    $white
-        active_workspace   $barbg    $barbg    $grey
-        inactive_workspace $barbg    $barbg    $black
-        urgent_workspace   $orange   $barbg    $white
+        focused_workspace  $blue     $blue     $white
+        active_workspace   $black    $black    $white
+        inactive_workspace $black    $black    $grey
+        urgent_workspace   $orange   $black    $white
     }
 }
 bar {
@@ -242,13 +241,15 @@ bar {
     strip_workspace_numbers yes
 
     colors {
-        background $barbg
+        background $black
+        statusline $white
+        separator  $grey
 
         # class            border    backgr.   text
-        focused_workspace  $barbg    $barbg    $white
-        active_workspace   $barbg    $barbg    $grey
-        inactive_workspace $barbg    $barbg    $black
-        urgent_workspace   $orange   $barbg    $white
+        focused_workspace  $blue     $blue     $white
+        active_workspace   $black    $black    $white
+        inactive_workspace $black    $black    $grey
+        urgent_workspace   $orange   $black    $white
     }
 }
 

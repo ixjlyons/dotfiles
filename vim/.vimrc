@@ -76,6 +76,8 @@ let g:Tex_CompileRule_pdf = 'pdflatex --shell-escape --synctex=-1 -src-specials 
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf'
 let g:Tex_ViewRule_pdf = 'xdg-open 2> /dev/null'
+let g:Tex_UseMakefile = 0
+let g:Tex_BIBINPUTS = '/home/kenny/texmf/bibtex/bib'
 
 " turn off folding
 :let Tex_FoldedSections=""

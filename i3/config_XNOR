@@ -13,8 +13,8 @@ floating_modifier $mod
 
 # i3-gaps
 for_window [class="^.*"] border pixel 2
-gaps inner 6
-gaps outer 3
+#gaps inner 6
+#gaps outer 3
 
 set $wsr1 "1:0x01"
 set $wsr2 "2:0x02"
@@ -226,7 +226,7 @@ bar {
         focused_workspace  $darkgrey $darkgrey $white
         active_workspace   $black    $black    $white
         inactive_workspace $black    $black    $grey
-        urgent_workspace   $orange   $black    $white
+        urgent_workspace   $blue     $black    $white
     }
 }
 
@@ -244,6 +244,7 @@ bindsym XF86ScreenSaver exec i3lock -c 021a2d && systemctl suspend
 bindsym XF86MonBrightnessUp exec "light -A 5"
 bindsym XF86MonBrightnessDown exec "light -U 5"
 bindsym Print exec "maim ~/img/screenshot.png"
+bindsym XF86AudioPlay exec "cmus-remote -u"
 
 # "pull-up" terminal
 exec --no-startup-id termite --name metask -e fish
