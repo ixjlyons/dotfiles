@@ -12,7 +12,7 @@ focus_follows_mouse no
 floating_modifier $mod
 
 # i3-gaps
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 gaps inner 8
 gaps outer 4
 #smart_gaps on
@@ -192,13 +192,13 @@ for_window [window_role="pop-up"] floating enable
 #
 
 # color definitions
-set $black    #202020
+set $black    #2b2e37
 set $altblack #404040
 set $darkgrey #444444
 set $grey     #777777
 set $purple   #4e3d41
 set $red      #962521
-set $blue     #3a4966
+set $blue     #587aa0
 set $white    #bbbbbb
 set $darkblue #0f1b33
 set $medblue  #122a3d
@@ -224,10 +224,10 @@ bar {
     colors {
         background $black
         statusline $white
-        separator  $darkgrey
+        separator  $grey
 
         # class            border    backgr.   text
-        focused_workspace  $blue     $blue     $white
+        focused_workspace  $blue     $blue     $black
         active_workspace   $black    $black    $white
         inactive_workspace $black    $black    $grey
         urgent_workspace   $orange   $black    $white
@@ -246,7 +246,7 @@ bar {
         separator  $grey
 
         # class            border    backgr.   text
-        focused_workspace  $blue     $blue     $white
+        focused_workspace  $blue     $blue     $black
         active_workspace   $black    $black    $white
         inactive_workspace $black    $black    $grey
         urgent_workspace   $orange   $black    $white
@@ -259,7 +259,7 @@ bar {
 #
 
 bindsym $mod+Return exec termite -d "`xcwd`" -e fish
-bindsym $win+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$blue' -sf '$white'
+bindsym $win+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$blue' -sf '$black'
 bindsym $win+f exec "xdg-open ~"
 bindsym $win+Shift+f exec "xdg-open `xcwd`"
 bindsym $win+w exec chromium

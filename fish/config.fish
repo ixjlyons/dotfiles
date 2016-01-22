@@ -19,5 +19,6 @@ set __fish_git_prompt_char_stagedstate '→'
 set __fish_git_prompt_char_stashstate '←'
 
 set -x VREP /home/kenny/usr/vrep/vrep
+set -x EDITOR vim
 
 eval (dircolors -c ~/.dircolors | sed 's/>&\/dev\/null$//')
