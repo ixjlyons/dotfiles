@@ -12,26 +12,32 @@ general {
 }
 
 order += "disk /"
-order += "wireless wlp3s0"
+order += "cpu_temperature 0"
+order += "wireless wlan0"
 order += "battery 0"
 order += "volume master"
+order += "keyboard_layout"
 order += "tztime date"
 order += "tztime time"
 
 disk "/" {
     # fa-folder-open
-    format = "<span foreground='#777777'></span> %avail (%percentage_avail)"
+    format = "<span foreground='#58697d'></span> %avail (%percentage_avail)"
     threshold_type = "percentage_avail"
     low_threshold = 20
 }
 
-wireless wlp3s0 {
-    format_up = "<span color='#777777'></span> %essid (%ip)"
-    format_down = "<span color='#777777'></span> (---.--.---)"
+cpu_temperature 0 {
+    format = "<span foreground='#58697d'></span> %degrees°C"
+}
+
+wireless wlan0 {
+    format_up = "<span color='#58697d'></span> %essid (%ip)"
+    format_down = "<span color='#58697d'></span> (---.--.---)"
 }
 
 battery 0 {
-    format = "<span color='#777777'></span>%status %percentage %remaining"
+    format = "<span color='#58697d'></span>%status %percentage %remaining"
     path = "/sys/class/power_supply/BAT0/uevent"
     status_bat = ""
     status_chr = ""
@@ -43,8 +49,8 @@ battery 0 {
 }
 
 volume master {
-    format = "<span color='#777777'></span> %volume"
-    format_muted = "<span color='#777777'></span> (%volume)"
+    format = "<span color='#58697d'></span> %volume"
+    format_muted = "<span color='#58697d'></span> (%volume)"
     device = "default"
     mixer = "Master"
     mixer_idx = "0"
@@ -52,10 +58,14 @@ volume master {
 
 tztime date {
     format_time = "%Y-%m-%d"
-    format = "<span foreground='#777777'></span> %time"
+    format = "<span foreground='#58697d'></span> %time"
 }
 
 tztime time {
     format_time = "%H:%M"
-    format ="<span foreground='#777777'></span> %time"
+    format ="<span foreground='#58697d'></span> %time"
+}
+
+keyboard_layout {
+    format = "<span foreground='#58697d'></span> %s"
 }
