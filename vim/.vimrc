@@ -6,9 +6,11 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-latex/vim-latex'
 Plugin 'reedes/vim-pencil'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'wting/rust.vim'
+Plugin 'JuliaLang/julia-vim'
 call vundle#end()
 
 filetype plugin indent on
