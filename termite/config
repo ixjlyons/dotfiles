@@ -24,32 +24,36 @@ browser = chromium
 #modify_other_keys = false
 
 [colors]
-#cursor = #dcdccc
 foreground = #dcdccc
 foreground_bold = #ffffff
-background = #101010
-
-# 20% background transparency (requires a compositor)
-#background = rgba(63, 63, 63, 0.8)
+background = #181818
 
 # if unset, will reverse foreground and background
 #highlight = #2f2f2f
 
+# black
 color0 = #282828
-color1 = #962d2a
-color2 = #92966a
-color3 = #966039
-color4 = #687496
-color5 = #765796
-color6 = #739396
 color8 = #323232
-color7 = #999999
+# red
+color1 = #962d2a
 color9 = #b43732
+# green
+color2 = #92966a
 color10 = #afb47f
+# yellow
+color3 = #966039
 color11 = #b47344
+# blue
+color4 = #687496
 color12 = #7c8bb4
+# magenta
+color5 = #765796
 color13 = #8e68b4
+# cyan
+color6 = #739396
 color14 = #8ab1b4
+# grey
+color7 = #999999
 color15 = #d5d5d5
 
 [hints]
