@@ -3,7 +3,7 @@
 #
 
 set $font Liberation Mono 10
-set $barfont Liberation Mono 10
+set $barfont Liberation Mono, Font Awesome 10
 
 set $mod Mod1
 set $win Mod4
@@ -11,30 +11,26 @@ font pango: $font
 focus_follows_mouse no
 floating_modifier $mod
 
-# i3-gaps
 for_window [class="^.*"] border pixel 2
-#gaps inner 6
-#gaps outer 3
 
-set $wsr1 "1:0x01"
-set $wsr2 "2:0x02"
-set $wsr3 "3:0x03"
-set $wsr4 "4:0x04"
-set $wsr5 "5:0x05"
-set $wsr6 "6:0x06"
-set $wsr7 "7:0x07"
-set $wsr8 "8:0x08"
-set $wsr9 "9:0x09"
+# workspaces on laptop output
+set $wsr1 "1:1"
+set $wsr2 "2:2"
+set $wsr3 "3:3"
+set $wsr4 "4:4"
+set $wsr5 "5:5"
+set $wsr6 "6:6"
+set $wsr7 "7:7"
+set $wsr8 "8:8"
+set $wsr9 "9:9"
 
-set $wsl1 "1:0x0a"
-set $wsl2 "2:0x0b"
-set $wsl3 "3:0x0c"
-set $wsl4 "4:0x0d"
-set $wsl5 "5:0x0e"
-set $wsl6 "6:0x0f"
-set $wsl7 "7:0x10"
-set $wsl8 "8:0x11"
-set $wsl9 "9:0x12"
+# workspaces on external output
+set $wsl1 "1:a"
+set $wsl2 "2:b"
+set $wsl3 "3:c"
+set $wsl4 "4:d"
+set $wsl5 "5:e"
+set $wsl6 "6:f"
 
 
 #
@@ -64,9 +60,6 @@ bindsym $win+3 workspace $wsl3
 bindsym $win+4 workspace $wsl4
 bindsym $win+5 workspace $wsl5
 bindsym $win+6 workspace $wsl6
-bindsym $win+7 workspace $wsl7
-bindsym $win+8 workspace $wsl8
-bindsym $win+9 workspace $wsl9
 
 # other movements
 bindsym $mod+a focus parent
@@ -101,9 +94,6 @@ bindsym $win+Shift+3 move container to workspace $wsl3
 bindsym $win+Shift+4 move container to workspace $wsl4
 bindsym $win+Shift+5 move container to workspace $wsl5
 bindsym $win+Shift+6 move container to workspace $wsl6
-bindsym $win+Shift+7 move container to workspace $wsl7
-bindsym $win+Shift+8 move container to workspace $wsl8
-bindsym $win+Shift+9 move container to workspace $wsl9
 
 # move workspace to other screen (assuming two monitors)
 bindsym $mod+Shift+m move workspace to output right
@@ -143,9 +133,6 @@ workspace $wsl3 output VGA-1
 workspace $wsl4 output VGA-1
 workspace $wsl5 output VGA-1
 workspace $wsl6 output VGA-1
-workspace $wsl7 output VGA-1
-workspace $wsl8 output VGA-1
-workspace $wsl9 output VGA-1
 
 
 #
@@ -154,11 +141,16 @@ workspace $wsl9 output VGA-1
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -m 'Exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
-#bindsym $mod+Shift+x exec xfce4-session-logout
 bindsym $mod+Shift+q kill
-bindsym $mod+r mode "resize"
 
+bindsym $mod+Shift+e mode "exit (y/n)?"
+mode "exit (y/n)?" {
+    bindsym y exit
+    bindsym n mode default
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
 mode "resize" {
     bindsym h resize shrink width 1 px or 1 ppt
     bindsym j resize grow height 1 px or 1 ppt
@@ -191,28 +183,29 @@ for_window [window_role="pop-up"] floating enable
 #
 
 # color definitions
-set $black    #202020
+set $black    #2b2e37
 set $altblack #404040
 set $darkgrey #444444
 set $grey     #777777
 set $purple   #4e3d41
 set $red      #962521
-set $blue     #4170a6
+set $blue     #58697d
 set $white    #bbbbbb
 set $darkblue #0f1b33
 set $medblue  #122a3d
 set $orange   #d64937
 
-# class                 border    backgr.   text     indicator
-client.focused          $blue     $blue     $white   $red
-client.focused_inactive $black    $darkgrey $grey    $purple
-client.unfocused        $black    $black    $white   $purple
+# class                 border    backgr.   text     indicator   child_border
+client.focused          $blue     $black    $white   $red        $blue
+client.focused_inactive $black    $darkgrey $grey    $purple     $darkgrey
+client.unfocused        $black    $black    $white   $purple     $black
 client.urgent           $orange   $black    $white   $purple
 
 bar {
+    output LVDS-1
     font pango: $barfont
     position top
-    status_command i3status
+    status_command ~/usr/i3status/i3status/i3status
     workspace_buttons yes
     separator_symbol ▪
     strip_workspace_numbers yes
@@ -220,13 +213,34 @@ bar {
     colors {
         background $black
         statusline $white
-        separator  $blue
+        separator  $grey
 
         # class            border    backgr.   text
-        focused_workspace  $darkgrey $darkgrey $white
+        focused_workspace  $blue     $black    $white
         active_workspace   $black    $black    $white
         inactive_workspace $black    $black    $grey
-        urgent_workspace   $blue     $black    $white
+        urgent_workspace   $orange   $black    $white
+    }
+}
+
+bar {
+    output VGA-1
+    font pango: $barfont
+    position top
+    workspace_buttons yes
+    separator_symbol ▪
+    strip_workspace_numbers yes
+
+    colors {
+        background $black
+        statusline $white
+        separator  $grey
+
+        # class            border    backgr.   text
+        focused_workspace  $blue     $black    $white
+        active_workspace   $black    $black    $white
+        inactive_workspace $black    $black    $grey
+        urgent_workspace   $orange   $black    $white
     }
 }
 
@@ -234,23 +248,21 @@ bar {
 # launchers
 #
 
-bindsym $mod+Return exec termite -d "`xcwd`" -e fish
+bindsym $mod+Return exec termite -d "`xcwd`" -e ~/src/fish-shell/env/bin/fish
 bindsym $win+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$darkgrey' -sf '$white'
 bindsym $win+f exec "xdg-open ~"
 bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 1%-
 bindsym XF86AudioMute exec amixer sset Master toggle
-bindsym XF86ScreenSaver exec i3lock -c 021a2d && systemctl suspend
+bindsym XF86ScreenSaver exec "i3lock -c 021a2d && systemctl suspend"
+bindsym $win+l exec "i3lock -c 021a2d"
 bindsym XF86MonBrightnessUp exec "light -A 5"
 bindsym XF86MonBrightnessDown exec "light -U 5"
 bindsym Print exec "maim ~/img/screenshot.png"
 bindsym XF86AudioPlay exec "cmus-remote -u"
 
-# "pull-up" terminal
-exec --no-startup-id termite --name metask -e fish
-for_window [instance="metask"] floating enable;
-for_window [instance="metask"] move scratchpad; [instance="metask"] scratchpad show; move position 300px 700px; resize set 840 200; move scratchpad
-bindsym $mod+t [instance="metask"] scratchpad show
+bindsym $win+F9 exec "setxkbmap us"
+bindsym $win+F10 exec "setxkbmap -layout de -variant qwerty"
 
 #
 # autostarts
