@@ -10,6 +10,22 @@ to adhere to a convention which makes keeping track of things fairly simple:
 for config files that vary depending on the computer I use, I append `$HOST` to
 the file name in this repository.
 
+
+## Currently Running
+
+There are some config files I have here that I'm not really using. Here are the
+folders I currently am using and update:
+
+* fish
+* git
+* i3
+* i3status
+* termite
+* twmn
+* vim
+* x
+
+
 ## File mapping
 
 | source                 | destination                  |
