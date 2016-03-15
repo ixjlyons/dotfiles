@@ -229,6 +229,7 @@ bar {
 bar {
     output VGA-1
     font pango: $barfont
+    tray_output none
     position top
     workspace_buttons yes
     strip_workspace_numbers yes
