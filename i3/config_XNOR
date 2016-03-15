@@ -139,6 +139,8 @@ workspace $wsl6 output VGA-1
 # other wm-related keybindings
 #
 
+bindsym XF86ScreenSaver exec "i3lock -c 021a2d && systemctl suspend"
+bindsym $win+l exec "i3lock -c 021a2d"
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+q kill
@@ -204,6 +206,7 @@ client.urgent           $orange   $black    $white   $purple
 bar {
     output LVDS-1
     font pango: $barfont
+    tray_output LVDS-1
     position top
     status_command ~/usr/i3status/i3status/i3status
     workspace_buttons yes
@@ -228,7 +231,6 @@ bar {
     font pango: $barfont
     position top
     workspace_buttons yes
-    separator_symbol ▪
     strip_workspace_numbers yes
 
     colors {
@@ -244,6 +246,7 @@ bar {
     }
 }
 
+
 #
 # launchers
 #
@@ -251,18 +254,17 @@ bar {
 bindsym $mod+Return exec termite -d "`xcwd`" -e ~/src/fish-shell/env/bin/fish
 bindsym $win+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$darkgrey' -sf '$white'
 bindsym $win+f exec "xdg-open ~"
+bindsym $win+Shift+f exec "xdg-open `xcwd`"
 bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 1%-
 bindsym XF86AudioMute exec amixer sset Master toggle
-bindsym XF86ScreenSaver exec "i3lock -c 021a2d && systemctl suspend"
-bindsym $win+l exec "i3lock -c 021a2d"
 bindsym XF86MonBrightnessUp exec "light -A 5"
 bindsym XF86MonBrightnessDown exec "light -U 5"
-bindsym Print exec "maim ~/img/screenshot.png"
 bindsym XF86AudioPlay exec "cmus-remote -u"
-
+bindsym Print exec "maim ~/img/screenshot.png"
 bindsym $win+F9 exec "setxkbmap us"
 bindsym $win+F10 exec "setxkbmap -layout de -variant qwerty"
+
 
 #
 # autostarts
