@@ -49,8 +49,8 @@ battery 0 {
 }
 
 volume master {
-    format = "<span color='#58697d'></span> %volume"
-    format_muted = "<span color='#58697d'></span> (%volume)"
+    format = "<span foreground='#58697d'></span> %volume"
+    format_muted = "<span foreground='#58697d'></span> (%volume)"
     device = "default"
     mixer = "Master"
     mixer_idx = "0"
