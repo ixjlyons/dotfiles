@@ -125,26 +125,26 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
 
-# set numbered workspaces to output 1 and letter workspaces to output 2
-workspace $wsr1 output DVI-0
-workspace $wsr2 output DVI-0
-workspace $wsr3 output DVI-0
-workspace $wsr4 output DVI-0
-workspace $wsr5 output DVI-0
-workspace $wsr6 output DVI-0
-workspace $wsr7 output DVI-0
-workspace $wsr8 output DVI-0
-workspace $wsr9 output DVI-0
+# set numbered workspaces to primary output and letter workspaces to secondary
+workspace $wsr1 output DVI-1
+workspace $wsr2 output DVI-1
+workspace $wsr3 output DVI-1
+workspace $wsr4 output DVI-1
+workspace $wsr5 output DVI-1
+workspace $wsr6 output DVI-1
+workspace $wsr7 output DVI-1
+workspace $wsr8 output DVI-1
+workspace $wsr9 output DVI-1
 
-workspace $wsl1 output DVI-1
-workspace $wsl2 output DVI-1
-workspace $wsl3 output DVI-1
-workspace $wsl4 output DVI-1
-workspace $wsl5 output DVI-1
-workspace $wsl6 output DVI-1
-workspace $wsl7 output DVI-1
-workspace $wsl8 output DVI-1
-workspace $wsl9 output DVI-1
+workspace $wsl1 output DVI-0
+workspace $wsl2 output DVI-0
+workspace $wsl3 output DVI-0
+workspace $wsl4 output DVI-0
+workspace $wsl5 output DVI-0
+workspace $wsl6 output DVI-0
+workspace $wsl7 output DVI-0
+workspace $wsl8 output DVI-0
+workspace $wsl9 output DVI-0
 
 
 #
@@ -218,12 +218,10 @@ client.urgent           $orange   $black    $white   $purple
 
 bar {
     output DVI-0
+    tray_output none
     font pango: $barfont
-    tray_output DVI-0
     position top
-    status_command ~/usr/i3status/i3status/i3status
     workspace_buttons yes
-    separator_symbol ▪
     strip_workspace_numbers yes
 
     colors {
@@ -240,11 +238,13 @@ bar {
 }
 bar {
     output DVI-1
+    tray_output DVI-1
     font pango: $barfont
-    tray_output none
     position top
     workspace_buttons yes
     strip_workspace_numbers yes
+    separator_symbol ▪
+    status_command ~/usr/i3status/i3status/i3status
 
     colors {
         background $black
