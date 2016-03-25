@@ -5,9 +5,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-latex/vim-latex'
 Plugin 'reedes/vim-pencil'
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'flazz/vim-colorschemes'
+Plugin 'chriskempson/base16-vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'wting/rust.vim'
 Plugin 'JuliaLang/julia-vim'
@@ -28,6 +26,9 @@ set shiftwidth=4
 set expandtab
 set cursorline
 
+set background=dark
+let base16colorspace=256
+
 if has('mouse')
   set mouse=a
 endif
@@ -35,8 +36,8 @@ endif
 syntax on
 set hlsearch
 
-colorscheme Tomorrow-Night
-hi Normal ctermbg=NONE
+colorscheme base16-tomorrow
+"hi Normal ctermbg=NONE
 
 augroup vimrcEx
     au!
@@ -126,8 +127,16 @@ augroup END
 """"""""""""""""""""""
 
 set laststatus=2
-let g:airline_section_x = '%{PencilMode()}%{PencilAutoformat()}'
-let g:airline_theme = 'luna'
+if has('statusline')
+    " file name
+    set statusline=%<%f
+    " right justify
+    set statusline+=%=
+    " current line / total lines
+    set statusline+=\|%c\ -%l/%L\ %P
+    " vim-pencil mode
+    set statusline+=\ %{PencilMode()}%{PencilAutoformat()}
+endif
 
 
 """""""""""""""""""

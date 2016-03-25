@@ -24,37 +24,42 @@ browser = chromium
 #modify_other_keys = false
 
 [colors]
-foreground = #dcdccc
-foreground_bold = #ffffff
-background = #181818
+foreground      = #c5c8c6
+foreground_bold = #dddddd
+background      = #1d1f21
 
-# if unset, will reverse foreground and background
-#highlight = #2f2f2f
+# 16 color space
+color0  = #1d1f21
+color8  = #969896
 
-# black
-color0 = #282828
-color8 = #323232
-# red
-color1 = #962d2a
-color9 = #b43732
-# green
-color2 = #92966a
-color10 = #afb47f
-# yellow
-color3 = #966039
-color11 = #b47344
-# blue
-color4 = #687496
-color12 = #7c8bb4
-# magenta
-color5 = #765796
-color13 = #8e68b4
-# cyan
-color6 = #739396
-color14 = #8ab1b4
-# grey
-color7 = #999999
-color15 = #d5d5d5
+color1  = #cc6666
+color9  = #cc6666
+
+color2  = #b5bd68
+color10 = #b5bd68
+
+color3  = #f0c674
+color11 = #f0c674
+
+color4  = #81a2be
+color12 = #81a2be
+
+color5  = #b294bb
+color13 = #b294bb
+
+color6  = #8abeb7
+color14 = #8abeb7
+
+color7  = #c5c8c6
+color15 = #ffffff
+
+# 256 color space
+color16 = #de935f
+color17 = #a3685a
+color18 = #282a2e
+color19 = #373b41
+color20 = #b4b7b4
+color21 = #e0e0e0
 
 [hints]
 #font = Monospace 12
@@ -66,5 +71,3 @@ color15 = #d5d5d5
 #border = #3f3f3f
 #border_width = 0.5
 #roundness = 2.0
-
-# vim: ft=dosini cms=#%s
