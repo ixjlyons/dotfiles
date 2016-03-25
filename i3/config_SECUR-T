@@ -11,7 +11,7 @@ font pango: $font
 focus_follows_mouse no
 floating_modifier $mod
 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 
 # workspaces on the main output
 set $wsr1 "1:0x01"
@@ -191,7 +191,6 @@ for_window [class="Textext.py"] floating enable
 for_window [title="PyGesture"] floating enable
 for_window [title="MyoSwim"] floating enable
 for_window [window_role="pop-up"] floating enable
-
 
 #
 # appearance
