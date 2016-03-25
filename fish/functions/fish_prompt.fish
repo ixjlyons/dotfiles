@@ -15,7 +15,7 @@ function fish_prompt
     set_color normal
     printf "[$pwd]"
     set_color normal
-    printf "$__fish_git_prompt "
+    printf '%s ' (__fish_git_prompt)
     set_color normal
     printf '\n〉'
 end
