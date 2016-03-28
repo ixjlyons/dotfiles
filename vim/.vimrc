@@ -37,7 +37,7 @@ syntax on
 set hlsearch
 
 colorscheme base16-tomorrow
-"hi Normal ctermbg=NONE
+hi Normal ctermbg=NONE
 
 augroup vimrcEx
     au!
@@ -128,12 +128,12 @@ augroup END
 
 set laststatus=2
 if has('statusline')
-    " file name
-    set statusline=%<%f
+    " file name + modified flag
+    set statusline=%<%f%m
     " right justify
     set statusline+=%=
-    " current line / total lines
-    set statusline+=\|%c\ -%l/%L\ %P
+    " current column, current line, total lines
+    set statusline+=\|%c\ -%l/%L
     " vim-pencil mode
     set statusline+=\ %{PencilMode()}%{PencilAutoformat()}
 endif
