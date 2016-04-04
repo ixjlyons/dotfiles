@@ -264,7 +264,7 @@ bar {
 #
 
 bindsym $mod+Return exec termite -d "`xcwd`" -e ~/src/fish-shell/env/bin/fish
-bindsym $win+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$darkgrey' -sf '$white'
+bindsym $win+space exec dmenu_run -l 4 -b -nb '$black' -nf '$grey' -sb '$blue' -sf '$black'
 bindsym $win+f exec "xdg-open ~"
 bindsym $win+Shift+f exec "xdg-open `xcwd`"
 bindsym $mod+F12 exec amixer sset Master 2%+
