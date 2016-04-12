@@ -7,15 +7,15 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Liberation Mono 9
+font = Tamzen 11
 scrollback_lines = 1000
 search_wrap = true
 
 # "system", "on" or "off"
-cursor_blink = system
+cursor_blink = off
 
 # "block", "underline" or "ibeam"
-cursor_shape = block
+cursor_shape = underline
 
 # $BROWSER is used by default
 browser = chromium

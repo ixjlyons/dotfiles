@@ -2,8 +2,8 @@
 # general settings
 #
 
-set $font Liberation Mono 10
-set $barfont Liberation Mono, Font Awesome 10
+set $font Tamzen 12
+set $barfont Tamzen, Font Awesome 12
 
 set $mod Mod1
 set $win Mod4
@@ -151,7 +151,6 @@ workspace $wsl9 output DVI-0
 # other wm-related keybindings
 #
 
-bindsym $mod+Shift+x exec xfce4-session-logout
 bindsym $win+s exec i3lock -i ~/img/wallpapers/cubes.png -t && sudo pm-suspend
 bindsym $win+l exec i3lock -i ~/img/wallpapers/cubes.png -t
 bindsym $mod+Shift+c reload
@@ -216,33 +215,12 @@ client.unfocused        $black    $black    $white   $purple     $black
 client.urgent           $orange   $black    $white   $purple
 
 bar {
-    output DVI-0
-    tray_output none
-    font pango: $barfont
-    position top
-    workspace_buttons yes
-    strip_workspace_numbers yes
-
-    colors {
-        background $black
-        statusline $white
-        separator  $grey
-
-        # class            border    backgr.   text
-        focused_workspace  $blue     $black    $white
-        active_workspace   $black    $black    $white
-        inactive_workspace $black    $black    $grey
-        urgent_workspace   $orange   $black    $white
-    }
-}
-bar {
-    output DVI-1
     tray_output DVI-1
     font pango: $barfont
     position top
     workspace_buttons yes
     strip_workspace_numbers yes
-    separator_symbol ▪
+    separator_symbol ¦
     status_command ~/usr/i3status/i3status/i3status
 
     colors {
@@ -270,10 +248,14 @@ bindsym $win+Shift+f exec "xdg-open `xcwd`"
 bindsym $mod+F12 exec amixer sset Master 2%+
 bindsym $mod+F11 exec amixer sset Master 2%-
 bindsym $mod+F10 exec amixer set Master toggle
-bindsym $mod+Shift+s exec xfce4-settings-manager
 bindsym --release Print exec xfce4-screenshooter
 bindsym $win+F9 exec "setxkbmap us"
 bindsym $win+F10 exec "setxkbmap -layout de -variant qwerty"
+bindsym $mod+Shift+t exec tint2restart
+
+bindsym $win+p workspace pres
+workspace pres output DVI-0
+assign[window_role="presentation"] pres
 
 
 #
