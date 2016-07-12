@@ -1,4 +1,4 @@
-set PATH $PATH ~/bin ~/.local/bin
+set PATH $PATH ~/bin ~/.local/bin ~/anaconda3/bin
 set -x VREP /home/kenny/usr/vrep/vrep
 set -x EDITOR vim
 set -x GOPATH /home/kenny/go

@@ -118,7 +118,7 @@ endf
 augroup pencil
     autocmd!
     autocmd FileType tex,rst,markdown,mkd call
-                \ pencil#init({'wrap': 'hard', 'autoformat': 0})
+                \ pencil#init({'wrap': 'hard', 'autoformat': 1})
 augroup END
 
 
@@ -153,3 +153,4 @@ au BufNewFile,BufRead *.ino set filetype=c
 au BufNewFile,BufRead *.pde set filetype=c
 au BufNewFile,BufRead *.urdf set filetype=xml
 au BufNewFile,BufRead *.sdf set filetype=xml
+au BufNewFile,BufRead *.c.src set filetype=c

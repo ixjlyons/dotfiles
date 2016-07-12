@@ -1,3 +1,3 @@
 function ll
-    ls -lAh $argv
+    ls -lAh --group-directories-first $argv
 end
