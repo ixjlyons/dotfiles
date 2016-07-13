@@ -1,3 +1,3 @@
 function pacless
-    cat /var/log/pacman.log | grep "upgraded" | less
+    cat /var/log/pacman.log | egrep "upgraded|installed" | less
 end

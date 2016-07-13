@@ -24,6 +24,8 @@ browser = chromium
 #modify_other_keys = false
 
 [colors]
+#cursor = #dcdccc
+#cursor_foreground = #4f4f4f
 foreground      = #c5c8c6
 foreground_bold = #dddddd
 background      = #1d1f21

@@ -7,8 +7,6 @@ Plugin 'vim-latex/vim-latex'
 Plugin 'reedes/vim-pencil'
 Plugin 'chriskempson/base16-vim'
 Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'wting/rust.vim'
-Plugin 'JuliaLang/julia-vim'
 call vundle#end()
 
 filetype plugin indent on

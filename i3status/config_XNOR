@@ -2,9 +2,9 @@ general {
     colors = true
     interval = 1
 
-    color_good = "#bbbbbb"
-    color_degraded = "#b47344"
-    color_bad = "#d64937"
+    color_good = "#f6f0f3"
+    color_degraded = "#dca060"
+    color_bad = "#e31a1c"
 
     output_format = i3bar
 
@@ -22,22 +22,22 @@ order += "tztime time"
 
 disk "/" {
     # fa-folder-open
-    format = "<span foreground='#58697d'></span> %avail (%percentage_avail)"
+    format = "<span foreground='#5294e2'></span> %avail (%percentage_avail)"
     threshold_type = "percentage_avail"
     low_threshold = 20
 }
 
 cpu_temperature 0 {
-    format = "<span foreground='#58697d'></span> %degrees°C"
+    format = "<span foreground='#5294e2'></span> %degrees°C"
 }
 
 wireless wlp3s0 {
-    format_up = "<span color='#58697d'></span> %essid (%ip)"
-    format_down = "<span color='#58697d'></span> (---.--.---)"
+    format_up = "<span color='#5294e2'></span> %essid (%ip)"
+    format_down = "<span color='#5294e2'></span> (---.--.---)"
 }
 
 battery 0 {
-    format = "<span color='#58697d'></span>%status %percentage %remaining"
+    format = "<span color='#5294e2'></span>%status %percentage %remaining"
     path = "/sys/class/power_supply/BAT0/uevent"
     status_bat = ""
     status_chr = ""
@@ -46,11 +46,12 @@ battery 0 {
     low_threshold = 30
     hide_seconds = true
     integer_battery_capacity = true
+    last_full_capacity = true
 }
 
 volume master {
-    format = "<span foreground='#58697d'></span> %volume"
-    format_muted = "<span foreground='#58697d'></span> (%volume)"
+    format = "<span foreground='#5294e2'></span> %volume"
+    format_muted = "<span foreground='#5294e2'></span> (%volume)"
     device = "default"
     mixer = "Master"
     mixer_idx = "0"
@@ -58,14 +59,14 @@ volume master {
 
 tztime date {
     format_time = "%Y-%m-%d"
-    format = "<span foreground='#58697d'></span> %time"
+    format = "<span foreground='#5294e2'></span> %time"
 }
 
 tztime time {
     format_time = "%H:%M"
-    format ="<span foreground='#58697d'></span> %time"
+    format ="<span foreground='#5294e2'></span> %time"
 }
 
 keyboard_layout {
-    format = "<span foreground='#58697d'></span> %s"
+    format = "<span foreground='#5294e2'></span> %s"
 }

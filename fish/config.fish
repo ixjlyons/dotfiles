@@ -1,4 +1,4 @@
-set PATH $PATH ~/bin ~/.local/bin ~/anaconda3/bin
+set PATH $PATH ~/bin ~/.local/bin ~/.gem/ruby/2.3.0/bin ~/miniconda3/bin
 set -x VREP /home/kenny/usr/vrep/vrep
 set -x EDITOR vim
 set -x GOPATH /home/kenny/go
@@ -11,3 +11,5 @@ set __fish_git_prompt_color_branch yellow
 set __fish_git_prompt_char_dirtystate '★'
 set __fish_git_prompt_char_stagedstate '→'
 set __fish_git_prompt_char_stashstate '←'
+
+source (conda info --root)/etc/fish/conf.d/conda.fish

@@ -2,8 +2,8 @@
 # general settings
 #
 
-set $font Liberation Mono 10
-set $barfont Liberation Mono, Font Awesome 10
+set $font Tamzen 12
+set $barfont Tamzen, Font Awesome 12
 
 set $mod Mod1
 set $win Mod4
@@ -11,7 +11,7 @@ font pango: $font
 focus_follows_mouse no
 floating_modifier $mod
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 
 # workspaces on laptop output
 set $wsr1 "1:1"
@@ -63,6 +63,7 @@ bindsym $win+6 workspace $wsl6
 
 # other movements
 bindsym $mod+a focus parent
+bindsym $mod+shift+a focus child
 bindsym $mod+space focus mode_toggle
 bindsym $mod+Tab workspace back_and_forth
 
@@ -175,7 +176,6 @@ for_window [title="recordMyDesktop"] floating enable
 for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle
 for_window [title="Blender User Preferences"] floating enable
 for_window [class="Textext.py"] floating enable
-for_window [title="PyGesture"] floating enable
 for_window [title="MyoSwim"] floating enable
 for_window [window_role="pop-up"] floating enable
 
@@ -185,32 +185,31 @@ for_window [window_role="pop-up"] floating enable
 #
 
 # color definitions
-set $black    #2b2e37
+set $black    #2f343f
 set $altblack #404040
 set $darkgrey #444444
-set $grey     #777777
+set $grey     #afb8c5
 set $purple   #4e3d41
 set $red      #962521
-set $blue     #58697d
-set $white    #bbbbbb
+set $blue     #5294e2
+set $white    #f6f0f3
 set $darkblue #0f1b33
 set $medblue  #122a3d
 set $orange   #d64937
 
 # class                 border    backgr.   text     indicator   child_border
-client.focused          $blue     $black    $white   $red        $blue
-client.focused_inactive $black    $darkgrey $grey    $purple     $darkgrey
-client.unfocused        $black    $black    $white   $purple     $black
-client.urgent           $orange   $black    $white   $purple
+client.focused          $blue     $blue     $white   $white      $blue
+client.focused_inactive $black    $black    $white   $black      $black
+client.unfocused        $black    $black    $grey    $black      $black
+client.urgent           $orange   $black    $white   $black
 
 bar {
-    output LVDS-1
     font pango: $barfont
     tray_output LVDS-1
     position top
     status_command ~/usr/i3status/i3status/i3status
     workspace_buttons yes
-    separator_symbol ▪
+    separator_symbol ¦
     strip_workspace_numbers yes
 
     colors {
@@ -219,41 +218,19 @@ bar {
         separator  $grey
 
         # class            border    backgr.   text
-        focused_workspace  $blue     $black    $white
+        focused_workspace  $blue     $blue     $white
         active_workspace   $black    $black    $white
         inactive_workspace $black    $black    $grey
         urgent_workspace   $orange   $black    $white
     }
 }
-
-bar {
-    output VGA-1
-    font pango: $barfont
-    tray_output none
-    position top
-    workspace_buttons yes
-    strip_workspace_numbers yes
-
-    colors {
-        background $black
-        statusline $white
-        separator  $grey
-
-        # class            border    backgr.   text
-        focused_workspace  $blue     $black    $white
-        active_workspace   $black    $black    $white
-        inactive_workspace $black    $black    $grey
-        urgent_workspace   $orange   $black    $white
-    }
-}
-
 
 #
 # launchers
 #
 
-bindsym $mod+Return exec termite -d "`xcwd`" -e ~/src/fish-shell/env/bin/fish
-bindsym $win+space exec dmenu_run -b -nb '$black' -nf '$grey' -sb '$darkgrey' -sf '$white'
+bindsym $mod+Return exec termite -e "fish" -d "`xcwd`"
+bindsym $win+space exec dmenu_run -nb '$black' -nf '$grey' -sb '$darkgrey' -sf '$white' -fn "Tamzen-12:medium" -h 23
 bindsym $win+f exec "xdg-open ~"
 bindsym $win+Shift+f exec "xdg-open `xcwd`"
 bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+
@@ -262,10 +239,13 @@ bindsym XF86AudioMute exec amixer sset Master toggle
 bindsym XF86MonBrightnessUp exec "light -A 5"
 bindsym XF86MonBrightnessDown exec "light -U 5"
 bindsym XF86AudioPlay exec "cmus-remote -u"
-bindsym Print exec "maim ~/img/screenshot.png"
+bindsym Print exec "xfce4-screenshooter"
 bindsym $win+F9 exec "setxkbmap us"
 bindsym $win+F10 exec "setxkbmap -layout de -variant qwerty"
 
+bindsym $win+p workspace present
+workspace present output VGA-1
+assign [window_role="presentation"] present
 
 #
 # autostarts
@@ -273,4 +253,4 @@ bindsym $win+F10 exec "setxkbmap -layout de -variant qwerty"
 
 exec dropbox &
 exec twmnd &
-exec udiskie --tray &
+exec xfce4-clipman &
