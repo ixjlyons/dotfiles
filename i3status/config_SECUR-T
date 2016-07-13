@@ -2,7 +2,7 @@ general {
     colors = true
     interval = 1
 
-    color_good = "#bbbbbb"
+    color_good = "#f6f0f3"
     color_degraded = "#dca060"
     color_bad = "#e31a1c"
 
@@ -19,31 +19,31 @@ order += "tztime time"
 
 disk "/" {
     # fa-folder-open
-    format = "<span foreground='#587aa0'></span> %avail (%percentage_avail)"
+    format = "<span foreground='#5294e2'></span> %avail (%percentage_avail)"
     threshold_type = "percentage_avail"
     low_threshold = 20
 }
 
 volume master {
-    format = "<span foreground='#587aa0'></span> %volume"
-    format_muted = "<span foreground='#587aa0'></span> %volume"
+    format = "<span foreground='#5294e2'></span> %volume"
+    format_muted = "<span foreground='#5294e2'></span> %volume"
     device = "default"
     mixer = "Master"
     mixer_idx = "0"
 }
 
 ethernet enp0s25 {
-    format_up = "<span foreground='#587aa0'></span> %ip"
+    format_up = "<span foreground='#5294e2'></span> %ip"
     format_down = "<span foreground='#2b5e64'></span> (---.---.-.---)"
 }
 
 tztime date {
     format_time = "%Y-%m-%d"
-    format = "<span foreground='#587aa0'></span> %time"
+    format = "<span foreground='#5294e2'></span> %time"
 }
 
 tztime time {
     format_time = "%H:%M"
-    format ="<span foreground='#587aa0'></span> %time"
+    format ="<span foreground='#5294e2'></span> %time"
 }
 

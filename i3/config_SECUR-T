@@ -212,10 +212,10 @@ set $medblue  #122a3d
 set $orange   #c58c36
 
 # class                 border    backgr.   text     indicator   child_border
-client.focused          $blue     $black    $white   $red        $blue
-client.focused_inactive $black    $darkgrey $grey    $purple     $black
-client.unfocused        $black    $black    $white   $purple     $black
-client.urgent           $orange   $black    $white   $purple
+client.focused          $blue     $blue     $white   $white      $blue
+client.focused_inactive $black    $black    $white   $black      $black
+client.unfocused        $black    $black    $grey    $black      $black
+client.urgent           $orange   $black    $white   $black
 
 bar {
     tray_output DVI-1
