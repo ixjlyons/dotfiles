@@ -116,7 +116,7 @@ endf
 augroup pencil
     autocmd!
     autocmd FileType tex,rst,markdown,mkd call
-                \ pencil#init({'wrap': 'hard', 'autoformat': 1})
+                \ pencil#init({'wrap': 'hard', 'autoformat': 0})
 augroup END
 
 

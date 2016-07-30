@@ -207,7 +207,7 @@ bar {
     font pango: $barfont
     tray_output LVDS-1
     position top
-    status_command ~/usr/i3status/i3status/i3status
+    status_command i3status
     workspace_buttons yes
     separator_symbol ¦
     strip_workspace_numbers yes
