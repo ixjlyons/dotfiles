@@ -187,7 +187,7 @@ for_window [window_role="pop-up"] floating enable
 # color definitions
 set $black    #2f343f
 set $altblack #404040
-set $darkgrey #444444
+set $darkgrey #4e5667
 set $grey     #afb8c5
 set $purple   #4e3d41
 set $red      #962521
@@ -195,7 +195,7 @@ set $blue     #5294e2
 set $white    #f6f0f3
 set $darkblue #0f1b33
 set $medblue  #122a3d
-set $orange   #d64937
+set $orange   #c58c36
 
 # class                 border    backgr.   text     indicator   child_border
 client.focused          $blue     $blue     $white   $white      $blue
@@ -219,7 +219,7 @@ bar {
 
         # class            border    backgr.   text
         focused_workspace  $blue     $blue     $white
-        active_workspace   $black    $black    $white
+        active_workspace   $darkgrey $darkgrey $white
         inactive_workspace $black    $black    $grey
         urgent_workspace   $orange   $black    $white
     }

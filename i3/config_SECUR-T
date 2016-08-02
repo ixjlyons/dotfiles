@@ -195,17 +195,13 @@ for_window [window_role="pop-up"] floating enable
 #
 
 # color definitions
-#set $black    #2b2e37
 set $black    #2f343f
 set $altblack #404040
-set $darkgrey #444444
-#set $grey     #777777
+set $darkgrey #4e5667
 set $grey     #afb8c5
 set $purple   #4e3d41
 set $red      #962521
-#set $blue     #587aa0
 set $blue     #5294e2
-#set $white    #dceaf9
 set $white    #f6f0f3
 set $darkblue #0f1b33
 set $medblue  #122a3d
@@ -218,13 +214,13 @@ client.unfocused        $black    $black    $grey    $black      $black
 client.urgent           $orange   $black    $white   $black
 
 bar {
-    tray_output DVI-1
     font pango: $barfont
+    tray_output DVI-1
     position top
+    status_command i3status
     workspace_buttons yes
-    strip_workspace_numbers yes
     separator_symbol ¦
-    status_command ~/usr/i3status/i3status/i3status
+    strip_workspace_numbers yes
 
     colors {
         background $black
@@ -233,7 +229,7 @@ bar {
 
         # class            border    backgr.   text
         focused_workspace  $blue     $blue     $white
-        active_workspace   $black    $black    $white
+        active_workspace   $darkgrey $darkgrey $white
         inactive_workspace $black    $black    $grey
         urgent_workspace   $orange   $black    $white
     }
@@ -244,7 +240,7 @@ bar {
 # launchers
 #
 
-bindsym $mod+Return exec termite -d "`xcwd`" -e ~/src/fish-shell/env/bin/fish
+bindsym $mod+Return exec termite -d "`xcwd`" -e fish
 bindsym $win+space exec dmenu_run -nb '$black' -nf '$grey' -sb '$blue' -sf '$white' -fn 'Tamzen-12:regular' -h 22
 bindsym $win+f exec "xdg-open ~"
 bindsym $win+Shift+f exec "xdg-open `xcwd`"
@@ -254,7 +250,6 @@ bindsym $mod+F10 exec amixer set Master toggle
 bindsym --release Print exec xfce4-screenshooter
 bindsym $win+F9 exec "setxkbmap us"
 bindsym $win+F10 exec "setxkbmap -layout de -variant qwerty"
-bindsym $mod+Shift+t exec tint2restart
 
 bindsym $win+p workspace pres
 workspace pres output DVI-0
