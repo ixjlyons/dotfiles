@@ -241,7 +241,7 @@ bar {
 #
 
 bindsym $mod+Return exec termite -d "`xcwd`" -e fish
-bindsym $win+space exec dmenu_run -nb '$black' -nf '$grey' -sb '$blue' -sf '$white' -fn 'Tamzen-12:regular' -h 22
+bindsym $win+space exec rofi -show run
 bindsym $win+f exec "xdg-open ~"
 bindsym $win+Shift+f exec "xdg-open `xcwd`"
 bindsym $mod+F12 exec amixer sset Master 2%+
@@ -262,4 +262,4 @@ assign[window_role="presentation"] pres
 
 exec --no-startup-id dropbox &
 exec --no-startup-id twmnd &
-exec --no-startup-id xfce4-clipman &
+exec --no-startup-id redshift-gtk &

@@ -17,6 +17,7 @@ set history=50
 set noruler
 set showcmd
 set incsearch
+set ignorecase
 set autoindent
 set number
 set tabstop=4
