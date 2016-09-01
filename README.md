@@ -20,6 +20,7 @@ folders I currently am using and update:
 * git
 * i3
 * i3status
+* rofi
 * termite
 * twmn
 * vim
@@ -37,6 +38,7 @@ folders I currently am using and update:
 | `fish/config.fish`     | `~/.config/fish/`            |
 | `fish/functions/*`     | `~/.config/fish/functions/*` |
 | `qtile/config.py`      | `~/.config/qtile/`           |
+| `rofi/config`          | `~/.config/rofi/`            |
 | `termite/config`       | `~/.config/termite/`         |
 | `twmn/twmn.conf`       | `~/.config/twmn/`            |
 | `vim/.vimrc`           | `~`                          |
