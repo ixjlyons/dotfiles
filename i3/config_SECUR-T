@@ -69,6 +69,7 @@ bindsym $win+9 workspace $wsl9
 
 # other movements
 bindsym $mod+a focus parent
+bindsym $mod+shift+a focus child
 bindsym $mod+space focus mode_toggle
 bindsym $mod+Tab workspace back_and_forth
 
@@ -189,6 +190,7 @@ for_window [title="Blender User Preferences"] floating enable
 for_window [class="Textext.py"] floating enable
 for_window [title="MyoSwim"] floating enable
 for_window [window_role="pop-up"] floating enable
+
 
 #
 # appearance

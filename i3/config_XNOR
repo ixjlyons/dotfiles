@@ -225,12 +225,13 @@ bar {
     }
 }
 
+
 #
 # launchers
 #
 
 bindsym $mod+Return exec termite -e "fish" -d "`xcwd`"
-bindsym $win+space exec dmenu_run -nb '$black' -nf '$grey' -sb '$darkgrey' -sf '$white' -fn "Tamzen-12:medium" -h 23
+bindsym $win+space exec rofi -show run -bw 2
 bindsym $win+f exec "xdg-open ~"
 bindsym $win+Shift+f exec "xdg-open `xcwd`"
 bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+
@@ -247,10 +248,11 @@ bindsym $win+p workspace present
 workspace present output VGA-1
 assign [window_role="presentation"] present
 
+
 #
 # autostarts
 #
 
-exec dropbox &
-exec twmnd &
-exec xfce4-clipman &
+exec --no-startup-id dropbox &
+exec --no-startup-id twmnd &
+exec --no-startup-id redshift-gtk &
