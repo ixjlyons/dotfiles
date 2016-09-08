@@ -1,3 +1,7 @@
+"""""""""""""""""
+" vundle config "
+"""""""""""""""""
+
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -9,49 +13,47 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'bronson/vim-trailing-whitespace'
 call vundle#end()
 
-filetype plugin indent on
 
+""""""""""""""""""
+" general config "
+""""""""""""""""""
+
+" better backspacing
 set backspace=indent,eol,start
+" don't make backup files
 set nobackup
-set history=50
-set noruler
+" show selection size in visual mode
 set showcmd
+" show matches as a search string is typed
 set incsearch
+" ignore case in searches
 set ignorecase
+" copy indent form current line with <CR> or o or O
 set autoindent
+" show line numbers
 set number
+" always insert 4 spaces for tabs
 set tabstop=4
 set shiftwidth=4
 set expandtab
+" highlight line of the cursor
 set cursorline
-
-set background=dark
-let base16colorspace=256
-
-if has('mouse')
-  set mouse=a
-endif
-
-syntax on
+" use gui colors specified in the theme (requires +termguicolors)
+set termguicolors
+" use the mouse
+set mouse=a
+" keep search matches highlighted
 set hlsearch
+" wraps lines while keeping words intact
+set linebreak
 
-colorscheme base16-tomorrow
-hi Normal ctermbg=NONE
+" enale filetype-dependent indenting
+filetype plugin indent on
+" enable syntax highlighting
+syntax on
 
-augroup vimrcEx
-    au!
-    autocmd FileType text setlocal textwidth=78
-
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid or when inside an event handler
-    " (happens when dropping a file on gvim).
-    " Also don't do it when the mark is in the first line, that is the default
-    " position when opening a file.
-    autocmd BufReadPost *
-      \ if line("'\"") > 1 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
-augroup END
+" nice colorscheme
+colorscheme base16-tomorrow-night
 
 " visual navigation of wrapped lines
 noremap j gj
@@ -59,11 +61,31 @@ noremap k gk
 noremap gj j
 noremap gk k
 
-" wraps lines while keeping words intact
-set linebreak
-set nofoldenable
 
-:set cursorline
+"""""""""""""""""""
+" file type stuff "
+"""""""""""""""""""
+
+" give Makefiles tabs instead of spaces
+autocmd FileType make setlocal noexpandtab
+" break text files at 80
+autocmd FileType text setlocal textwidth=80
+
+" syntax highlighting for files with weird extensions
+au BufNewFile,BufRead *.al set filetype=
+au BufNewFile,BufRead *.launch set filetype=xml
+au BufNewFile,BufRead *.ino set filetype=c
+au BufNewFile,BufRead *.pde set filetype=c
+au BufNewFile,BufRead *.urdf set filetype=xml
+au BufNewFile,BufRead *.sdf set filetype=xml
+au BufNewFile,BufRead *.c.src set filetype=c
+
+" jump to last known position in the file
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+
 
 """""""""""""""""""
 " vim-latex stuff "
@@ -81,23 +103,21 @@ let g:Tex_ViewRule_pdf = 'xdg-open 2> /dev/null'
 let g:Tex_UseMakefile = 0
 let g:Tex_BIBINPUTS = '/home/kenny/texmf/bibtex/bib'
 
-" turn off folding
-:let Tex_FoldedSections=""
-:let Tex_FoldedEnvironments=""
-:let Tex_FoldedMisc=""
-
 
 """"""""""""""""""""
 " vim-pencil stuff "
 """"""""""""""""""""
 
-" some general options
-let g:pencil#textwidth = 79 " wrap at 79 characters
-let g:pencil#conceallevel = 0 " don't conceal characters
-let g:pencil#mode_indicators = {'hard': '✐h', 'soft': '✎s', 'off': '✎',}
-let g:pencil#autoformat_indicator = {'auto': 'a+', 'noauto': 'a-',}
+" wrap at 79 characters
+let g:pencil#textwidth = 79
+" don't conceal characters
+let g:pencil#conceallevel = 0
+" indicate pencil mode
+let g:pencil#mode_indicators = {'hard': 'hpencil', 'soft': 'spencil', 'off': 'nopencil',}
+" indicate if pencil autoformat is on (used by PencilAutoformat)
+let g:pencil#autoformat_indicator = {'auto': '[a]', 'noauto': '',}
 
-" enable and disable autoformatting with `\p` (default is off)
+" toggle autoformat with <leader>p (default is off)
 nnoremap <silent> <leader>p :PFormatToggle<cr>
 
 " function to return a string indicating whether or not autoformat is enabled
@@ -136,20 +156,3 @@ if has('statusline')
     " vim-pencil mode
     set statusline+=\ %{PencilMode()}%{PencilAutoformat()}
 endif
-
-
-"""""""""""""""""""
-" file type stuff "
-"""""""""""""""""""
-
-" give Makefiles tabs instead of spaces
-autocmd FileType make setlocal noexpandtab
-
-" syntax highlighting for files with weird extensions
-au BufNewFile,BufRead *.al set filetype=
-au BufNewFile,BufRead *.launch set filetype=xml
-au BufNewFile,BufRead *.ino set filetype=c
-au BufNewFile,BufRead *.pde set filetype=c
-au BufNewFile,BufRead *.urdf set filetype=xml
-au BufNewFile,BufRead *.sdf set filetype=xml
-au BufNewFile,BufRead *.c.src set filetype=c
