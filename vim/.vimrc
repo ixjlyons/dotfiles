@@ -10,7 +10,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-latex/vim-latex'
 Plugin 'reedes/vim-pencil'
 Plugin 'chriskempson/base16-vim'
-Plugin 'bronson/vim-trailing-whitespace'
 call vundle#end()
 
 
@@ -26,8 +25,10 @@ set nobackup
 set showcmd
 " show matches as a search string is typed
 set incsearch
-" ignore case in searches
+" ignore case in searches...
 set ignorecase
+" ...unless you search using uppercase letters
+set smartcase
 " copy indent form current line with <CR> or o or O
 set autoindent
 " show line numbers
@@ -61,6 +62,9 @@ noremap k gk
 noremap gj j
 noremap gk k
 
+" flying buffer changes
+nnoremap <leader>b :ls<CR>:b<space>
+
 
 """""""""""""""""""
 " file type stuff "
@@ -85,6 +89,24 @@ autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
   \   exe "normal! g`\"" |
   \ endif
+
+
+"""""""""""""""""""""""""""
+" fix trailing whitespace "
+"""""""""""""""""""""""""""
+
+" highlight trailing whitespace, http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+highlight default ExtraWhitespace ctermbg=darkred guibg=#382424
+autocmd ColorScheme * highlight default ExtraWhitespace ctermbg=red guibg=red
+autocmd BufRead,BufNew * match ExtraWhitespace /\\\@<![\u3000[:space:]]\+$/
+
+function! s:FixWhitespace(line1,line2)
+    let l:save_cursor = getpos(".")
+    silent! execute ':' . a:line1 . ',' . a:line2 . 's/\\\@<!\s\+$//'
+    call setpos('.', l:save_cursor)
+endfunction
+
+command! -range=% FixWhitespace call <SID>FixWhitespace(<line1>,<line2>)
 
 
 """""""""""""""""""
