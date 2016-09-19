@@ -1,21 +1,25 @@
 function fish_prompt
-    set -l pwd $PWD
-    set -l home_dir (string match -r "$HOME(/.*|\$)" "$pwd")
-    if set -q home_dir[2]
-        set pwd "~$home_dir[2]"
-    end
+	if not set -q VIRTUAL_ENV_DISABLE_PROMPT
+      set -g VIRTUAL_ENV_DISABLE_PROMPT true
+   end
+   set_color cyan
+   printf '%s' (whoami)
+   set_color normal
+   printf '::'
 
-    set_color blue
-    printf "%s" (whoami)
-    set_color cyan
-    printf '::'
-    set_color green
-    printf "%s" (hostname)
+   set_color blue
+   printf '%s' (hostname|cut -d . -f 1)
+   set_color normal
+   printf '['
 
-    set_color normal
-    printf "[$pwd]"
-    set_color normal
-    printf '%s ' (__fish_git_prompt)
-    set_color normal
-    printf '\n〉'
+   set_color normal
+   printf '%s]' (prompt_pwd)
+   set_color normal
+
+   if test $VIRTUAL_ENV
+       printf "(%s)" (set_color green)(basename $VIRTUAL_ENV)(set_color normal)
+   end
+   set_color purple
+   printf ' » '
+   set_color normal
 end
