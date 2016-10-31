@@ -7,7 +7,6 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-Plugin 'vim-latex/vim-latex'
 Plugin 'reedes/vim-pencil'
 Plugin 'chriskempson/base16-vim'
 call vundle#end()
@@ -72,6 +71,9 @@ noremap gk k
 " flying buffer changes
 nnoremap <leader>b :ls<CR>:b<space>
 
+" mapping to build
+nnoremap <leader>m :!make<CR>
+
 
 """"""""""""""""
 " netrw config "
@@ -128,23 +130,6 @@ function! s:FixWhitespace(line1,line2)
 endfunction
 
 command! -range=% FixWhitespace call <SID>FixWhitespace(<line1>,<line2>)
-
-
-"""""""""""""""""""
-" vim-latex stuff "
-"""""""""""""""""""
-
-" general recommended settings
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "latex"
-
-" compiler and viewer settings
-let g:Tex_CompileRule_pdf = 'pdflatex --shell-escape --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_MultipleCompileFormats='pdf'
-let g:Tex_ViewRule_pdf = 'xdg-open 2> /dev/null'
-let g:Tex_UseMakefile = 0
-let g:Tex_BIBINPUTS = '/home/kenny/texmf/bibtex/bib'
 
 
 """"""""""""""""""""
