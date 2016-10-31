@@ -4,3 +4,4 @@
 [ -f ~/.xprofile ] && source ~/.xprofile
 
 exec i3
+#exec herbstluftwm --locked

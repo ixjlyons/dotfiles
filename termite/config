@@ -18,7 +18,7 @@ cursor_blink = off
 cursor_shape = underline
 
 # $BROWSER is used by default
-browser = chromium
+browser = google-chrome-stable
 
 # emit escape sequences for other keys modified by Control
 #modify_other_keys = false
@@ -28,7 +28,8 @@ browser = chromium
 #cursor_foreground = #4f4f4f
 foreground      = #c5c8c6
 foreground_bold = #dddddd
-background      = #1d1f21
+#background      = #1d1f21
+background = #2f343f
 
 # 16 color space
 color0  = #1d1f21

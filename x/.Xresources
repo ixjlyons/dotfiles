@@ -7,39 +7,60 @@ Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
 ! urxvt
-URxvt*transparent: true
-URxvt*shading: 10
 URxvt*scrollBar: false
-URxvt.font: xft:DejaVuSansMono:pixelsize=11
-URxvt.boldFont: xft:DejaVuSansMono:pixelsize=11:Bold
+URxvt.font: xft:Tamzen:pixelsize=11
+URxvt.boldFont: xft:Tamzen:pixelsize=11:Bold
 URxvt.letterSpace: -1
 URxvt.iso14755: false
 URxvt.intensityStyles: true
 
-*.background: #101010
-*.foreground: #bbbbbb
-*.cursorColor: #687496
-! black
-*.color0:  #282828
-*.color8:  #323232
-! red
-*.color1:  #962d2a
-*.color9:  #b43732
-! green
-*.color2:  #92966a
-*.color10: #afb47f
-! yellow
-*.color3:  #966039
-*.color11: #b47344
-! blue
-*.color4:  #687496
-*.color12: #7c8bb4
-! magenta
-*.color5:  #765796
-*.color13: #8e68b4
-! cyan
-*.color6:  #739396
-*.color14: #8ab1b4
-! grey
-*.color7:  #999999
-*.color15: #d5d5d5
+! Base16 Tomorrow Night
+! Scheme: Chris Kempson (http://chriskempson.com)
+
+#define base00 #1d1f21
+#define base01 #282a2e
+#define base02 #373b41
+#define base03 #969896
+#define base04 #b4b7b4
+#define base05 #c5c8c6
+#define base06 #e0e0e0
+#define base07 #ffffff
+#define base08 #cc6666
+#define base09 #de935f
+#define base0A #f0c674
+#define base0B #b5bd68
+#define base0C #8abeb7
+#define base0D #81a2be
+#define base0E #b294bb
+#define base0F #a3685a
+
+*.foreground:   base05
+*.background:   base00
+*.cursorColor:  base05
+
+*.color0:       base00
+*.color1:       base08
+*.color2:       base0B
+*.color3:       base0A
+*.color4:       base0D
+*.color5:       base0E
+*.color6:       base0C
+*.color7:       base05
+
+*.color8:       base03
+*.color9:       base08
+*.color10:      base0B
+*.color11:      base0A
+*.color12:      base0D
+*.color13:      base0E
+*.color14:      base0C
+*.color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*.color16:      base09
+*.color17:      base0F
+*.color18:      base01
+*.color19:      base02
+*.color20:      base04
+*.color21:      base06
