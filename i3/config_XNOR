@@ -230,15 +230,15 @@ bar {
 # launchers
 #
 
-bindsym $mod+Return exec termite -e "fish" -d "`xcwd`"
+bindsym $mod+Return exec st -e "fish"
 bindsym $win+space exec rofi -show run -bw 2
 bindsym $win+f exec "xdg-open ~"
 bindsym $win+Shift+f exec "xdg-open `xcwd`"
 bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 1%-
 bindsym XF86AudioMute exec amixer sset Master toggle
-bindsym XF86MonBrightnessUp exec "light -A 5"
-bindsym XF86MonBrightnessDown exec "light -U 5"
+bindsym XF86MonBrightnessUp exec "light -A 10"
+bindsym XF86MonBrightnessDown exec "light -U 10"
 bindsym XF86AudioPlay exec "cmus-remote -u"
 bindsym Print exec "xfce4-screenshooter"
 bindsym $win+F9 exec "setxkbmap us"

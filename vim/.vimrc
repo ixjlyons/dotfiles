@@ -12,6 +12,9 @@ Plugin 'reedes/vim-pencil'
 Plugin 'chriskempson/base16-vim'
 call vundle#end()
 
+" set Vim-specific sequences for RGB colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 """"""""""""""""""
 " general config "
@@ -48,8 +51,12 @@ set hlsearch
 " wraps lines while keeping words intact
 set linebreak
 
+" space bar is a great map leader
+let mapleader = "\<space>"
+
 " enale filetype-dependent indenting
 filetype plugin indent on
+
 " enable syntax highlighting
 syntax on
 
@@ -64,6 +71,20 @@ noremap gk k
 
 " flying buffer changes
 nnoremap <leader>b :ls<CR>:b<space>
+
+
+""""""""""""""""
+" netrw config "
+""""""""""""""""
+
+" tree view by default
+let g:netrw_liststyle = 3
+" percentage of split for netrw (great with :Lexplore)
+let g:netrw_winsize = 25
+" toggle left explorer
+nnoremap <leader>e :Lexplore<cr>
+" no banner at the top
+let g:netrw_banner = 0
 
 
 """""""""""""""""""
@@ -97,7 +118,7 @@ autocmd BufReadPost *
 
 " highlight trailing whitespace, http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 highlight default ExtraWhitespace ctermbg=darkred guibg=#382424
-autocmd ColorScheme * highlight default ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * highlight default ExtraWhitespace ctermbg=darkred guibg=darkred
 autocmd BufRead,BufNew * match ExtraWhitespace /\\\@<![\u3000[:space:]]\+$/
 
 function! s:FixWhitespace(line1,line2)

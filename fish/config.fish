@@ -1,4 +1,5 @@
 set PATH $PATH ~/bin ~/.local/bin ~/.gem/ruby/2.3.0/bin
+
 set -x VREP /home/kenny/usr/vrep/vrep
 set -x EDITOR vim
 set -x GOPATH /home/kenny/go
