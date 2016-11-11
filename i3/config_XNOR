@@ -230,7 +230,7 @@ bar {
 # launchers
 #
 
-bindsym $mod+Return exec st -e "fish"
+bindsym $mod+Return exec termite -d "`xcwd`" -e "fish"
 bindsym $win+space exec rofi -show run -bw 2
 bindsym $win+f exec "xdg-open ~"
 bindsym $win+Shift+f exec "xdg-open `xcwd`"
