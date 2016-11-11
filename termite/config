@@ -12,7 +12,7 @@ scrollback_lines = 1000
 search_wrap = true
 
 # "system", "on" or "off"
-cursor_blink = off
+cursor_blink = on
 
 # "block", "underline" or "ibeam"
 cursor_shape = underline
@@ -24,53 +24,51 @@ browser = google-chrome-stable
 #modify_other_keys = false
 
 [colors]
-#cursor = #dcdccc
-#cursor_foreground = #4f4f4f
-foreground      = #c5c8c6
-foreground_bold = #dddddd
-#background      = #1d1f21
-background = #2f343f
+# Base16 Eighties
+# Author: Chris Kempson (http://chriskempson.com)
+
+foreground      = #d3d0c8
+foreground_bold = #e8e6df
+#cursor          = #e8e6df
+background      = #2d2d2d
 
 # 16 color space
-color0  = #1d1f21
-color8  = #969896
 
-color1  = #cc6666
-color9  = #cc6666
+# Black, Gray, Silver, White
+color0  = #2d2d2d
+color8  = #747369
+color7  = #d3d0c8
+color15 = #f2f0ec
 
-color2  = #b5bd68
-color10 = #b5bd68
+# Red
+color1  = #f2777a
+color9  = #f2777a
 
-color3  = #f0c674
-color11 = #f0c674
+# Green
+color2  = #99cc99
+color10 = #99cc99
 
-color4  = #81a2be
-color12 = #81a2be
+# Yellow
+color3  = #ffcc66
+color11 = #ffcc66
 
-color5  = #b294bb
-color13 = #b294bb
+# Blue
+color4  = #6699cc
+color12 = #6699cc
 
-color6  = #8abeb7
-color14 = #8abeb7
+# Purple
+color5  = #cc99cc
+color13 = #cc99cc
 
-color7  = #c5c8c6
-color15 = #ffffff
+# Teal
+color6  = #66cccc
+color14 = #66cccc
 
-# 256 color space
-color16 = #de935f
-color17 = #a3685a
-color18 = #282a2e
-color19 = #373b41
-color20 = #b4b7b4
-color21 = #e0e0e0
-
-[hints]
-#font = Monospace 12
-#foreground = #dcdccc
-#background = #3f3f3f
-#active_foreground = #e68080
-#active_background = #3f3f3f
-#padding = 2
-#border = #3f3f3f
-#border_width = 0.5
-#roundness = 2.0
+# Extra colors
+color15 = #f2f0ec
+color16 = #f99157
+color17 = #d27b53
+color18 = #393939
+color19 = #515151
+color20 = #a09f93
+color21 = #e8e6df

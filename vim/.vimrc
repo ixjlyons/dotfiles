@@ -60,7 +60,7 @@ filetype plugin indent on
 syntax on
 
 " nice colorscheme
-colorscheme base16-tomorrow-night
+colorscheme base16-eighties
 
 " visual navigation of wrapped lines
 noremap j gj
