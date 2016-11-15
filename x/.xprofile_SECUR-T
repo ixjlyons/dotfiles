@@ -5,4 +5,5 @@ xset r rate 250 25 &
 xset b off &
 export AWT_TOOLKIT=XToolkit
 export QT_QPA_PLATFORMTHEME="qt5ct"
+xmodmap ~/.Xmodmap
 sh ~/.fehbg &
