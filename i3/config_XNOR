@@ -105,7 +105,7 @@ bindsym $mod+Shift+m move workspace to output right
 #
 
 # container layout type
-bindsym $mod+s layout stacking
+bindsym $mod+s layout stacked
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -201,7 +201,7 @@ set $orange   #c58c36
 client.focused          $blue     $blue     $white   $white      $blue
 client.focused_inactive $black    $black    $white   $black      $black
 client.unfocused        $black    $black    $grey    $black      $black
-client.urgent           $orange   $black    $white   $black
+client.urgent           $orange   $black    $white   $black      $black
 
 bar {
     font pango: $barfont
