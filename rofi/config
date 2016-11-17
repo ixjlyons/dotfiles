@@ -1,6 +1,10 @@
-! ------------------------------------------------------------------------------
-! ROFI Color theme
-! ------------------------------------------------------------------------------
+rofi.lines: 4
+rofi.width: 30
+rofi.location: 2
+rofi.padding: 2
+rofi.bw: 0
+rofi.font: Tamzen 12
+rofi.separator-style: solid
 rofi.color-enabled: true
 rofi.color-window: #2f343f, #5294e2, #5294e2
 rofi.color-normal: #2f343f, #afb8c5, argb:17ffffff, #5294e2, #f6f0f3
