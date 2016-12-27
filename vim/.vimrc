@@ -9,6 +9,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'reedes/vim-pencil'
 Plugin 'chriskempson/base16-vim'
+Plugin 'rust-lang/rust.vim'
 call vundle#end()
 
 " set Vim-specific sequences for RGB colors
@@ -74,6 +75,9 @@ nnoremap <leader>b :ls<CR>:b<space>
 " mapping to build
 nnoremap <leader>m :!make<CR>
 
+" highlight word nearest cursor without jumping to next match
+" thanks to Antony on #vim freenode
+nnoremap <leader>* :let @/='\<<c-r><c-w>\>'\|set hls<cr>
 
 """"""""""""""""
 " netrw config "
