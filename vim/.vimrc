@@ -9,11 +9,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'reedes/vim-pencil'
 Plugin 'chriskempson/base16-vim'
+Plugin 'plasticboy/vim-markdown'
 call vundle#end()
 
-" set Vim-specific sequences for RGB colors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 """"""""""""""""""
 " general config "
@@ -62,6 +60,7 @@ syntax on
 " nice colorscheme
 colorscheme base16-eighties
 
+
 " visual navigation of wrapped lines
 noremap j gj
 noremap k gk
@@ -74,6 +73,9 @@ nnoremap <leader>b :ls<CR>:b<space>
 " mapping to build
 nnoremap <leader>m :!make<CR>
 
+" highlight word under cursor without jumping
+" thanks to Antony in #vim on freenode
+nnoremap <leader>* :let @/='\<<c-r><c-w>\>'\|set hls<cr>
 
 """"""""""""""""
 " netrw config "
@@ -184,3 +186,9 @@ if has('statusline')
     " vim-pencil mode
     set statusline+=\ %{PencilMode()}%{PencilAutoformat()}
 endif
+
+""""""""""""""""""""
+" markdown options "
+""""""""""""""""""""
+
+let g:vim_markdown_folding_disabled = 1
