@@ -21,7 +21,7 @@ order += "tztime time"
 
 disk "/" {
     # fa-folder-open
-    format = "<span foreground='#5294e2'></span> %avail (%percentage_avail)"
+    format = "<span foreground='#5294e2'></span> %avail (%percentage_avail)"
     threshold_type = "percentage_avail"
     low_threshold = 20
 }
@@ -36,11 +36,12 @@ wireless wlp3s0 {
 }
 
 battery 0 {
-    format = "<span color='#5294e2'></span>%status %percentage %remaining"
+    format = "%status %percentage %remaining"
     path = "/sys/class/power_supply/BAT0/uevent"
-    status_bat = ""
-    status_chr = ""
-    status_full = ""
+    status_bat = "<span color='#5294e2'></span>"
+    status_chr = "<span color='#5294e2'></span>"
+    status_full = "<span color='#5294e2'></span>"
+    status_unk = "<span color='#5294e2'></span>"
     threshold_type = "time"
     low_threshold = 30
     hide_seconds = true

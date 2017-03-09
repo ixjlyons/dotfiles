@@ -73,8 +73,8 @@ nnoremap <leader>b :ls<CR>:b<space>
 " mapping to build
 nnoremap <leader>m :!make<CR>
 
-" highlight word under cursor without jumping
-" thanks to Antony in #vim on freenode
+" highlight word nearest cursor without jumping to next match
+" thanks to Antony on #vim freenode
 nnoremap <leader>* :let @/='\<<c-r><c-w>\>'\|set hls<cr>
 
 """"""""""""""""

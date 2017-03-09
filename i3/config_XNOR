@@ -2,8 +2,8 @@
 # general settings
 #
 
-set $font Tamzen 12
-set $barfont Tamzen, Font Awesome 12
+set $font Tamzen 11
+set $barfont Tamzen, Font Awesome 10
 
 set $mod Mod1
 set $win Mod4
@@ -13,24 +13,27 @@ floating_modifier $mod
 
 for_window [class="^.*"] border pixel 2
 
+gaps inner 4
+gaps outer 0
+
 # workspaces on laptop output
-set $wsr1 "1:1"
-set $wsr2 "2:2"
-set $wsr3 "3:3"
-set $wsr4 "4:4"
-set $wsr5 "5:5"
-set $wsr6 "6:6"
-set $wsr7 "7:7"
-set $wsr8 "8:8"
-set $wsr9 "9:9"
+set $wsr1 "1: 1"
+set $wsr2 "2: 2"
+set $wsr3 "3: 3"
+set $wsr4 "4: 4"
+set $wsr5 "5: 5"
+set $wsr6 "6: 6"
+set $wsr7 "7: 7"
+set $wsr8 "8: 8"
+set $wsr9 "9: 9"
 
 # workspaces on external output
-set $wsl1 "1:a"
-set $wsl2 "2:b"
-set $wsl3 "3:c"
-set $wsl4 "4:d"
-set $wsl5 "5:e"
-set $wsl6 "6:f"
+set $wsl1 "1: a"
+set $wsl2 "2: b"
+set $wsl3 "3: c"
+set $wsl4 "4: d"
+set $wsl5 "5: e"
+set $wsl6 "6: f"
 
 
 #
@@ -203,6 +206,7 @@ client.focused_inactive $black    $black    $white   $black      $black
 client.unfocused        $black    $black    $grey    $black      $black
 client.urgent           $orange   $black    $white   $black      $black
 
+
 bar {
     font pango: $barfont
     tray_output LVDS-1
@@ -211,6 +215,7 @@ bar {
     workspace_buttons yes
     separator_symbol ¦
     strip_workspace_numbers yes
+    height 28
 
     colors {
         background $black
@@ -231,7 +236,7 @@ bar {
 #
 
 bindsym $mod+Return exec termite -d "`xcwd`" -e "fish"
-bindsym $win+space exec rofi -show run -bw 2
+bindsym $win+space exec rofi -show run
 bindsym $win+f exec "xdg-open ~"
 bindsym $win+Shift+f exec "xdg-open `xcwd`"
 bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+
@@ -256,3 +261,4 @@ assign [window_role="presentation"] present
 exec --no-startup-id dropbox &
 exec --no-startup-id twmnd &
 exec --no-startup-id redshift-gtk &
+exec --no-startup-id thunar --daemon &
