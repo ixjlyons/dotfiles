@@ -2,7 +2,7 @@
 # general settings
 #
 
-set $font Tamzen 11
+set $font Tamzen 10
 set $barfont Tamzen, Font Awesome 10
 
 set $mod Mod1
@@ -12,9 +12,6 @@ focus_follows_mouse no
 floating_modifier $mod
 
 for_window [class="^.*"] border pixel 2
-
-gaps inner 4
-gaps outer 0
 
 # workspaces on laptop output
 set $wsr1 "1: 1"
@@ -215,7 +212,6 @@ bar {
     workspace_buttons yes
     separator_symbol ¦
     strip_workspace_numbers yes
-    height 28
 
     colors {
         background $black
@@ -235,7 +231,7 @@ bar {
 # launchers
 #
 
-bindsym $mod+Return exec termite -d "`xcwd`" -e "fish"
+bindsym $mod+Return exec xfce4-terminal --working-directory "`xcwd`" -e "fish"
 bindsym $win+space exec rofi -show run
 bindsym $win+f exec "xdg-open ~"
 bindsym $win+Shift+f exec "xdg-open `xcwd`"
@@ -248,6 +244,8 @@ bindsym XF86AudioPlay exec "cmus-remote -u"
 bindsym Print exec "xfce4-screenshooter"
 bindsym $win+F9 exec "setxkbmap us"
 bindsym $win+F10 exec "setxkbmap -layout de -variant qwerty"
+bindsym $win+v exec ~/.screenlayout/lvds.sh
+bindsym $win+shift+v exec ~/.screenlayout/vgaright.sh
 
 bindsym $win+p workspace present
 workspace present output VGA-1
@@ -259,6 +257,6 @@ assign [window_role="presentation"] present
 #
 
 exec --no-startup-id dropbox &
-exec --no-startup-id twmnd &
 exec --no-startup-id redshift-gtk &
 exec --no-startup-id thunar --daemon &
+exec --no-startup-id lxqt-notificationd &

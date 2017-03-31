@@ -12,8 +12,7 @@ general {
 }
 
 order += "disk /"
-order += "cpu_temperature 0"
-order += "wireless wlp3s0"
+order += "wireless _first_"
 order += "battery 0"
 order += "volume master"
 order += "tztime date"
@@ -26,11 +25,7 @@ disk "/" {
     low_threshold = 20
 }
 
-cpu_temperature 0 {
-    format = "<span foreground='#5294e2'></span> %degrees°C"
-}
-
-wireless wlp3s0 {
+wireless _first_ {
     format_up = "<span color='#5294e2'></span> %essid (%ip)"
     format_down = "<span color='#5294e2'></span> (---.--.---)"
 }

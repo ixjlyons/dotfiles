@@ -47,6 +47,8 @@ set mouse=a
 set hlsearch
 " wraps lines while keeping words intact
 set linebreak
+" use unnamed to allow yank/paste from system-wide selection
+set clipboard=unnamed
 
 " space bar is a great map leader
 let mapleader = "\<space>"
@@ -76,6 +78,7 @@ nnoremap <leader>m :!make<CR>
 " highlight word nearest cursor without jumping to next match
 " thanks to Antony on #vim freenode
 nnoremap <leader>* :let @/='\<<c-r><c-w>\>'\|set hls<cr>
+
 
 """"""""""""""""
 " netrw config "
@@ -187,8 +190,8 @@ if has('statusline')
     set statusline+=\ %{PencilMode()}%{PencilAutoformat()}
 endif
 
-""""""""""""""""""""
-" markdown options "
-""""""""""""""""""""
-
-let g:vim_markdown_folding_disabled = 1
+" shows syntax item (from reedes from vim-pencil)
+map <F10> :echo "hi<"
+\ . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
