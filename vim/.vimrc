@@ -9,7 +9,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'reedes/vim-pencil'
 Plugin 'chriskempson/base16-vim'
-Plugin 'plasticboy/vim-markdown'
 call vundle#end()
 
 
