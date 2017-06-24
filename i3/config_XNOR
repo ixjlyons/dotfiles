@@ -231,13 +231,13 @@ bar {
 # launchers
 #
 
-bindsym $mod+Return exec xfce4-terminal --working-directory "`xcwd`" -e "fish"
+bindsym $mod+Shift+Return exec xfce4-terminal
 bindsym $win+space exec rofi -show run
 bindsym $win+f exec "xdg-open ~"
 bindsym $win+Shift+f exec "xdg-open `xcwd`"
-bindsym XF86AudioRaiseVolume exec amixer sset Master 1%+
-bindsym XF86AudioLowerVolume exec amixer sset Master 1%-
-bindsym XF86AudioMute exec amixer sset Master toggle
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +2%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -2%"
+bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 bindsym XF86MonBrightnessUp exec "light -A 10"
 bindsym XF86MonBrightnessDown exec "light -U 10"
 bindsym XF86AudioPlay exec "cmus-remote -u"
@@ -260,3 +260,4 @@ exec --no-startup-id dropbox &
 exec --no-startup-id redshift-gtk &
 exec --no-startup-id thunar --daemon &
 exec --no-startup-id lxqt-notificationd &
+exec --no-startup-id cmst &

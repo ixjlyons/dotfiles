@@ -3,8 +3,8 @@ general {
     interval = 2
 
     color_good = "#f6f0f3"
-    color_degraded = "#dca060"
-    color_bad = "#e31a1c"
+    color_degraded = "#f1b07c"
+    color_bad = "#f16868"
 
     output_format = i3bar
 
