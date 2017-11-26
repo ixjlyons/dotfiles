@@ -4,7 +4,7 @@ general {
 
     color_good = "#f6f0f3"
     color_degraded = "#f1b07c"
-    color_bad = "#f16868"
+    color_bad = "#cc575d"
 
     output_format = i3bar
 
@@ -22,7 +22,7 @@ disk "/" {
     # fa-folder-open
     format = "<span foreground='#5294e2'></span> %avail (%percentage_avail)"
     threshold_type = "percentage_avail"
-    low_threshold = 20
+    low_threshold = 15
 }
 
 wireless _first_ {

@@ -9,6 +9,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'reedes/vim-pencil'
 Plugin 'chriskempson/base16-vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'w0rp/ale'
+Plugin 'junegunn/fzf.vim'
 call vundle#end()
 
 
@@ -48,6 +51,11 @@ set hlsearch
 set linebreak
 " use unnamed to allow yank/paste from system-wide selection
 set clipboard=unnamed
+" allow for multiple unwritten buffers
+set hidden
+" command-line completion
+set wildmenu
+set wildmode=full
 
 " space bar is a great map leader
 let mapleader = "\<space>"
@@ -61,7 +69,6 @@ syntax on
 " nice colorscheme
 colorscheme base16-eighties
 
-
 " visual navigation of wrapped lines
 noremap j gj
 noremap k gk
@@ -69,15 +76,23 @@ noremap gj j
 noremap gk k
 
 " flying buffer changes
-nnoremap <leader>b :ls<CR>:b<space>
+"nnoremap <leader>b :ls<CR>:b<space>
 
 " mapping to build
-nnoremap <leader>m :!make<CR>
+nnoremap <leader>m :make %<CR>
 
 " highlight word nearest cursor without jumping to next match
 " thanks to Antony on #vim freenode
 nnoremap <leader>* :let @/='\<<c-r><c-w>\>'\|set hls<cr>
 
+" use silver surfer for search
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+runtime macros/matchit.vim
+
+" juggling with quickfix entries
+nnoremap <End>  :cnext<CR>
+nnoremap <Home> :cprevious<CR>
 
 """"""""""""""""
 " netrw config "
@@ -100,7 +115,7 @@ let g:netrw_banner = 0
 " give Makefiles tabs instead of spaces
 autocmd FileType make setlocal noexpandtab
 " break text files at 80
-autocmd FileType text setlocal textwidth=80
+autocmd FileType text,python setlocal textwidth=79
 
 " syntax highlighting for files with weird extensions
 au BufNewFile,BufRead *.al set filetype=
@@ -113,9 +128,27 @@ au BufNewFile,BufRead *.c.src set filetype=c
 
 " jump to last known position in the file
 autocmd BufReadPost *
-  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+
+"""""""""""
+" linting "
+"""""""""""
+
+" flake8 example output:
+" file.py:32:1: W291 blank line at end of file
+"autocmd FileType python setlocal errorformat=%f:%l:%c:\ %t%n\ %m
+"autocmd FileType python setlocal makeprg=flake8
+"
+"augroup lint
+"    autocmd!
+"    autocmd BufWritePost *.py silent make! <afile> | silent redraw!
+"    autocmd QuickfixCmdPost [^l]* cwindow
+"augroup END
+
+let g:ale_linters = {'python': ['flake8']}
 
 
 """""""""""""""""""""""""""
@@ -181,6 +214,10 @@ set laststatus=2
 if has('statusline')
     " file name + modified flag
     set statusline=%<%f%m
+    " syntastic
+    "set statusline+=%#warningmsg#
+    "set statusline+=%{SyntasticStatuslineFlag()}
+    "set statusline+=%*
     " right justify
     set statusline+=%=
     " current column, current line, total lines
@@ -189,8 +226,14 @@ if has('statusline')
     set statusline+=\ %{PencilMode()}%{PencilAutoformat()}
 endif
 
-" shows syntax item (from reedes from vim-pencil)
-map <F10> :echo "hi<"
-\ . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+"""""""""""""
+" fzf stuff "
+"""""""""""""
+
+" fuzzy find files
+nnoremap <leader>f :Files<cr>
+" fuzzy ag search
+nnoremap <leader>g :Ag<cr>
+" open a split with current buffers, use number to switch
+nnoremap <leader>b :Buffers<cr>

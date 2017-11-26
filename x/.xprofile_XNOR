@@ -6,4 +6,3 @@ xset r rate 250 25 &
 xset b off &
 setxkbmap -layout us
 xmodmap ~/.Xmodmap
-sh ~/.fehbg

@@ -7,30 +7,33 @@ set $barfont Tamzen, Font Awesome 10
 
 set $mod Mod1
 set $win Mod4
-font pango: $font
+#font pango: $font
+font -*-tamzen-medium-*-*-*-13-94-100-100-c-70-iso8859-1
 focus_follows_mouse no
 floating_modifier $mod
 
-for_window [class="^.*"] border pixel 2
+new_window pixel 2
+for_window [class="Xfce4-terminal"] border pixel 2
+for_window [class="Alacritty"] border pixel 2
 
 # workspaces on laptop output
-set $wsr1 "1: 1"
-set $wsr2 "2: 2"
-set $wsr3 "3: 3"
-set $wsr4 "4: 4"
-set $wsr5 "5: 5"
-set $wsr6 "6: 6"
-set $wsr7 "7: 7"
-set $wsr8 "8: 8"
-set $wsr9 "9: 9"
+set $wsr1 "1:1"
+set $wsr2 "2:2"
+set $wsr3 "3:3"
+set $wsr4 "4:4"
+set $wsr5 "5:5"
+set $wsr6 "6:6"
+set $wsr7 "7:7"
+set $wsr8 "8:8"
+set $wsr9 "9:9"
 
 # workspaces on external output
-set $wsl1 "1: a"
-set $wsl2 "2: b"
-set $wsl3 "3: c"
-set $wsl4 "4: d"
-set $wsl5 "5: e"
-set $wsl6 "6: f"
+set $wsl1 "1:a"
+set $wsl2 "2:b"
+set $wsl3 "3:c"
+set $wsl4 "4:d"
+set $wsl5 "5:e"
+set $wsl6 "6:f"
 
 
 #
@@ -117,6 +120,10 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
 
+# scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
 # set numbered workspaces to output 1 and letter workspaces to output 2
 workspace $wsr1 output LVDS-1
 workspace $wsr2 output LVDS-1
@@ -135,6 +142,12 @@ workspace $wsl4 output VGA-1
 workspace $wsl5 output VGA-1
 workspace $wsl6 output VGA-1
 
+workspace $wsl1 output DP-1
+workspace $wsl2 output DP-1
+workspace $wsl3 output DP-1
+workspace $wsl4 output DP-1
+workspace $wsl5 output DP-1
+workspace $wsl6 output DP-1
 
 #
 # other wm-related keybindings
@@ -155,10 +168,20 @@ mode "exit (y/n)?" {
 
 bindsym $mod+r mode "resize"
 mode "resize" {
+    # small grow/shrink
     bindsym h resize shrink width 1 px or 1 ppt
     bindsym j resize grow height 1 px or 1 ppt
     bindsym k resize shrink height 1 px or 1 ppt
     bindsym l resize grow width 1 px or 1 ppt
+
+    # large grow/shrink
+    bindsym Shift+h resize shrink width 10 px or 10 ppt
+    bindsym Shift+j resize grow height 10 px or 10 ppt
+    bindsym Shift+k resize shrink height 10 px or 10 ppt
+    bindsym Shift+l resize grow width 10 px or 10 ppt
+
+    # shrink half screen width to enough to give me 80 chars
+    bindsym e resize shrink width 1 px or 8 ppt
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -173,11 +196,11 @@ for_window [title="Figure *"] floating enable
 for_window [title="TeX Text"] floating enable
 for_window [title="OpenGL Viewer"] floating enable
 for_window [title="recordMyDesktop"] floating enable
-for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle
 for_window [title="Blender User Preferences"] floating enable
 for_window [class="Textext.py"] floating enable
-for_window [title="MyoSwim"] floating enable
 for_window [window_role="pop-up"] floating enable
+for_window [class="Arandr"] floating enable
+for_window [class="Hamster"] floating enable
 
 
 #
@@ -188,10 +211,11 @@ for_window [window_role="pop-up"] floating enable
 set $black    #2f343f
 set $altblack #404040
 set $darkgrey #4e5667
-set $grey     #afb8c5
+set $grey     #848379
 set $purple   #4e3d41
 set $red      #962521
 set $blue     #5294e2
+#set $blue     #cc575d
 set $white    #f6f0f3
 set $darkblue #0f1b33
 set $medblue  #122a3d
@@ -201,7 +225,7 @@ set $orange   #c58c36
 client.focused          $blue     $blue     $white   $white      $blue
 client.focused_inactive $black    $black    $white   $black      $black
 client.unfocused        $black    $black    $grey    $black      $black
-client.urgent           $orange   $black    $white   $black      $black
+client.urgent           $blue     $black    $white   $black      $black
 
 
 bar {
@@ -210,7 +234,7 @@ bar {
     position top
     status_command i3status
     workspace_buttons yes
-    separator_symbol ¦
+    separator_symbol /
     strip_workspace_numbers yes
 
     colors {
@@ -222,7 +246,7 @@ bar {
         focused_workspace  $blue     $blue     $white
         active_workspace   $darkgrey $darkgrey $white
         inactive_workspace $black    $black    $grey
-        urgent_workspace   $orange   $black    $white
+        urgent_workspace   $blue     $black    $white
     }
 }
 
@@ -246,6 +270,7 @@ bindsym $win+F9 exec "setxkbmap us"
 bindsym $win+F10 exec "setxkbmap -layout de -variant qwerty"
 bindsym $win+v exec ~/.screenlayout/lvds.sh
 bindsym $win+shift+v exec ~/.screenlayout/vgaright.sh
+bindsym XF86Display exec arandr
 
 bindsym $win+p workspace present
 workspace present output VGA-1
@@ -257,7 +282,7 @@ assign [window_role="presentation"] present
 #
 
 exec --no-startup-id dropbox &
-exec --no-startup-id redshift-gtk &
 exec --no-startup-id thunar --daemon &
 exec --no-startup-id lxqt-notificationd &
-exec --no-startup-id cmst &
+exec --no-startup-id nm-applet &
+exec --no-startup-id redshift &
