@@ -1,4 +1,4 @@
 function notebook
-    activate root
+    conda activate base
     jupyter notebook
 end

@@ -11,32 +11,36 @@ general {
     markup = "pango"
 }
 
+order += "cpu_temperature 0"
 order += "disk /"
 order += "wireless _first_"
 order += "battery 0"
 order += "volume master"
-order += "tztime date"
-order += "tztime time"
+order += "tztime datetime"
+
+cpu_temperature 0 {
+    format = "<span foreground='#5294e2'>temp</span> %degrees °C"
+    max_threshold = 80
+}
 
 disk "/" {
-    # fa-folder-open
-    format = "<span foreground='#5294e2'></span> %avail (%percentage_avail)"
+    format = "<span foreground='#5294e2'>disk</span> %avail (%percentage_avail)"
     threshold_type = "percentage_avail"
     low_threshold = 15
 }
 
 wireless _first_ {
-    format_up = "<span color='#5294e2'></span> %essid (%ip)"
-    format_down = "<span color='#5294e2'></span> (---.--.---)"
+    format_up = "<span color='#5294e2'>net</span> %essid (%ip)"
+    format_down = "<span color='#5294e2'>net</span> DOWN"
 }
 
 battery 0 {
     format = "%status %percentage %remaining"
     path = "/sys/class/power_supply/BAT0/uevent"
-    status_bat = "<span color='#5294e2'></span>"
-    status_chr = "<span color='#5294e2'></span>"
-    status_full = "<span color='#5294e2'></span>"
-    status_unk = "<span color='#5294e2'></span>"
+    status_bat = "<span color='#5294e2'>bat</span> dis"
+    status_chr = "<span color='#5294e2'>bat</span> chr"
+    status_full = "<span color='#5294e2'>bat</span> full"
+    status_unk = "<span color='#5294e2'>bat (?)</span>"
     threshold_type = "time"
     low_threshold = 30
     hide_seconds = true
@@ -45,19 +49,14 @@ battery 0 {
 }
 
 volume master {
-    format = "<span foreground='#5294e2'></span> %volume"
-    format_muted = "<span foreground='#5294e2'></span> (%volume)"
+    format = "<span foreground='#5294e2'>vol</span> %volume"
+    format_muted = "<span foreground='#5294e2'>vol</span> (%volume)"
     device = "default"
     mixer = "Master"
     mixer_idx = "0"
 }
 
-tztime date {
-    format_time = "%A %Y-%m-%d"
-    format = "<span foreground='#5294e2'></span> %time"
-}
-
-tztime time {
-    format_time = "%H:%M"
-    format ="<span foreground='#5294e2'></span> %time"
+tztime datetime {
+    format_time = "%A %Y-%m-%d %H:%M"
+    format = "%time"
 }

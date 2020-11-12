@@ -2,19 +2,16 @@
 # general settings
 #
 
-set $font Tamzen 10
-set $barfont Tamzen, Font Awesome 10
+set $font Liberation Mono 9
 
-set $mod Mod1
-set $win Mod4
-#font pango: $font
-font -*-tamzen-medium-*-*-*-13-94-100-100-c-70-iso8859-1
+set $mod Mod4
+#set $win Mod4
+font pango: $font
+#font -*-tamzen-medium-*-*-*-13-94-100-100-c-70-iso8859-1
 focus_follows_mouse no
 floating_modifier $mod
 
 new_window pixel 2
-for_window [class="Xfce4-terminal"] border pixel 2
-for_window [class="Alacritty"] border pixel 2
 
 # workspaces on laptop output
 set $wsr1 "1:1"
@@ -57,17 +54,17 @@ bindsym $mod+7 workspace $wsr7
 bindsym $mod+8 workspace $wsr8
 bindsym $mod+9 workspace $wsr9
 
-bindsym $win+1 workspace $wsl1
-bindsym $win+2 workspace $wsl2
-bindsym $win+3 workspace $wsl3
-bindsym $win+4 workspace $wsl4
-bindsym $win+5 workspace $wsl5
-bindsym $win+6 workspace $wsl6
+#bindsym $win+1 workspace $wsl1
+#bindsym $win+2 workspace $wsl2
+#bindsym $win+3 workspace $wsl3
+#bindsym $win+4 workspace $wsl4
+#bindsym $win+5 workspace $wsl5
+#bindsym $win+6 workspace $wsl6
 
 # other movements
 bindsym $mod+a focus parent
 bindsym $mod+shift+a focus child
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 bindsym $mod+Tab workspace back_and_forth
 
 
@@ -92,12 +89,12 @@ bindsym $mod+Shift+7 move container to workspace $wsr7
 bindsym $mod+Shift+8 move container to workspace $wsr8
 bindsym $mod+Shift+9 move container to workspace $wsr9
 
-bindsym $win+Shift+1 move container to workspace $wsl1
-bindsym $win+Shift+2 move container to workspace $wsl2
-bindsym $win+Shift+3 move container to workspace $wsl3
-bindsym $win+Shift+4 move container to workspace $wsl4
-bindsym $win+Shift+5 move container to workspace $wsl5
-bindsym $win+Shift+6 move container to workspace $wsl6
+#bindsym $win+Shift+1 move container to workspace $wsl1
+#bindsym $win+Shift+2 move container to workspace $wsl2
+#bindsym $win+Shift+3 move container to workspace $wsl3
+#bindsym $win+Shift+4 move container to workspace $wsl4
+#bindsym $win+Shift+5 move container to workspace $wsl5
+#bindsym $win+Shift+6 move container to workspace $wsl6
 
 # move workspace to other screen (assuming two monitors)
 bindsym $mod+Shift+m move workspace to output right
@@ -119,6 +116,7 @@ bindsym $mod+v split v
 # other
 bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
+
 
 # scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -154,7 +152,7 @@ workspace $wsl6 output DP-1
 #
 
 bindsym XF86ScreenSaver exec "i3lock -c 021a2d && systemctl suspend"
-bindsym $win+l exec "i3lock -c 021a2d"
+#bindsym $win+l exec "i3lock -c 021a2d"
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+q kill
@@ -193,15 +191,16 @@ mode "resize" {
 #
 
 for_window [title="Figure *"] floating enable
+for_window [window_role="pop-up"] floating enable
 for_window [title="TeX Text"] floating enable
 for_window [title="OpenGL Viewer"] floating enable
 for_window [title="recordMyDesktop"] floating enable
 for_window [title="Blender User Preferences"] floating enable
-for_window [class="Textext.py"] floating enable
-for_window [window_role="pop-up"] floating enable
+#for_window [class="Textext.py"] floating enable
 for_window [class="Arandr"] floating enable
-for_window [class="Hamster"] floating enable
-
+for_window [title="pysesh"] floating enable
+for_window [class="pyqtgraph"] floating enable
+#for_window [title="Range Plot"] floating enable
 
 #
 # appearance
@@ -229,7 +228,7 @@ client.urgent           $blue     $black    $white   $black      $black
 
 
 bar {
-    font pango: $barfont
+    font pango: $font
     tray_output LVDS-1
     position top
     status_command i3status
@@ -254,27 +253,29 @@ bar {
 #
 # launchers
 #
+bindsym $mod+u exec xfce4-terminal -e "fish && conda activate py2-pyside"
 
-bindsym $mod+Shift+Return exec xfce4-terminal
-bindsym $win+space exec rofi -show run
-bindsym $win+f exec "xdg-open ~"
-bindsym $win+Shift+f exec "xdg-open `xcwd`"
+bindsym $mod+shift+Return exec xfce4-terminal
+bindsym $mod+space exec rofi -show run
+bindsym $mod+d exec "xdg-open ~"
+
+bindsym Print exec "xfce4-screenshooter"
+bindsym XF86Display exec arandr
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +2%"
 bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -2%"
 bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 bindsym XF86MonBrightnessUp exec "light -A 10"
 bindsym XF86MonBrightnessDown exec "light -U 10"
 bindsym XF86AudioPlay exec "cmus-remote -u"
-bindsym Print exec "xfce4-screenshooter"
-bindsym $win+F9 exec "setxkbmap us"
-bindsym $win+F10 exec "setxkbmap -layout de -variant qwerty"
-bindsym $win+v exec ~/.screenlayout/lvds.sh
-bindsym $win+shift+v exec ~/.screenlayout/vgaright.sh
-bindsym XF86Display exec arandr
 
-bindsym $win+p workspace present
-workspace present output VGA-1
-assign [window_role="presentation"] present
+#bindsym $win+F9 exec "setxkbmap us"
+#bindsym $win+F10 exec "setxkbmap -layout de -variant qwerty"
+
+bindsym $mod+p exec xfce4-terminal -T \\"pysesh\\" -e \\"fish -c sci -i\\"
+
+#bindsym $win+p workspace present
+#workspace present output VGA-1
+#assign [window_role="presentation"] present
 
 
 #
@@ -282,7 +283,5 @@ assign [window_role="presentation"] present
 #
 
 exec --no-startup-id dropbox &
-exec --no-startup-id thunar --daemon &
-exec --no-startup-id lxqt-notificationd &
-exec --no-startup-id nm-applet &
 exec --no-startup-id redshift &
+exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd

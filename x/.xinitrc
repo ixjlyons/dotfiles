@@ -5,3 +5,4 @@
 
 exec i3
 #exec herbstluftwm --locked
+#exec openbox-session

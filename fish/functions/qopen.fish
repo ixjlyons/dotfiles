@@ -1,3 +1,3 @@
 function qopen
-    xdg-open 2>/dev/null $argv &
+    xdg-open $argv </dev/null >/dev/null 2>&1 & disown
 end
