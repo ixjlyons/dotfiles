@@ -49,17 +49,11 @@ bindsym $mod+2 workspace $wsr2
 bindsym $mod+3 workspace $wsr3
 bindsym $mod+4 workspace $wsr4
 bindsym $mod+5 workspace $wsr5
+
 bindsym $mod+6 workspace $wsr6
 bindsym $mod+7 workspace $wsr7
 bindsym $mod+8 workspace $wsr8
 bindsym $mod+9 workspace $wsr9
-
-#bindsym $win+1 workspace $wsl1
-#bindsym $win+2 workspace $wsl2
-#bindsym $win+3 workspace $wsl3
-#bindsym $win+4 workspace $wsl4
-#bindsym $win+5 workspace $wsl5
-#bindsym $win+6 workspace $wsl6
 
 # other movements
 bindsym $mod+a focus parent
@@ -123,29 +117,17 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # set numbered workspaces to output 1 and letter workspaces to output 2
-workspace $wsr1 output LVDS-1
-workspace $wsr2 output LVDS-1
-workspace $wsr3 output LVDS-1
-workspace $wsr4 output LVDS-1
-workspace $wsr5 output LVDS-1
+workspace $wsr1 output primary
+workspace $wsr2 output primary
+workspace $wsr3 output primary
+workspace $wsr4 output primary
+workspace $wsr5 output primary
+
 workspace $wsr6 output LVDS-1
 workspace $wsr7 output LVDS-1
 workspace $wsr8 output LVDS-1
 workspace $wsr9 output LVDS-1
 
-workspace $wsl1 output VGA-1
-workspace $wsl2 output VGA-1
-workspace $wsl3 output VGA-1
-workspace $wsl4 output VGA-1
-workspace $wsl5 output VGA-1
-workspace $wsl6 output VGA-1
-
-workspace $wsl1 output DP-1
-workspace $wsl2 output DP-1
-workspace $wsl3 output DP-1
-workspace $wsl4 output DP-1
-workspace $wsl5 output DP-1
-workspace $wsl6 output DP-1
 
 #
 # other wm-related keybindings
@@ -228,10 +210,12 @@ client.urgent           $blue     $black    $white   $black      $black
 
 
 bar {
-    font pango: $font
-    tray_output LVDS-1
-    position top
+    output primary
+    output nonprimary
+    tray_output primary
     status_command i3status
+    position top
+    font pango: $font
     workspace_buttons yes
     separator_symbol /
     strip_workspace_numbers yes
@@ -253,9 +237,8 @@ bar {
 #
 # launchers
 #
-bindsym $mod+u exec xfce4-terminal -e "fish && conda activate py2-pyside"
-
-bindsym $mod+shift+Return exec xfce4-terminal
+#bindsym $mod+shift+Return exec xfce4-terminal
+bindsym $mod+shift+Return exec alacritty
 bindsym $mod+space exec rofi -show run
 bindsym $mod+d exec "xdg-open ~"
 
@@ -285,3 +268,4 @@ bindsym $mod+p exec xfce4-terminal -T \\"pysesh\\" -e \\"fish -c sci -i\\"
 exec --no-startup-id dropbox &
 exec --no-startup-id redshift &
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
+#exec --no-startup-id mullvad-vpn

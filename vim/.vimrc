@@ -3,16 +3,17 @@
 """""""""""""""""
 
 call plug#begin('~/.vim/plugged')
-Plug 'reedes/vim-pencil'
-Plug 'chriskempson/base16-vim'
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
-Plug 'junegunn/goyo.vim'
-Plug 'owickstrom/vim-colors-paramount'
-Plug 'reedes/vim-colors-pencil'
-Plug 'gotcha/vimpdb'
+Plug 'ixjlyons/vim-colors-paramount'
+Plug 'chriskempson/base16-vim'
+" plugins I should check out more:
+"Plug 'gotcha/vimpdb'
+"Plug 'junegunn/goyo.vim'
+Plug 'tpope/vim-fugitive'
+"Plug 'reedes/vim-pencil'
+"Plug 'reedes/vim-colors-pencil'
 call plug#end()
 
 
@@ -63,9 +64,15 @@ set wildignore+=*.pdf,*.aux,*.blg,*.log,*.bbl,*.synctex,*.lof,*.lot,*.toc
 " (https://github.com/VundleVim/Vundle.vim/issues/312)
 set shell=/bin/bash
 " treat hypens/dashes as part of a word
-set iskeyword+=-
+"set iskeyword+=-
 " don't set folds when opening files
 set nofoldenable
+" don't wrap long lines by default, very annoying to look at
+set nowrap
+" hit % on `if` to jump to `else`
+runtime macros/matchit.vim
+" leave a small buffer of lines at the top/bottom to preserve context
+set scrolloff=5
 
 " some diff options
 set diffopt=filler,internal,algorithm:histogram,indent-heuristic
@@ -80,10 +87,9 @@ filetype plugin indent on
 syntax on
 
 " nice colorscheme
-let g:monotone_color = [170, 24, 88]
-let g:monotone_emphasize_comments = 0
-let g:monotone_contrast_factor = 1.1
-colorscheme monotone
+"colorscheme paramount
+set background=dark
+colorscheme base16-snazzy
 
 " visual navigation of wrapped lines
 noremap j gj
@@ -111,6 +117,7 @@ nnoremap <Home> :cprevious<CR>
 " load 'stub' tex files as regular latex
 let g:tex_flavor = "latex"
 
+
 """"""""""""""""
 " netrw config "
 """"""""""""""""
@@ -131,15 +138,17 @@ let g:netrw_banner = 0
 
 " give Makefiles tabs instead of spaces
 autocmd FileType make setlocal noexpandtab
-" break text files at 79
-autocmd FileType text,python setlocal textwidth=79
+" text width preferences
+autocmd FileType txt,text,rst,rest setlocal textwidth=80
+autocmd FileType python setlocal textwidth=88
+autocmd FileType c setlocal textwidth=88
 " highlight texwidth column
 set colorcolumn=+1
 " turn on spelling
 autocmd FileType text,tex,md,markdown,rst setlocal spell
 " don't add a comment char when adding a line below/above a comment line
 autocmd FileType * setlocal formatoptions-=o
-autocmd FileType markdown setlocal wrap
+"autocmd FileType markdown setlocal wrap
 
 "hi clear SpellBad
 "hi SpellBad cterm=underline
@@ -169,7 +178,10 @@ autocmd BufReadPost *
 " linting "
 """""""""""
 
-let g:ale_linters = {'python': ['pycodestyle']}
+let g:ale_linters = {
+    \ 'python': ['pycodestyle'],
+    \ 'c': ['ccls'],
+    \ }
 let g:ale_python_pycodestyle_options = '--ignore=E501,E226'
 let g:ale_sign_column_always = 1
 let g:ale_lint_on_text_changed = 'never'
@@ -182,54 +194,17 @@ let g:ale_set_highlights = 0
 """""""""""""""""""""""""""
 
 " highlight trailing whitespace, http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-highlight default ExtraWhitespace ctermbg=darkred guibg=#663434
+highlight default ExtraWhitespace ctermbg=darkred guibg=darkred
 autocmd ColorScheme * highlight default ExtraWhitespace ctermbg=darkred guibg=darkred
 autocmd BufRead,BufNew * match ExtraWhitespace /\\\@<![\u3000[:space:]]\+$/
 
-function! s:FixWhitespace(line1,line2)
+function! FixWhitespace(line1,line2)
     let l:save_cursor = getpos(".")
     silent! execute ':' . a:line1 . ',' . a:line2 . 's/\\\@<!\s\+$//'
     call setpos('.', l:save_cursor)
 endfunction
 
 command! -range=% FixWhitespace call <SID>FixWhitespace(<line1>,<line2>)
-
-
-""""""""""""""""""""
-" vim-pencil stuff "
-""""""""""""""""""""
-
-" wrap at 79 characters
-let g:pencil#textwidth = 80
-" don't conceal characters
-let g:pencil#conceallevel = 0
-" indicate pencil mode
-let g:pencil#mode_indicators = {'hard': 'hpencil', 'soft': 'spencil', 'off': 'nopencil',}
-" indicate if pencil autoformat is on (used by PencilAutoformat)
-let g:pencil#autoformat_indicator = {'auto': '[a]', 'noauto': '',}
-
-" toggle autoformat with <leader>p (default is off)
-nnoremap <silent> <leader>p :PFormatToggle<cr>
-
-" function to return a string indicating whether or not autoformat is enabled
-fun! PencilAutoformat()
-    if exists('b:last_autoformat')
-        if b:last_autoformat
-            return get(g:pencil#autoformat_indicator, 'auto', 'auto')
-        else
-            return get(g:pencil#autoformat_indicator, 'noauto', 'noauto')
-        en
-    else
-        return ''
-    en
-endf
-
-" when to use vim-pencil
-augroup pencil
-    autocmd!
-    autocmd FileType tex,rst,markdown,mkd call
-                \ pencil#init({'wrap': 'hard', 'autoformat': 0})
-augroup END
 
 
 """"""""""""""""""""""
@@ -240,14 +215,10 @@ set laststatus=2
 if has('statusline')
     " file name + modified flag
     set statusline=%<%f%m
-    " fugitive
-    set statusline+=%{fugitive#statusline()}
     " right justify
     set statusline+=%=
     " current column, current line, total lines
     set statusline+=\|%c\ -%l/%L
-    " vim-pencil mode
-    set statusline+=\ %{PencilMode()}%{PencilAutoformat()}
 endif
 
 
@@ -255,16 +226,38 @@ endif
 " fzf stuff "
 """""""""""""
 
-" fuzzy find files
-nnoremap <leader>f :Files<cr>
-" fuzzy ag search
-nnoremap <leader>g :Ag<cr>
-" open a split with current buffers, use number to switch
-nnoremap <leader>b :Buffers<cr>
+try
+    " fuzzy find files
+    nnoremap <leader>f :Files<cr>
+    " fuzzy ag search
+    nnoremap <leader>g :Ag<cr>
+    " open a split with current buffers, use number to switch
+    nnoremap <leader>b :Buffers<cr>
+
+    let g:fzf_layout = { 'down': '12' }
+    let g:fzf_preview_window = ['up:40%', 'ctrl-/']
+endtry
 
 
-" Hex read
+""""""""""""""""""""""""""""""""""""
+" miscellaneous commmands/mappings "
+""""""""""""""""""""""""""""""""""""
+
+" hex read/write
 nmap <Leader>hr :%!xxd<CR> :set filetype=xxd<CR>
-
-" Hex write
 nmap <Leader>hw :%!xxd -r<CR> :set binary<CR> :set filetype=<CR>
+
+" show the syntax group under the cursor
+function! SynGroup()
+    let l:s = synID(line('.'), col('.'), 1)
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfunction
+
+function! Syn(lnum, col)
+    let l:id = synID(a:lnum, a:col, 1)
+    let l:idt = l:id->synIDtrans()
+    echo "hi<" . l:id->synIDattr("name") . ">"
+        \ "lo<" . l:idt->synIDattr("name") . ">"
+        \ "fg:" . l:idt->synIDattr("fg#")
+endfunction
+nnoremap <F3> :call Syn(line('.'),col('.')) <CR>

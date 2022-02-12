@@ -4,5 +4,4 @@
 [ -f ~/.xprofile ] && source ~/.xprofile
 
 exec i3
-#exec herbstluftwm --locked
-#exec openbox-session
+# exec openbox-session

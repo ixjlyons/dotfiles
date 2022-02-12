@@ -5,8 +5,8 @@ set -x EDITOR vim
 set -x CHEATCOLORS true
 set -x ICAROOT /home/kenny/usr/citrix
 
-set -x PYENV_ROOT $HOME/.pyenv
-set PATH $PYENV_ROOT/bin $PATH
+status is-login; and pyenv init --path | source
+status is-interactive; and pyenv init - | source
 
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'yes'
@@ -26,7 +26,5 @@ if status --is-interactive
     source ~/miniconda3/etc/fish/conf.d/conda.fish
     #conda activate base
 end
-
-source (pyenv init - | psub)
 
 set QT_QPA_PLATFORMTHEME gtk2

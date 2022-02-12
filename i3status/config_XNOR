@@ -35,14 +35,14 @@ wireless _first_ {
 }
 
 battery 0 {
-    format = "%status %percentage %remaining"
+    format = "<span color='#5294e2'>bat</span> %status %percentage %remaining"
     path = "/sys/class/power_supply/BAT0/uevent"
-    status_bat = "<span color='#5294e2'>bat</span> dis"
-    status_chr = "<span color='#5294e2'>bat</span> chr"
-    status_full = "<span color='#5294e2'>bat</span> full"
-    status_unk = "<span color='#5294e2'>bat (?)</span>"
+    status_bat =  "dis"
+    status_chr =  "chr"
+    status_full = "full"
+    status_unk =  "unk"
     threshold_type = "time"
-    low_threshold = 30
+    low_threshold = 10
     hide_seconds = true
     integer_battery_capacity = true
     last_full_capacity = true
@@ -57,6 +57,5 @@ volume master {
 }
 
 tztime datetime {
-    format_time = "%A %Y-%m-%d %H:%M"
-    format = "%time"
+    format = "%A %Y-%m-%d %H:%M"
 }
